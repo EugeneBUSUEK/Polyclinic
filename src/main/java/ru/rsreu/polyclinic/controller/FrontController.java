@@ -23,7 +23,7 @@ public class FrontController extends HttpServlet {
 
         command.init(getServletContext(), req, res);
         command.process();
-    }
+}
 
     /**
      * @param req provide request information for HTTP servlets

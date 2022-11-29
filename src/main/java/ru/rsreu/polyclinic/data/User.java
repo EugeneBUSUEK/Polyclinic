@@ -6,11 +6,15 @@ public class User {
     private String login;
     private String password;
 
-    public User(Long id, String name, String login, String password) {
+    private boolean blocked;
+
+    public User() {}
+    public User(Long id, String name, String login, String password, boolean blocked) {
         this.id = id;
         this.name = name;
         this.login = login;
         this.password = password;
+        this.blocked = blocked;
     }
 
     public Long getId() {
@@ -43,5 +47,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
     }
 }

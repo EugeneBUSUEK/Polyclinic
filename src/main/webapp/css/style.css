@@ -43,7 +43,7 @@ nav ul li b{
     text-transform: uppercase;
 }
 
-b.active, b:hover{
+.active, b:hover{
     color: white;
     background: #101010;
     transition: .5s;
@@ -55,14 +55,22 @@ label.logo{
     line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
-
 }
 
 .container{
     height: 82vh;
     display: flex;
+    margin-top: 6px;
     align-items: center;
     justify-content: center;
+}
+
+.container-button{
+    height: 82vh;
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+    padding: 0 20%;
 }
 
 .login-box {
@@ -135,12 +143,6 @@ form .register {
     font-size: 18px;
 }
 
-/*form .register:hover {*/
-/*    color: #124ce7;*/
-/*    background: #cecece;*/
-/*    transition: .5s;*/
-/*}*/
-
 a{
     cursor: pointer;
     padding: 7px 13px;
@@ -157,11 +159,14 @@ form input[type="submit"] {
     cursor: pointer;
     width: 100%;
     height: 46px;
-    border-radius: 3px;
+    border-radius: 15px;
     font-size: 22px;
     margin-top: 28px;
     color: #fff;
-    background: linear-gradient(0deg, #124ce7, #3784ff);
+    background: linear-gradient(0deg, #99bcff, #89afff);
+    /*border: solid #7eb0ff;*/
+    box-shadow: rgba(45, 35, 66, .4) 0 3px 4px;
+
 }
 
 form input[type="submit"]:hover{
@@ -170,4 +175,48 @@ form input[type="submit"]:hover{
 
 .register{
     text-align: center;
+}
+
+.button {
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #b0ccff 0, #9cbaff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+
+.button:focus {
+    box-shadow: #b7cdff 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #89afff 0 -3px 0 inset;
+}
+
+.button:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #89afff 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    box-shadow: #89afff 0 3px 7px inset;
+    transform: translateY(2px);
 }
