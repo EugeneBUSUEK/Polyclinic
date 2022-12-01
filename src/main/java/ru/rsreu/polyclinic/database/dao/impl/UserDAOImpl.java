@@ -20,7 +20,7 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
-    private static final String SELECT_WORKER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.worker.by.login");
+    private static final String SELECT_WORKER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
     private static final String UPDATE_WORKER = ProjectResourcer.getInstance().getString("query.update.worker");
     private static final String DELETE_WORKER = ProjectResourcer.getInstance().getString("query.delete.worker");
     private static final String INSERT_WORKER = ProjectResourcer.getInstance().getString("query.insert.worker");
