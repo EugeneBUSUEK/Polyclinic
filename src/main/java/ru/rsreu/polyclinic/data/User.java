@@ -2,18 +2,17 @@ package ru.rsreu.polyclinic.data;
 
 public class User {
     private Long id;
-    private String name;
     private String login;
     private String password;
-
+    private String name;
     private boolean blocked;
 
     public User() {}
-    public User(Long id, String name, String login, String password, boolean blocked) {
+    public User(Long id, String login, String password, String name, boolean blocked) {
         this.id = id;
-        this.name = name;
         this.login = login;
         this.password = password;
+        this.name = name;
         this.blocked = blocked;
     }
 

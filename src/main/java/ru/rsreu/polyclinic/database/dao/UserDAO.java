@@ -8,7 +8,7 @@ public interface UserDAO {
 
     ArrayList<User> findAll();
 
-    User getUserById(int id);
+    User getUserById(Long id);
 
     User getUserById(String id);
 

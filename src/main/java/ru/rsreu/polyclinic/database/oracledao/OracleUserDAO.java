@@ -41,14 +41,14 @@ public class OracleUserDAO implements UserDAO {
     }
 
     @Override
-    public User getUserById(int id) {
+    public User getUserById(Long id) {
 
         User user = null;
 
         try (Connection connection = ConnectionPool.getConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_WORKER_BY_ID);
-            preparedStatement.setInt(1, id);
+            preparedStatement.setLong(1, id);
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
@@ -64,7 +64,7 @@ public class OracleUserDAO implements UserDAO {
 
     @Override
     public User getUserById(String id) {
-        return getUserById(Integer.parseInt(id));
+        return getUserById(Long.parseLong(id));
     }
 
     @Override
@@ -95,7 +95,7 @@ public class OracleUserDAO implements UserDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_WORKER);
             insertUser(preparedStatement, user);
 
-            preparedStatement.setLong(6, user.getId());
+//            preparedStatement.setLong(6, user.getId());
 
             preparedStatement.executeUpdate();
 
@@ -132,23 +132,20 @@ public class OracleUserDAO implements UserDAO {
     }
 
     private User giveUser(ResultSet resultSet) throws SQLException {
-        User worker = new User();
+        User user = new User();
 
-        worker.setId(resultSet.getLong("worker_id"));
-        worker.setLogin(resultSet.getString("login"));
-        worker.setPassword(resultSet.getString("password"));
-//        worker.setRole(RoleType.getRole(resultSet.getInt("role_id")));
-//        worker.setBlocked(NumericHelper.convertToBool(resultSet.getInt("blocked")));
-//        worker.setStatusAuthorize(NumericHelper.convertToBool(resultSet.getInt("status")));
+        user.setId(resultSet.getLong("id"));
+        user.setLogin(resultSet.getString("username"));
+        user.setPassword(resultSet.getString("password"));
+//        user.setBlocked(NumericHelper.convertToBool(resultSet.getInt("blocked")));
 
-        return worker;
+        return user;
     }
 
-    private void insertUser(PreparedStatement preparedStatement, User worker) throws SQLException {
-        preparedStatement.setString(1, worker.getLogin());
-        preparedStatement.setString(2, worker.getPassword());
-//        preparedStatement.setInt(3, worker.getRole().getId());
-//        preparedStatement.setInt(4, NumericHelper.convertToInt(worker.isBlocked()));
-//        preparedStatement.setInt(5, NumericHelper.convertToInt(worker.isAuthorized()));
+    private void insertUser(PreparedStatement preparedStatement, User user) throws SQLException {
+        preparedStatement.setString(1, user.getLogin());
+        preparedStatement.setString(2, user.getPassword());
+        preparedStatement.setString(3, user.getName());
+//        preparedStatement.setInt(4, NumericHelper.convertToInt(user.isBlocked()));
     }
 }

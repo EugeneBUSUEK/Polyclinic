@@ -60,7 +60,7 @@ public class LoginCommand extends FrontCommand {
             HttpSession session = request.getSession();
 
             //user.setStatusAuthorize(true);
-            userDAO.updateUser(user);
+            //userDAO.updateUser(user);
 
             //AppUtils.storeLoginWorker(session, user);
 
