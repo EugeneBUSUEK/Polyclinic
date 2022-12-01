@@ -51,7 +51,9 @@ public class LoginCommand extends FrontCommand {
         String password = request.getParameter("password");
 
 
-        User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
+        //User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
+        User user = this.userDAO.getUserByLogin(login).get();
+
 
         if (!user.getPassword().equals(password) || user.isBlocked()) {
             forward(LOGIN);
