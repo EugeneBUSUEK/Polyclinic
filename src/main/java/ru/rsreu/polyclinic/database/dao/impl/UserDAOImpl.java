@@ -4,6 +4,7 @@ import com.prutzkow.resourcer.ProjectResourcer;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.ConnectionPool;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
+import ru.rsreu.polyclinic.util.BooleanUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
 //            preparedStatement.setString(1, user.getLogin());
 //            preparedStatement.setString(2, user.getPassword());
 //            preparedStatement.setString(3, user.getName());
-//    //        preparedStatement.setInt(4, (user.isBlocked()));
+//            preparedStatement.setInt(4, BooleanUtil.convertToInt(user.isBlocked()));
 //            preparedStatement.executeUpdate();
 //
 //        } catch (SQLException ex) {
