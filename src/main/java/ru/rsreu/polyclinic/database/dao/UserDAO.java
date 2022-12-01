@@ -3,21 +3,21 @@ package ru.rsreu.polyclinic.database.dao;
 import ru.rsreu.polyclinic.data.User;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public interface UserDAO {
 
-    ArrayList<User> findAll();
+    List<User> findAll();
 
-    User getUserById(Long id);
+    Optional<User> getUserById(Long id);
 
-    User getUserById(String id);
-
-    User getUserByLogin(String login);
+    Optional<User> getUserByLogin(String login);
 
     void updateUser(User user);
 
     void deleteUser(User user);
 
-    void addUser(User user);
+    Optional<User> addUser(User user);
 
 }

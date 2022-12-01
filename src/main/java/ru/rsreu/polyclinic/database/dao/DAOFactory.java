@@ -1,19 +1,14 @@
 package ru.rsreu.polyclinic.database.dao;
 
-import ru.rsreu.polyclinic.database.DatabaseType;
+import ru.rsreu.polyclinic.database.dao.impl.UserDAOImpl;
 
-public abstract class DAOFactory {
-
-    public static DAOFactory getInstance(DatabaseType type) {
-        return type.getDAOFactory();
+public final class DAOFactory {
+    private DAOFactory() {
     }
 
-    public abstract UserDAO getUserDAO();
-//    public abstract RoleDAO getRoleDAO();
-//
-//    public abstract DeviceDAO getDeviceDAO();
-//
-//
-//
-//    public abstract TenderDAO getTenderDAO();
+
+    public static UserDAO getUserDAO() {
+        return UserDAOImpl.getInstance();
+    }
+
 }
