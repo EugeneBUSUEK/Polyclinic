@@ -29,7 +29,7 @@
                 <i class="bx bxs-user"></i>
                 <input
                         type="text"
-                        id="login"
+                        name="login"
                         placeholder="Your username"
                         required
                 >
@@ -42,7 +42,7 @@
                 <i class="bx bxs-lock"></i>
                 <input
                         type="password"
-                        id="password"
+                        name="password"
                         placeholder="Your password"
                         required
                 >
