@@ -56,7 +56,7 @@ public class LoginCommand extends FrontCommand {
         User user = this.userDAO.getUserByLogin(login).orElse(null);
 
         if (user == null || !user.getPassword().equals(password) || user.isBlocked()) {
-            //request.setAttribute("invalidAuth", true);
+            request.setAttribute("invalidAuth", true);
             forward(LOGIN);
         } else {
             HttpSession session = request.getSession();
