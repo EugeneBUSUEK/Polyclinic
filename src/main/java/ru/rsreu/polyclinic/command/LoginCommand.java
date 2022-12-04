@@ -53,9 +53,10 @@ public class LoginCommand extends FrontCommand {
 
         //User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
 
-        User user = this.userDAO.getUserByLogin(login).get();
+        User user = this.userDAO.getUserByLogin(login).orElse(null);
 
-        if (!this.userDAO.getUserByLogin(login).isPresent() || !user.getPassword().equals(password) || user.isBlocked()) {
+        if (user == null || !user.getPassword().equals(password) || user.isBlocked()) {
+            //request.setAttribute("invalidAuth", true);
             forward(LOGIN);
         } else {
             HttpSession session = request.getSession();

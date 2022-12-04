@@ -147,6 +147,7 @@ public class UserDAOImpl implements UserDAO {
         user.setPassword(resultSet.getString("password"));
         user.setName(resultSet.getString("name"));
         user.setBlocked(resultSet.getBoolean("blocked"));
+        user.setRole(resultSet.getString(6));
 
         return user;
     }

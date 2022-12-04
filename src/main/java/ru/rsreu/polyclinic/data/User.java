@@ -6,14 +6,16 @@ public class User {
     private String password;
     private String name;
     private boolean blocked;
+    private String role;
 
     public User() {}
-    public User(Long id, String login, String password, String name, boolean blocked) {
+    public User(Long id, String login, String password, String name, boolean blocked, String role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
         this.blocked = blocked;
+        this.role = role;
     }
 
     public Long getId() {
@@ -54,5 +56,13 @@ public class User {
 
     public void setBlocked(boolean blocked) {
         this.blocked = blocked;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
