@@ -13,8 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-import static ru.rsreu.polyclinic.constant.Routes.HOME;
-import static ru.rsreu.polyclinic.constant.Routes.LOGIN;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class LoginCommand extends FrontCommand {
 
@@ -64,7 +63,7 @@ public class LoginCommand extends FrontCommand {
             //user.setStatusAuthorize(true);
             //userDAO.updateUser(user);
 
-            //AppUtils.storeLoginWorker(session, user);
+            session.setAttribute("user", user);
 
             redirect(HOME);
         }
