@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.MODER;
 
@@ -58,9 +59,9 @@ public class ModeratorCommand extends FrontCommand {
 
         //User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
 
-        ResultSet rs = this.userDAO.returnAllUsers();
+        List<List<String>> rs = this.userDAO.returnAllUsers();
         HttpSession session = request.getSession();
-        session.setAttribute("listOfUsers", rs);
+        request.setAttribute("listOfUsers", rs);
         forward(MODER);
 
     }

@@ -1,4 +1,5 @@
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <body>
 
 <%
-  ResultSet rs = (ResultSet) session.getAttribute("listOfUsers");
+  List<List<String>> rs = (List<List<String>>) request.getAttribute("listOfUsers");
   String username = "username";
   String name = "name";
   String role = "role";
@@ -36,15 +37,15 @@
       <c:forEach items="${rs}" var="user">
       <tbody>
       <tr>
-        <td><div class="user"><b>Username:</b> <c:out value="${user.getString(username)}"/> <br>
-          <b>Name:</b><c:out value="${user.getString(name)}"/> <br>
-          <b>Role:</b> <c:out value="${user.getString(role)}"/> <br></div></td>
+        <td><div class="user"><b>Username:</b> <c:out value="${user.get(1)}"/> <br>
+          <b>Name:</b><c:out value="${user.get(2)}"/> <br>
+          <b>Role:</b> <c:out value="${user.get(3)}"/> <br></div></td>
         <td>Offline</td>
         <td>
-          <c:if test="${user.getString(blocked).equals(BlockedCondition.BLOCKED.getBlockedCondition())}">
+          <c:if test="${user.get(4).equals(BlockedCondition.BLOCKED.getBlockedCondition())}">
             <input class="unblocked-button" type="submit" value="Unblocked">
           </c:if>
-          <c:if test="${!user.getString(blocked).equals(BlockedCondition.UNBLOCKED.getBlockedCondition())}">
+          <c:if test="${!user.get(4).equals(BlockedCondition.UNBLOCKED.getBlockedCondition())}">
             <input class="blocked-button" type="submit" value="Blocked">
           </c:if>
         </td>

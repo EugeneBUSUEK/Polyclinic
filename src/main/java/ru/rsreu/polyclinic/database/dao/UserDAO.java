@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserDAO {
 
-    ResultSet returnAllUsers();
+    List<List<String>> returnAllUsers();
 
     List<User> findAll();
 

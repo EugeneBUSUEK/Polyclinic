@@ -28,15 +28,23 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public ResultSet returnAllUsers() {
+    public List<List<String>> returnAllUsers() {
+        List<List<String>> rowsList= new ArrayList<>();
         ResultSet rs = null;
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS)) {
             rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                List<String> row = new ArrayList<>();
+                for (int i = 1; i <= 5; i++) {
+                    row.add(rs.getString(i));
 
-            return rs;
+                }
+                rowsList.add(row);
+            }
+            return rowsList;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return rs;
+            return rowsList;
         }
 
     }
