@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.Optional;
 
 import static ru.rsreu.polyclinic.constant.Routes.*;
 
@@ -65,7 +64,7 @@ public class LoginCommand extends FrontCommand {
 
             session.setAttribute("user", user);
 
-            redirect(HOME);
+            redirect(PROFILE);
         }
     }
 

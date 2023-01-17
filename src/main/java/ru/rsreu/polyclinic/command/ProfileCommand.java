@@ -4,11 +4,11 @@ import javax.servlet.ServletException;
 
 import java.io.IOException;
 
-import static ru.rsreu.polyclinic.constant.Routes.HOME;
+import static ru.rsreu.polyclinic.constant.Routes.PROFILE;
 
-public class HomeCommand extends FrontCommand {
+public class ProfileCommand extends FrontCommand {
     @Override
     public void process() throws ServletException, IOException {
-        forward(HOME);
+        forward(PROFILE);
     }
 }

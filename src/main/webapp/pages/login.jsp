@@ -19,6 +19,7 @@
 <div class="container">
     <div class="login-box">
         <h2>Authorization</h2>
+
         <form action="login" method="post">
             <div class="form-group">
                 <label for="name">
@@ -47,10 +48,10 @@
             </div>
 
             <div ${invalidAuth ? "" : "hidden"}>
-                    <div class="invalid">Incorrect username or password!</div>
+                    <div class="error">Incorrect username or password!</div>
             </div>
 
-            <input type="submit" value="Log In">
+            <input class="login" type="submit" value="Log In">
 
             <br>
 

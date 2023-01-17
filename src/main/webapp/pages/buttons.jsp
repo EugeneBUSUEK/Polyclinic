@@ -20,7 +20,7 @@
             <button class="button" role="button">Request a vacation/time off</button>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.MODER.getRole())}">
-            <button class="button" role="button">Outpatient cards</button>
+            <form action="moderator"><button class="button" role="button">Edit users blocked status</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.POLYC_ADMIN.getRole())}">
             <button class="button" role="button">1</button>
