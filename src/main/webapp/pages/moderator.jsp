@@ -42,18 +42,21 @@
         </div></td>
         <td>Offline</td>
         <td>
+
           <c:if test="${Integer.parseInt(user.get(3)) == 1}">
-            <input class="unblocked-button" type="submit" value="Unblocked">
+            <form action="blockUser" method="post" style="text-align: center">
+              <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
+            <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
+            <input class="unblocked-button" type="submit" value="Unblocked"></form>
           </c:if>
+
           <c:if test="${Integer.parseInt(user.get(3)) == 0}">
-            <input class="blocked-button" type="submit" value="Blocked">
+          <form action="blockUser" method="post" style="text-align: center">
+            <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
+            <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
+            <input class="blocked-button" type="submit" value="Blocked"></form>
           </c:if>
-<%--          <c:if test="${user.get(3).equals(blocked)}">--%>
-<%--            <input class="unblocked-button" type="submit" value="Unblocked">--%>
-<%--          </c:if>--%>
-<%--          <c:if test="${!user.get(3).equals(unblocked)}">--%>
-<%--            <input class="blocked-button" type="submit" value="Blocked">--%>
-<%--          </c:if>--%>
+
         </td>
       </tr>
       </tbody>

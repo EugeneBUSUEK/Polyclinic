@@ -27,7 +27,8 @@ public class BlockUserCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        String login = request.getParameter("login");
+        String login = request.getParameter("username");
+//        login = login.substring(0,login.length() - 1);
         boolean isBlocked = Boolean.parseBoolean(request.getParameter("isBlocked"));
         this.userDAO.blockUser(login, !isBlocked);
         redirect(MODER);
@@ -36,6 +37,5 @@ public class BlockUserCommand extends FrontCommand{
     @Override
     public void process() throws ServletException, IOException {
         forward(MODER);
-
     }
 }
