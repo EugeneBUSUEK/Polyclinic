@@ -11,19 +11,16 @@
 </head>
 <body>
 
-<%
-  //List<List<String>> rs = (List<List<String>>) request.getAttribute("listOfUsers");
-  String username = "username";
-  String name = "name";
-  String role = "role";
-  String blocked = "blocked";
-%>
-
-
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 
+<%--<%--%>
+<%--  String unblocked = "unblocked";--%>
+<%--  String blocked = "blocked";--%>
+<%--%>--%>
+
 <div class="for_caption"><h1 class="caption">List of user</h1></div>
+<%--<div class="for_caption"><h1 class="caption"><c:out value="${listOfUsers.get(5).get(3)}"/></h1></div>--%>
 
 <div class="scrollit">
   <form class="list-form">
@@ -35,20 +32,28 @@
         <td>Action</td>
       </tr>
       </thead>
-      <c:forEach items="${rs}" var="user">
       <tbody>
+
+      <c:forEach items="${listOfUsers}" var="user">
       <tr>
-        <td><div class="user"><b>Username:</b> <c:out value="${user.get(1)}"/> <br>
-          <b>Name:</b><c:out value="${user.get(2)}"/> <br>
-          <b>Role:</b> <c:out value="${user.get(3)}"/> <br></div></td>
+        <td><div class="user"><b>Username:</b> <c:out value="${user.get(0)}"/> <br>
+          <b>Name:</b> <c:out value="${user.get(1)}"/> <br>
+          <b>Role:</b> <c:out value="${user.get(2)}"/> <br>
+        </div></td>
         <td>Offline</td>
         <td>
-          <c:if test="${user.get(4).equals(BlockedCondition.BLOCKED.getBlockedCondition())}">
+          <c:if test="${Integer.parseInt(user.get(3)) == 1}">
             <input class="unblocked-button" type="submit" value="Unblocked">
           </c:if>
-          <c:if test="${!user.get(4).equals(BlockedCondition.UNBLOCKED.getBlockedCondition())}">
+          <c:if test="${Integer.parseInt(user.get(3)) == 0}">
             <input class="blocked-button" type="submit" value="Blocked">
           </c:if>
+<%--          <c:if test="${user.get(3).equals(blocked)}">--%>
+<%--            <input class="unblocked-button" type="submit" value="Unblocked">--%>
+<%--          </c:if>--%>
+<%--          <c:if test="${!user.get(3).equals(unblocked)}">--%>
+<%--            <input class="blocked-button" type="submit" value="Blocked">--%>
+<%--          </c:if>--%>
         </td>
       </tr>
       </tbody>

@@ -28,40 +28,14 @@ public class ModeratorCommand extends FrontCommand {
 
     @Override
     public void send() throws ServletException, IOException {
-//        String login = request.getParameter("login");
-//        String password = request.getParameter("password");
-//
-//
-//        //User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
-//
-//        User user = this.userDAO.getUserByLogin(login).orElse(null);
-//
-//        if (user == null || !user.getPassword().equals(password) || user.isBlocked()) {
-//            request.setAttribute("invalidAuth", true);
-//            forward(LOGIN);
-//        } else {
-//            HttpSession session = request.getSession();
-//
-//            //user.setStatusAuthorize(true);
-//            //userDAO.updateUser(user);
-//
-//            session.setAttribute("user", user);
-//
-//            redirect(HOME);
-//        }
+        List<List<String>> rs = this.userDAO.returnAllUsers();
+        HttpSession session = request.getSession();
+        session.setAttribute("listOfUsers", rs);
+        redirect(MODER);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-//        String login = request.getParameter("login");
-//        String password = request.getParameter("password");
-
-
-        //User user = this.userDAO.getUserByLogin(login).orElseThrow(RuntimeException::new);
-
-        List<List<String>> rs = this.userDAO.returnAllUsers();
-        HttpSession session = request.getSession();
-        request.setAttribute("listOfUsers", rs);
         forward(MODER);
 
     }

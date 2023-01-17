@@ -8,7 +8,7 @@
 <body>
 
 <%@include file="header.jsp" %>
-<%@include file="buttons.jsp" %>
+<%@include file="buttons.jsp"%>
 
 <%--<nav>--%>
 <%--    <label class="logo">Polyclinic</label>--%>

@@ -35,10 +35,15 @@ public class UserDAOImpl implements UserDAO {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 List<String> row = new ArrayList<>();
-                for (int i = 1; i <= 5; i++) {
-                    row.add(rs.getString(i));
-
-                }
+                row.add(rs.getString(1));
+                row.add(rs.getString(2));
+                row.add(rs.getString(3));
+                row.add(Integer.toString(rs.getInt(4)));
+                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
                 rowsList.add(row);
             }
             return rowsList;
