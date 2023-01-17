@@ -1,6 +1,7 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Edit users blocked status</title>
@@ -11,7 +12,7 @@
 <body>
 
 <%
-  List<List<String>> rs = (List<List<String>>) request.getAttribute("listOfUsers");
+  //List<List<String>> rs = (List<List<String>>) request.getAttribute("listOfUsers");
   String username = "username";
   String name = "name";
   String role = "role";
