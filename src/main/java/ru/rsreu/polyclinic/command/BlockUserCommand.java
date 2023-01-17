@@ -29,7 +29,7 @@ public class BlockUserCommand extends FrontCommand{
     public void send() throws ServletException, IOException {
         String login = request.getParameter("username");
 //        login = login.substring(0,login.length() - 1);
-        boolean isBlocked = Boolean.parseBoolean(request.getParameter("isBlocked"));
+        boolean isBlocked = BooleanUtil.parseBoolean(Integer.parseInt(request.getParameter("isBlocked")));
         this.userDAO.blockUser(login, !isBlocked);
         redirect(MODER);
     }
