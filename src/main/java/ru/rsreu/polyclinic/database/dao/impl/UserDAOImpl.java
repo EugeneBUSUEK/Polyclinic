@@ -23,6 +23,8 @@ public class UserDAOImpl implements UserDAO {
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
     private static final String SELECT_USER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
     private static final String UPDATE_WORKER = ProjectResourcer.getInstance().getString("query.update.worker");
+    private static final String UPDATE_USER = ProjectResourcer.getInstance().getString("query.update.user");
+    private static final String BLOCK_USER = ProjectResourcer.getInstance().getString("query.block.user");
     private static final String DELETE_WORKER = ProjectResourcer.getInstance().getString("query.delete.worker");
     private static final String INSERT_WORKER = ProjectResourcer.getInstance().getString("query.insert.worker");
 
@@ -52,6 +54,18 @@ public class UserDAOImpl implements UserDAO {
             return rowsList;
         }
 
+    }
+
+    @Override
+    public void blockUser(String login, boolean isBlocked) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(BLOCK_USER)) {
+            preparedStatement.setInt(1, BooleanUtil.convertToInt(isBlocked));
+            preparedStatement.setString(2, login);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -113,16 +127,16 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void updateUser(User user) {
-//        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_WORKER)) {
-//            preparedStatement.setString(1, user.getLogin());
-//            preparedStatement.setString(2, user.getPassword());
-//            preparedStatement.setString(3, user.getName());
-//            preparedStatement.setInt(4, BooleanUtil.convertToInt(user.isBlocked()));
-//            preparedStatement.executeUpdate();
-//
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER)) {
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getName());
+            preparedStatement.setInt(4, BooleanUtil.convertToInt(user.isBlocked()));
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

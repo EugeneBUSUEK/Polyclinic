@@ -11,6 +11,8 @@ public interface UserDAO {
 
     List<List<String>> returnAllUsers();
 
+    void blockUser(String login, boolean isBlocked);
+
     List<User> findAll();
 
     Optional<User> getUserById(Long id);
