@@ -19,11 +19,27 @@ public class UserDAOImpl implements UserDAO {
     private static volatile UserDAOImpl instance;
 
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
+    private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
     private static final String SELECT_USER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
     private static final String UPDATE_WORKER = ProjectResourcer.getInstance().getString("query.update.worker");
     private static final String DELETE_WORKER = ProjectResourcer.getInstance().getString("query.delete.worker");
     private static final String INSERT_WORKER = ProjectResourcer.getInstance().getString("query.insert.worker");
+
+
+    @Override
+    public ResultSet returnAllUsers() {
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS)) {
+            rs = preparedStatement.executeQuery();
+
+            return rs;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return rs;
+        }
+
+    }
 
     @Override
     public List<User> findAll() {
