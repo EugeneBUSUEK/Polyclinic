@@ -11,6 +11,10 @@
 
 <%
   ResultSet rs = (ResultSet) session.getAttribute("listOfUsers");
+  String username = "username";
+  String name = "name";
+  String role = "role";
+  String blocked = "blocked";
 %>
 
 
@@ -32,15 +36,15 @@
       <c:forEach items="${rs}" var="user">
       <tbody>
       <tr>
-        <td><div class="user"><b>Username:</b> <c:out value="${user.getString(1)}"/> <br>
-          <b>Name:</b> <c:out value="${user.getString(2)}"/> <br>
-          <b>Role:</b> <c:out value="${user.getString(3)}"/> <br></div></td>
+        <td><div class="user"><b>Username:</b> <c:out value="${user.getString(username)}"/> <br>
+          <b>Name:</b><c:out value="${user.getString(name)}"/> <br>
+          <b>Role:</b> <c:out value="${user.getString(role)}"/> <br></div></td>
         <td>Offline</td>
         <td>
-          <c:if test="${user.getString(4).equals(blocked)}">
+          <c:if test="${user.getString(blocked).equals(BlockedCondition.BLOCKED.getBlockedCondition())}">
             <input class="unblocked-button" type="submit" value="Unblocked">
           </c:if>
-          <c:if test="${!user.getString(4).equals(unblocked)}">
+          <c:if test="${!user.getString(blocked).equals(BlockedCondition.UNBLOCKED.getBlockedCondition())}">
             <input class="blocked-button" type="submit" value="Blocked">
           </c:if>
         </td>

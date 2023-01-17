@@ -10,6 +10,7 @@
 
 <%
     User user = (User) session.getAttribute("user");
+
 %>
 
 <div class="container-button">
