@@ -12,7 +12,7 @@ public interface UserDAO {
 
     List<ModerTableRow> returnAllUsers();
 
-    void blockUser(String login, boolean isBlocked);
+    void blockUser(User user);
 
     List<User> findAll();
 

@@ -68,10 +68,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void blockUser(String login, boolean isBlocked) {
+    public void blockUser(User user) {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(BLOCK_USER)) {
-            preparedStatement.setInt(1, BooleanUtil.convertToInt(isBlocked));
-            preparedStatement.setString(2, login);
+            preparedStatement.setInt(1, BooleanUtil.convertToInt(!(user.isBlocked())));
+            preparedStatement.setString(2, user.getLogin());
             preparedStatement.executeUpdate();
 
         } catch (SQLException ex) {

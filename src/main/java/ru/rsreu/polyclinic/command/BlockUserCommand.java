@@ -37,7 +37,10 @@ public class BlockUserCommand extends FrontCommand{
             forward(MODER);
         } else {
             boolean isBlocked = Boolean.parseBoolean(request.getParameter("isBlocked"));
-            this.userDAO.blockUser(login, !isBlocked);
+            user = new User();
+            user.setLogin(login);
+            user.setBlocked(isBlocked);
+            this.userDAO.blockUser(user);
             redirect(MODER);
         }
     }
