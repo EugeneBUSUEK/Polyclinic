@@ -35,12 +35,13 @@ public class BlockUserCommand extends FrontCommand{
         if (login.equals(user.getLogin())) {
             request.setAttribute("invalidModerBlock", true);
             forward(MODER);
+        } else {
+            boolean isBlocked = BooleanUtil.parseBoolean(Integer.parseInt(request.getParameter("isBlocked")));
+            this.userDAO.blockUser(login, !isBlocked);
+            List<List<String>> rs = this.userDAO.returnAllUsers();
+            session.setAttribute("listOfUsers", rs);
+            redirect(MODER);
         }
-        boolean isBlocked = BooleanUtil.parseBoolean(Integer.parseInt(request.getParameter("isBlocked")));
-        this.userDAO.blockUser(login, !isBlocked);
-        List<List<String>> rs = this.userDAO.returnAllUsers();
-        session.setAttribute("listOfUsers", rs);
-        redirect(MODER);
     }
 
     @Override
