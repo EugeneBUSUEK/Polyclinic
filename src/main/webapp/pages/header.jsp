@@ -18,7 +18,7 @@
     <ul>
 <%--        <li class="hello"> Hello ${user.getName()}!</li>--%>
         <li><b class="active" href="#">${user.getName()}</b></li>
-        <form action="signOut" method="post"><li><b type="submit">Sign out</b></li></form>
+    <form action="signOut" method="post"><li><button>Sign out</button></li></form>
     </ul>
 </nav>
 </body>
