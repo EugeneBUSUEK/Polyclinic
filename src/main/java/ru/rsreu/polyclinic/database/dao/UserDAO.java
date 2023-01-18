@@ -28,7 +28,7 @@ public interface UserDAO {
 
     void updateSession(User user);
 
-    void deleteSession(User user);
+    void deleteSessionSignOut(User user);
 
     void createSession(int id);
 

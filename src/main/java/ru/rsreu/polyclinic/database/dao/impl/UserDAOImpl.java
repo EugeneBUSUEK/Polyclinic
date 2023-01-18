@@ -7,7 +7,6 @@ import ru.rsreu.polyclinic.database.ConnectionPool;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
 import ru.rsreu.polyclinic.util.BooleanUtil;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +21,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
     private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
     private static final String UPDATE_USER_SESSION = ProjectResourcer.getInstance().getString("query.update.user.sessions");
-    private static final String DELETE_USER_SESSION = ProjectResourcer.getInstance().getString("query.delete.user.sessions");
+    private static final String UPDATE_USER_SESSION_SIGN_OUT = ProjectResourcer.getInstance().getString("query.update.user.sessions.signout");
     private static final String INSERT_USER_SESSION = ProjectResourcer.getInstance().getString("query.insert.user.sessions");
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
     private static final String SELECT_USER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
@@ -205,8 +204,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteSession(User user) {
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(DELETE_USER_SESSION)) {
+    public void deleteSessionSignOut(User user) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER_SESSION_SIGN_OUT)) {
             preparedStatement.setLong(1, user.getId());
             preparedStatement.executeQuery();
         } catch (SQLException ex) {

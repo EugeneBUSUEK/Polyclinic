@@ -30,7 +30,7 @@ public class SignOutCommand extends FrontCommand{
     public void send() throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        this.userDAO.deleteSession(user);
+        this.userDAO.deleteSessionSignOut(user);
         redirect(LOGIN);
     }
 
