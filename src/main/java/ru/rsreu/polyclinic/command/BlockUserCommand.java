@@ -36,7 +36,7 @@ public class BlockUserCommand extends FrontCommand{
             request.setAttribute("invalidModerBlock", true);
             forward(MODER);
         } else {
-            boolean isBlocked = BooleanUtil.parseBoolean(Integer.parseInt(request.getParameter("isBlocked")));
+            boolean isBlocked = Boolean.parseBoolean(request.getParameter("isBlocked"));
             this.userDAO.blockUser(login, !isBlocked);
             redirect(MODER);
         }

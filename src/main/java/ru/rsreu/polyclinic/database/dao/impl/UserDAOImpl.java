@@ -1,6 +1,7 @@
 package ru.rsreu.polyclinic.database.dao.impl;
 
 import com.prutzkow.resourcer.ProjectResourcer;
+import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.ConnectionPool;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
@@ -32,18 +33,26 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public List<List<String>> returnAllUsers() {
-        List<List<String>> rowsList= new ArrayList<>();
+    public List<ModerTableRow> returnAllUsers() {
+        List<ModerTableRow> rowsList= new ArrayList<>();
         ResultSet rs = null;
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS)) {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                List<String> row = new ArrayList<>();
-                row.add(rs.getString(1));
-                row.add(rs.getString(2));
-                row.add(rs.getString(3));
-                row.add(Integer.toString(rs.getInt(4)));
-                row.add(rs.getString(5));
+                User user = new User();
+                user.setLogin(rs.getString(1));
+                user.setName(rs.getString(2));
+                user.setRole(rs.getString(3));
+                user.setBlocked(BooleanUtil.parseBoolean(rs.getInt(4)));
+                ModerTableRow row = new ModerTableRow();
+                row.setUser(user);
+                row.setStatus(rs.getString(5));
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
 //                for (int i = 1; i <= 5; i++) {
 //                    row.add(rs.getString(i));
 //

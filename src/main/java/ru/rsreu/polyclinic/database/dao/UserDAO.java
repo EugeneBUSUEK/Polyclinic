@@ -1,5 +1,6 @@
 package ru.rsreu.polyclinic.database.dao;
 
+import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.util.Optional;
 
 public interface UserDAO {
 
-    List<List<String>> returnAllUsers();
+    List<ModerTableRow> returnAllUsers();
 
     void blockUser(String login, boolean isBlocked);
 

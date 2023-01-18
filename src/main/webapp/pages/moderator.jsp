@@ -35,24 +35,24 @@
       <tbody>
       <c:forEach items="${listOfUsers}" var="user">
       <tr>
-        <td><div class="user"><b>Username:</b> <c:out value="${user.get(0)}"/> <br>
-          <b>Name:</b> <c:out value="${user.get(1)}"/> <br>
-          <b>Role:</b> <c:out value="${user.get(2)}"/> <br>
+        <td><div class="user"><b>Username:</b> <c:out value="${user.getUser().getLogin()}"/> <br>
+          <b>Name:</b> <c:out value="${user.getUser().getName()}"/> <br>
+          <b>Role:</b> <c:out value="${user.getUser().getRole()}"/> <br>
         </div></td>
-        <td><c:out value="${user.get(4)}"/></td>
+        <td><c:out value="${user.getStatus()}"/></td>
         <td style="width: 50%">
-          <c:if test="${Integer.parseInt(user.get(3)) == 1}">
+          <c:if test="${user.getUser().isBlocked() == true}">
           <form action="blockUser" method="post" style="text-align: center; margin: auto;">
-            <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
-            <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
+            <input type="hidden" name="username" value="<c:out value="${user.getUser().getLogin()}"/>"/>
+            <input type="hidden" name="isBlocked" value="<c:out value="${user.getUser().isBlocked()}"/>"/>
             <input class="unblocked-button" type="submit" value="Unblocked">
           </form>
           </c:if>
 
-          <c:if test="${Integer.parseInt(user.get(3)) == 0}">
+          <c:if test="${user.getUser().isBlocked() == false}">
           <form action="blockUser" method="post" style="text-align: center; margin: auto;">
-            <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
-            <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
+            <input type="hidden" name="username" value="<c:out value="${user.getUser().getLogin()}"/>"/>
+            <input type="hidden" name="isBlocked" value="<c:out value="${user.getUser().isBlocked()}"/>"/>
             <input class="blocked-button" type="submit" value="Blocked">
           </form>
           </c:if>

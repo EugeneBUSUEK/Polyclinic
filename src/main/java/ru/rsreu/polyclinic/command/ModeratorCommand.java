@@ -1,5 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
+import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
@@ -28,7 +29,7 @@ public class ModeratorCommand extends FrontCommand {
 
     @Override
     public void send() throws ServletException, IOException {
-        List<List<String>> rs = this.userDAO.returnAllUsers();
+        List<ModerTableRow> rs = this.userDAO.returnAllUsers();
         HttpSession session = request.getSession();
         session.setAttribute("listOfUsers", rs);
         redirect(MODER);
