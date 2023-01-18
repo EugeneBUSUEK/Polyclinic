@@ -25,4 +25,8 @@ public interface UserDAO {
 
     Optional<User> addUser(User user);
 
+    void updateSession(String login);
+
+    void createSession(int id);
+
 }

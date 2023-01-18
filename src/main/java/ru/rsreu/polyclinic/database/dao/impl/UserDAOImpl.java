@@ -20,6 +20,8 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
     private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
+    private static final String UPDATE_USER_SESSION = ProjectResourcer.getInstance().getString("query.update.user.sessions");
+    private static final String INSERT_USER_SESSION = ProjectResourcer.getInstance().getString("query.insert.user.sessions");
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
     private static final String SELECT_USER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
     private static final String UPDATE_WORKER = ProjectResourcer.getInstance().getString("query.update.worker");
@@ -181,6 +183,26 @@ public class UserDAOImpl implements UserDAO {
         }
         return Optional.empty();
     }
+
+    @Override
+    public void updateSession(String login) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER_SESSION)) {
+            preparedStatement.setString(1, login);
+            preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void createSession(int id) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_USER_SESSION)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    };
 
     private User getUserFromResulSet(ResultSet resultSet) throws SQLException {
         User user = new User();
