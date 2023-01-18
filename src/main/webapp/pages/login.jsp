@@ -20,7 +20,7 @@
     <div class="login-box">
         <h2>Authorization</h2>
 
-        <form action="login" method="post">
+        <form class="login-form" action="login" method="post">
             <div class="form-group">
                 <label for="name">
                     Username

@@ -23,7 +23,7 @@
 <%--<div class="for_caption"><h1 class="caption"><c:out value="${listOfUsers.get(5).get(3)}"/></h1></div>--%>
 
 <div class="scrollit">
-  <form class="list-form">
+  <div class="list-div">
     <table>
       <thead class="thead-list">
       <tr>
@@ -33,7 +33,6 @@
       </tr>
       </thead>
       <tbody>
-
       <c:forEach items="${listOfUsers}" var="user">
       <tr>
         <td><div class="user"><b>Username:</b> <c:out value="${user.get(0)}"/> <br>
@@ -41,34 +40,35 @@
           <b>Role:</b> <c:out value="${user.get(2)}"/> <br>
         </div></td>
         <td>Offline</td>
-        <td>
-
+        <td style="width: 50%">
           <c:if test="${Integer.parseInt(user.get(3)) == 1}">
-            <form action="blockUser" method="post" style="text-align: center">
-              <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
+          <form action="blockUser" method="post" style="text-align: center">
+            <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
             <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
-            <input class="unblocked-button" type="submit" value="Unblocked"></form>
+            <input class="unblocked-button" type="submit" value="Unblocked">
+          </form>
           </c:if>
 
           <c:if test="${Integer.parseInt(user.get(3)) == 0}">
           <form action="blockUser" method="post" style="text-align: center">
             <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
             <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
-            <input class="blocked-button" type="submit" value="Blocked"></form>
+            <input class="blocked-button" type="submit" value="Blocked">
+          </form>
           </c:if>
 
         </td>
       </tr>
-      </tbody>
       </c:forEach>
+      </tbody>
     </table>
-  </form>
+  </div>
 </div>
 
 <br>
 
-<div class="error-alert" style="margin-bottom: 20px" hidden>
-  <div class="alert">User is blocked</div>
+<div ${invalidModerBlock ? "" : "hidden"} class="error-alert" style="margin-bottom: 20px">
+  <div class="alert">You cant block yourself</div>
 </div>
 
 <div class="error-alert" style="margin-bottom: 20px" hidden>

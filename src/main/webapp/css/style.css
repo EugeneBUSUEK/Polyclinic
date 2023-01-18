@@ -8,6 +8,7 @@
 }
 
 body {
+    overflow-x: hidden;
     /*overflow: hidden;*/
     height: 100%;
     /*display: flex;*/
@@ -69,7 +70,7 @@ label.logo{
 .container-button{
     height: 50px;
     display: flex;
-    margin-top: 10px;
+    margin-top: 20px;
     justify-content: space-around;
     padding: 0 10%;
 }
@@ -184,23 +185,23 @@ label.logo{
     border-color: #124ce7;
     background: #e4edff;
 }
-
-form {
+/*---*/
+.login-form {
     text-align: left;
     margin-top: 30px;
 }
 
-form .form-group {
+.login-form .form-group {
     margin: 18px 0;
 }
 
-form .form-group label {
+.login-form .form-group label {
     display: block;
     font-size: 20px;
     color: #101010;
 }
 
-form .form-group input[type="submit"] {
+.login-form .form-group input[type="submit"] {
     width: 100%;
     height: 40px;
     margin-top: 6px;
@@ -212,16 +213,16 @@ form .form-group input[type="submit"] {
     transition: .3s;
 }
 
-form .form-group input:focus {
+.login-form .form-group input:focus {
     border-color: #124ce7;
     box-shadow: 0 0 12px #bbd3ff;
 }
 
-form .form-group input:valid {
+.login-form .form-group input:valid {
     border-color: #124ce7;
     background: #e4edff;
 }
-
+/*---*/
 .error{
     margin-left: auto;
     margin-right: auto;
@@ -262,14 +263,14 @@ form .form-group input:valid {
     box-shadow: 0 0 12px rgba(89, 255, 70, 0.75);
 }
 
-form .form-group i {
+.login-form .form-group i {
     position: absolute;
     color: #404040;
     font-size: 20px;
     transform: translateX(12px) translateY(16px);
 }
 
-form .register {
+.login-form .register {
     color: #3784ff;
     font-size: 18px;
 }
@@ -286,7 +287,7 @@ form .register {
 /*    transition: .5s;*/
 /*}*/
 
-form .login[type="submit"] {
+.login-form .login[type="submit"] {
     cursor: pointer;
     width: 100%;
     height: 46px;
@@ -300,11 +301,11 @@ form .login[type="submit"] {
 
 }
 
-form .submit[type="submit"]:hover{
+.login-form .submit[type="submit"]:hover{
     background: linear-gradient(0deg, #0c2880, #1a3b79);
 }
 
-form .submit[type="submit"] {
+.login-form .submit[type="submit"] {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -321,10 +322,34 @@ form .submit[type="submit"] {
 
 }
 
-form .login[type="submit"]:hover{
+.login-form .login[type="submit"]:hover{
     background: linear-gradient(0deg, #0c2880, #1a3b79);
 }
 
+/*///*/
+
+.submit[type="submit"]:hover{
+    background: linear-gradient(0deg, #0c2880, #1a3b79);
+}
+
+.submit[type="submit"] {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+    width: 60%;
+    height: 46px;
+    border-radius: 15px;
+    font-size: 22px;
+    margin-top: 28px;
+    color: #fff;
+    background: linear-gradient(0deg, #99bcff, #89afff);
+    /*border: solid #7eb0ff;*/
+    box-shadow: rgba(45, 35, 66, .4) 0 3px 4px;
+
+}
+
+/*///*/
 .register{
     text-align: center;
 }
@@ -342,7 +367,7 @@ form .login[type="submit"]:hover{
     cursor: pointer;
     display: inline-flex;
     height: 48px;
-    width: 30%;
+    /*width: 30%;*/
     justify-content: center;
     line-height: 1;
     list-style: none;
@@ -560,7 +585,7 @@ table tbody tr td {
 }
 
 .scrollit {
-    overflow-y:scroll;
+    /*overflow-y:scroll;*/
     height:460px;
 }
 
@@ -612,7 +637,7 @@ table tbody tr td {
     box-shadow: 0 0 12px rgb(118, 174, 255);
 }
 
-.list-form {
+.list-div {
     overflow-y:scroll;
     height:460px;
     position: relative;
