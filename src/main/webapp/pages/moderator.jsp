@@ -39,7 +39,7 @@
           <b>Name:</b> <c:out value="${user.get(1)}"/> <br>
           <b>Role:</b> <c:out value="${user.get(2)}"/> <br>
         </div></td>
-        <td>Offline</td>
+        <td><c:out value="${user.get(4)}"/></td>
         <td style="width: 50%">
           <c:if test="${Integer.parseInt(user.get(3)) == 1}">
           <form action="blockUser" method="post" style="text-align: center; margin: auto;">
@@ -74,9 +74,6 @@
 <div class="error-alert" style="margin-bottom: 20px" hidden>
   <div class="alert">User is unblocked</div>
 </div>
-
-</body>
-</html>
-
+<script src="../js/script.js"></script>
 </body>
 </html>
