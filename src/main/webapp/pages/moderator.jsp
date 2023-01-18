@@ -42,7 +42,7 @@
         <td>Offline</td>
         <td style="width: 50%">
           <c:if test="${Integer.parseInt(user.get(3)) == 1}">
-          <form action="blockUser" method="post" style="text-align: center">
+          <form action="blockUser" method="post" style="text-align: center; margin: auto;">
             <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
             <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
             <input class="unblocked-button" type="submit" value="Unblocked">
@@ -50,7 +50,7 @@
           </c:if>
 
           <c:if test="${Integer.parseInt(user.get(3)) == 0}">
-          <form action="blockUser" method="post" style="text-align: center">
+          <form action="blockUser" method="post" style="text-align: center; margin: auto;">
             <input type="hidden" name="username" value="<c:out value="${user.get(0)}"/>"/>
             <input type="hidden" name="isBlocked" value="<c:out value="${user.get(3)}"/>"/>
             <input class="blocked-button" type="submit" value="Blocked">
