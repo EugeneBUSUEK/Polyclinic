@@ -38,8 +38,6 @@ public class BlockUserCommand extends FrontCommand{
         } else {
             boolean isBlocked = BooleanUtil.parseBoolean(Integer.parseInt(request.getParameter("isBlocked")));
             this.userDAO.blockUser(login, !isBlocked);
-            List<List<String>> rs = this.userDAO.returnAllUsers();
-            session.setAttribute("listOfUsers", rs);
             redirect(MODER);
         }
     }
