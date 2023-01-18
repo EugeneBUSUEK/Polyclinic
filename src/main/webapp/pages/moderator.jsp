@@ -68,11 +68,11 @@
 <br>
 
 <div ${invalidModerBlock ? "" : "hidden"} class="error-alert" style="margin-bottom: 20px">
-  <div class="alert">You cant block yourself</div>
+  <div class="error" style="margin-top: 20px">You cant block yourself</div>
 </div>
 
 <div class="error-alert" style="margin-bottom: 20px" hidden>
-  <div class="alert">User is unblocked</div>
+  <div class="error" style="margin-top: 20px">User is unblocked</div>
 </div>
 <script src="../js/script.js"></script>
 </body>

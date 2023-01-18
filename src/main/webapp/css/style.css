@@ -28,6 +28,7 @@ nav{
 nav ul{
     float: right;
     margin-right: 20px ;
+    display: flex;
 }
 
 nav ul li{
@@ -36,7 +37,7 @@ nav ul li{
     margin: 0 5px;
 }
 
-nav ul li b{
+nav ul li b {
     text-decoration: none;
     color: #1f1f1f;
     font-size: 20px;
@@ -48,6 +49,23 @@ nav ul li b{
 .active, nav ul li b:hover{
     color: white;
     background: #101010;
+    transition: .5s;
+}
+
+.header-button {
+    font-weight: bold;
+    background: #ffb9b9;
+    text-decoration: none;
+    color: #1f1f1f;
+    font-size: 20px;
+    padding: 7px 13px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.header-button:hover {
+    color: white;
+    background: #915858;
     transition: .5s;
 }
 
@@ -70,7 +88,7 @@ label.logo{
 .container-button{
     height: 50px;
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
     justify-content: space-around;
     padding: 0 10%;
 }
@@ -328,9 +346,6 @@ label.logo{
 
 /*///*/
 
-.submit[type="submit"]:hover{
-    background: linear-gradient(0deg, #0c2880, #1a3b79);
-}
 
 .submit[type="submit"] {
     display: block;
@@ -347,6 +362,31 @@ label.logo{
     /*border: solid #7eb0ff;*/
     box-shadow: rgba(45, 35, 66, .4) 0 3px 4px;
 
+}
+
+.closed[type="button"]:hover{
+    background: linear-gradient(0deg, #800c0c, #791a1a);
+}
+
+.closed[type="button"] {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    cursor: pointer;
+    width: 30%;
+    height: 46px;
+    border-radius: 15px;
+    font-size: 22px;
+    margin-top: 18px;
+    color: #fff;
+    background: linear-gradient(0deg, #ff9999, #ff8989);
+    /*border: solid #7eb0ff;*/
+    box-shadow: rgba(45, 35, 66, .4) 0 3px 4px;
+
+}
+
+.submit[type="submit"]:hover{
+    background: linear-gradient(0deg, #0c2880, #1a3b79);
 }
 
 /*///*/
