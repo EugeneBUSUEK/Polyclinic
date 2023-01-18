@@ -22,6 +22,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
     private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
     private static final String UPDATE_USER_SESSION = ProjectResourcer.getInstance().getString("query.update.user.sessions");
+    private static final String DELETE_USER_SESSION = ProjectResourcer.getInstance().getString("query.delete.user.sessions");
     private static final String INSERT_USER_SESSION = ProjectResourcer.getInstance().getString("query.insert.user.sessions");
     private static final String SELECT_WORKER_BY_ID = ProjectResourcer.getInstance().getString("query.select.worker.by.id");
     private static final String SELECT_USER_BY_LOGIN = ProjectResourcer.getInstance().getString("query.select.user.by.login");
@@ -194,9 +195,19 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void updateSession(String login) {
+    public void updateSession(User user) {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER_SESSION)) {
-            preparedStatement.setString(1, login);
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.executeQuery();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteSession(User user) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(DELETE_USER_SESSION)) {
+            preparedStatement.setLong(1, user.getId());
             preparedStatement.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();

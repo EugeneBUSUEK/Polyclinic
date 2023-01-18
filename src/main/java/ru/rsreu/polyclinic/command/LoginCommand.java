@@ -57,7 +57,7 @@ public class LoginCommand extends FrontCommand {
             request.setAttribute("invalidAuth", true);
             forward(LOGIN);
         } else {
-            this.userDAO.updateSession(login);
+            this.userDAO.updateSession(user);
             HttpSession session = request.getSession();
 
             //user.setStatusAuthorize(true);

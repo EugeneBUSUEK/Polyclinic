@@ -26,7 +26,9 @@ public interface UserDAO {
 
     Optional<User> addUser(User user);
 
-    void updateSession(String login);
+    void updateSession(User user);
+
+    void deleteSession(User user);
 
     void createSession(int id);
 
