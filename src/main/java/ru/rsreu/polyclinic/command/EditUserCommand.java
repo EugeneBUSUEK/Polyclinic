@@ -33,16 +33,16 @@ public class EditUserCommand extends FrontCommand{
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("id")));
         user.setLogin(request.getParameter("username"));
-        user.setPassword(request.getParameter("passsword"));
+        user.setPassword(request.getParameter("password"));
         user.setName(request.getParameter("name"));
         user.setRole(request.getParameter("role"));
-        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
-        if (request.getParameter("role").equals("doctor")) {
+//        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
+        if (request.getParameter("role").equals("Doctor")) {
             Doctor doctor = new Doctor();
             doctor.setUser(user);
             doctor.setSpecialization(request.getParameter("spec"));
             doctor.setCabinet(request.getParameter("cabinet"));
-            doctor.setInVacation(Boolean.parseBoolean(request.getParameter("inVacation")));
+//            doctor.setInVacation(Boolean.parseBoolean(request.getParameter("inVacation")));
             this.userDAO.updateUser(user);
             this.doctorDetailsDAO.editDoctorDetails(doctor);
         } else {

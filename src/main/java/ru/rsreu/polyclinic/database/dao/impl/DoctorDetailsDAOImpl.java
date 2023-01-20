@@ -21,8 +21,8 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_DOCTOR_DETAILS)) {
             preparedStatement.setString(1, doctor.getSpecialization());
             preparedStatement.setString(2, doctor.getCabinet());
-            preparedStatement.setInt(3, BooleanUtil.convertToInt(doctor.isInVacation()));
-            preparedStatement.setLong(4, doctor.getUser().getId());
+//            preparedStatement.setInt(3, BooleanUtil.convertToInt(doctor.isInVacation()));
+            preparedStatement.setLong(3, doctor.getUser().getId());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -34,6 +34,7 @@
                         <div style="display: none"><b>Password:</b> <span class="password"><c:out value="${user.getUser().getPassword()}"/></span><br></div>
                         <div style="display: none"><b>Specialization:</b> <span class="specialization"><c:out value="${user.getSpecialization()}"/></span><br></div>
                         <div style="display: none"><b>Cabinet:</b> <span class="cabinet"><c:out value="${user.getCabinet()}"/></span><br></div>
+                        <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${user.getUser().getId()}"/></span><br></div>
                     </div></td>
 
                     <td>VstaVIT STATUS</td>
@@ -150,7 +151,7 @@
 
             <div id="doctorFormAddForm" style="display: none">
                 <div class="form-group">
-                    <label for="specialization">
+                    <label>
                         Specialization
                     </label>
                     <input
@@ -191,9 +192,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="name">
+                    <label>
                         Role
                     </label>
+
                     <div style="margin-top: 10px">
                         <label style="margin: 10px" onclick="hiddenDoctorFormEdit()">
                             <input id="moderRB" type="radio" name="optradio">Moderator
@@ -211,63 +213,103 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="username">
+                    <label>
                         Username
                     </label>
                     <input
                             type="text"
                             name="username"
                             required
+                            id="username"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="password">
+                    <label>
                         Password
                     </label>
                     <input
                             type="text"
                             name="password"
                             required
+                            id="password"
                     >
                 </div>
 
                 <div class="form-group">
-                    <label for="name">
+                    <label>
                         Name
                     </label>
                     <input
                             type="text"
                             name="name"
                             required
+                            id="name"
                     >
                 </div>
 
+                    <div class="form-group" hidden>
+                        <label>
+                            ID
+                        </label>
+                        <input
+                                type="text"
+                                name="id"
+                                required
+                                id="id"
+                        >
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label>
+                            ROLE
+                        </label>
+                        <input
+                                type="text"
+                                name="role"
+                                required
+                                id="role"
+                        >
+                    </div>
+
                 <div id="doctorFormEditForm" style="display: none">
                     <div class="form-group">
-                        <label for="specialization">
+                        <label>
                             Specialization
                         </label>
                         <input
                                 type="text"
                                 name="specialization"
                                 required
+                                id="spec"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="cabinet">
+                        <label>
                             Cabinet
                         </label>
                         <input
                                 type="text"
                                 name="cabinet"
                                 required
+                                id="cabinet"
                         >
                     </div>
                 </div>
 
-                <form><input class="submit" type="submit" value="Submit"></form>
+                <form id="actionForm" action="editUser" method="post">
+                    <input type="hidden" name="id"/>
+                    <input type="hidden" name="username"/>
+                    <input type="hidden" name="password"/>
+                    <input type="hidden" name="name"/>
+                    <input type="hidden" name="spec"/>
+                    <input type="hidden" name="cabinet"/>
+                    <input type="hidden" name="role"/>
+
+                    <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
+                </form>
+
                 <input class="closed" type="button" value="Close form" onclick="closeEditForm()">
                 </div>
             </div>
