@@ -32,7 +32,7 @@ public class EditUserCommand extends FrontCommand{
     public void send() throws ServletException, IOException {
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("id")));
-        user.setLogin(request.getParameter("login"));
+        user.setLogin(request.getParameter("username"));
         user.setPassword(request.getParameter("passsword"));
         user.setName(request.getParameter("name"));
         user.setRole(request.getParameter("role"));

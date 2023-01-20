@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String UPDATE_WORKER = ProjectResourcer.getInstance().getString("query.update.worker");
     private static final String UPDATE_USER = ProjectResourcer.getInstance().getString("query.update.user");
     private static final String BLOCK_USER = ProjectResourcer.getInstance().getString("query.block.user");
-    private static final String DELETE_WORKER = ProjectResourcer.getInstance().getString("query.delete.worker");
+    private static final String DELETE_USER_ID = ProjectResourcer.getInstance().getString("query.delete.user.id");
     private static final String INSERT_WORKER = ProjectResourcer.getInstance().getString("query.insert.worker");
 
 
@@ -195,16 +195,15 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void deleteUser(User user) {
-//        try (Connection connection = ConnectionPool.getConnection()) {
-//
-//            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_WORKER);
-//            preparedStatement.setLong(1, user.getId());
-//
-//            preparedStatement.executeUpdate();
-//
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//        }
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(DELETE_USER_ID)) {
+
+            preparedStatement.setLong(1, user.getId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
