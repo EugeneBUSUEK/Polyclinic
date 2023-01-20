@@ -14,6 +14,7 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
     private static volatile DoctorDetailsDAOImpl instance;
 
     private static final String UPDATE_DOCTOR_DETAILS = ProjectResourcer.getInstance().getString("query.update.doctor.details");
+    private static final String INSERT_DOCTOR_DETAILS = ProjectResourcer.getInstance().getString("query.insert.doctor.details");
 
     @Override
     public void editDoctorDetails(Doctor doctor) {
@@ -27,6 +28,18 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
             ex.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void addDoctorDetails(Doctor doctor) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_DOCTOR_DETAILS)) {
+            preparedStatement.setLong(1, doctor.getUser().getId());
+            preparedStatement.setString(2, doctor.getSpecialization());
+            preparedStatement.setString(3, doctor.getCabinet());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
 

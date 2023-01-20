@@ -4,4 +4,5 @@ import ru.rsreu.polyclinic.data.Doctor;
 
 public interface DoctorDetailsDAO {
     void editDoctorDetails(Doctor doctor);
+    void addDoctorDetails(Doctor doctor);
 }

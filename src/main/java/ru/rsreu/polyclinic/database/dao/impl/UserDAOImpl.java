@@ -31,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
     private static final String UPDATE_USER = ProjectResourcer.getInstance().getString("query.update.user");
     private static final String BLOCK_USER = ProjectResourcer.getInstance().getString("query.block.user");
     private static final String DELETE_USER_ID = ProjectResourcer.getInstance().getString("query.delete.user.id");
-    private static final String INSERT_WORKER = ProjectResourcer.getInstance().getString("query.insert.worker");
+    private static final String INSERT_USER = ProjectResourcer.getInstance().getString("query.insert.user");
 
 
     @Override
@@ -209,10 +209,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public Optional<User> addUser(User user) {
         String[] returnId = { "id" };
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_WORKER, returnId)) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_USER, returnId)) {
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getName());
+            preparedStatement.setString(4, user.getRole());
 
             int affectedRows = preparedStatement.executeUpdate();
 
