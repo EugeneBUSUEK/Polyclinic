@@ -24,7 +24,7 @@
             <button class="button" role="button">3</button>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.SYS_ADMIN.getRole())}">
-            <form action="" method=""><button class="button" role="button">Edit & Add users</button></form>
+            <form action="sysAdmin" method="post"><button class="button" role="button">Edit & Add users</button></form>
         </c:when>
     </c:choose>
 </div>

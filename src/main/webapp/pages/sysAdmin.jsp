@@ -25,21 +25,28 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><div class="user">
-                    <b>Username:</b> <span class="username">ghci</span> <br>
-                    <b>Name:</b> <span class="name">Billy Haskellton</span> <br>
-                    <b>Role:</b> <span class="role">Moderator</span> <br>
-                    <div style="display: none"><b>Password:</b> <span class="password">qwerty5</span><br></div>
-                    <div style="display: none"><b>Specialization:</b> <span class="specialization">null</span><br></div>
-                    <div style="display: none"><b>Cabinet:</b> <span class="cabinet">null</span><br></div>
-                </div></td>
-                <td>Offline</td>
-                <td><input class="default-button" type="button" value="Edit">
-                    <form style="display: contents"><input class="blocked-button" type="submit" value="Delete"></form>
-                </td>
-            </tr>
+            <c:forEach items="${listOfUsersAdmin}" var="user">
+                <tr>
+                    <td><div class="user">
+                        <b>Username:</b> <span class="username"><c:out value="${user.getUser().getLogin()}"/></span> <br>
+                        <b>Name:</b> <span class="name"><c:out value="${user.getUser().getName()}"/></span> <br>
+                        <b>Role:</b> <span class="role"><c:out value="${user.getUser().getRole()}"/></span> <br>
+                        <div style="display: none"><b>Password:</b> <span class="password"><c:out value="${user.getUser().getPassword()}"/></span><br></div>
+                        <div style="display: none"><b>Specialization:</b> <span class="specialization"><c:out value="${user.getSpecialization()}"/></span><br></div>
+                        <div style="display: none"><b>Cabinet:</b> <span class="cabinet"><c:out value="${user.getCabinet()}"/></span><br></div>
+                    </div></td>
 
+                    <td>VstaVIT STATUS</td>
+<%--                    <c:out value="${user.getStatus()}"/>--%>
+
+                    <td><input class="default-button" type="button" value="Edit">
+                        <form action="deleteUser" method="post" style="display: contents">
+                            <input type="hidden" name="id" value="<c:out value="${user.getUser().getId()}"/>"/>
+                            <input class="blocked-button" type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
@@ -265,6 +272,6 @@
                 </div>
             </div>
         </div>
-        <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

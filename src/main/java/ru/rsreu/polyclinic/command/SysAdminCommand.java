@@ -28,13 +28,13 @@ public class SysAdminCommand extends FrontCommand{
     @Override
     public void send() throws ServletException, IOException {
         List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-        request.setAttribute("listOfUsers", rs);
+        HttpSession session = request.getSession();
+        session.setAttribute("listOfUsersAdmin", rs);
         redirect(SYS_ADMIN);
     }
 
     @Override
     public void process() throws ServletException, IOException {
         forward(SYS_ADMIN);
-
     }
 }

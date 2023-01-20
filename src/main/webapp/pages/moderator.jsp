@@ -35,11 +35,14 @@
       <tbody>
       <c:forEach items="${listOfUsers}" var="user">
       <tr>
-        <td><div class="user"><b>Username:</b> <c:out value="${user.getUser().getLogin()}"/> <br>
+        <td><div class="user">
+          <b>Username:</b> <c:out value="${user.getUser().getLogin()}"/> <br>
           <b>Name:</b> <c:out value="${user.getUser().getName()}"/> <br>
           <b>Role:</b> <c:out value="${user.getUser().getRole()}"/> <br>
         </div></td>
+
         <td><c:out value="${user.getStatus()}"/></td>
+
         <td style="width: 50%">
           <c:if test="${user.getUser().isBlocked() == true}">
           <form action="blockUser" method="post" style="text-align: center; margin: auto;">
@@ -56,7 +59,6 @@
             <input class="blocked-button" type="submit" value="Blocked">
           </form>
           </c:if>
-
         </td>
       </tr>
       </c:forEach>
