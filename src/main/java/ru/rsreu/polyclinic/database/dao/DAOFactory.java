@@ -1,5 +1,6 @@
 package ru.rsreu.polyclinic.database.dao;
 
+import ru.rsreu.polyclinic.database.dao.impl.DoctorDetailsDAOImpl;
 import ru.rsreu.polyclinic.database.dao.impl.UserDAOImpl;
 
 public final class DAOFactory {
@@ -9,6 +10,10 @@ public final class DAOFactory {
 
     public static UserDAO getUserDAO() {
         return UserDAOImpl.getInstance();
+    }
+
+    public static DoctorDetailsDAO getDoctorDetailsDAO() {
+        return DoctorDetailsDAOImpl.getInstance();
     }
 
 }

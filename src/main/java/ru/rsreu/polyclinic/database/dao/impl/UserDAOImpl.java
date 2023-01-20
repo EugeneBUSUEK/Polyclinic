@@ -183,7 +183,9 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getName());
+            preparedStatement.setString(5, user.getRole());
             preparedStatement.setInt(4, BooleanUtil.convertToInt(user.isBlocked()));
+            preparedStatement.setLong(6, user.getId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException ex) {
