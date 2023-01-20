@@ -1,5 +1,6 @@
 package ru.rsreu.polyclinic.database.dao;
 
+import ru.rsreu.polyclinic.data.Doctor;
 import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 
@@ -11,6 +12,8 @@ import java.util.Optional;
 public interface UserDAO {
 
     List<ModerTableRow> returnAllUsers();
+
+    List<Doctor> returnAllUsersForAdminEdit();
 
     void blockUser(User user);
 

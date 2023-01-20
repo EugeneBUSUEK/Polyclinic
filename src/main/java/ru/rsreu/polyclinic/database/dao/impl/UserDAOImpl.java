@@ -1,6 +1,7 @@
 package ru.rsreu.polyclinic.database.dao.impl;
 
 import com.prutzkow.resourcer.ProjectResourcer;
+import ru.rsreu.polyclinic.data.Doctor;
 import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.ConnectionPool;
@@ -20,6 +21,7 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
     private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
+    private static final String SELECT_ALL_USERS_FOR_ADMIN_EDIT = ProjectResourcer.getInstance().getString("query.select.user.list.admin");
     private static final String UPDATE_USER_SESSION = ProjectResourcer.getInstance().getString("query.update.user.sessions");
     private static final String UPDATE_USER_SESSION_SIGN_OUT = ProjectResourcer.getInstance().getString("query.update.user.sessions.signout");
     private static final String INSERT_USER_SESSION = ProjectResourcer.getInstance().getString("query.insert.user.sessions");
@@ -47,6 +49,45 @@ public class UserDAOImpl implements UserDAO {
                 ModerTableRow row = new ModerTableRow();
                 row.setUser(user);
                 row.setStatus(rs.getString(5));
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
+                rowsList.add(row);
+            }
+            return rowsList;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return rowsList;
+        }
+
+    }
+
+    @Override
+    public List<Doctor> returnAllUsersForAdminEdit() {
+        List<Doctor> rowsList= new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS_FOR_ADMIN_EDIT)) {
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getLong(1));
+                user.setLogin(rs.getString(2));
+                user.setPassword(rs.getString(3));
+                user.setName(rs.getString(4));
+                user.setBlocked(BooleanUtil.parseBoolean(rs.getInt(5)));
+                user.setRole(rs.getString(6));
+                Doctor row = new Doctor();
+                row.setUser(user);
+                row.setSpecialization(rs.getString(8));
+                row.setCabinet(rs.getString(9));
+                row.setInVacation(BooleanUtil.parseBoolean(rs.getInt(10)));
 //                List<String> row = new ArrayList<>();
 //                row.add(rs.getString(1));
 //                row.add(rs.getString(2));
