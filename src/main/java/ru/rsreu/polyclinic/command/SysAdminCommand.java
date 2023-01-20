@@ -28,6 +28,26 @@ public class SysAdminCommand extends FrontCommand{
     @Override
     public void send() throws ServletException, IOException {
         List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
+        for (Doctor doc : rs) {
+            switch (doc.getUser().getRole()) {
+                case "moderator" : {
+                    doc.getUser().setRole("Moderator");
+                    break;
+                }
+                case "system_administrator" : {
+                    doc.getUser().setRole("System Administrator");
+                    break;
+                }
+                case "polyclinic_administrator" : {
+                    doc.getUser().setRole("Polyclinic Administrator");
+                    break;
+                }
+                case "doctor" : {
+                    doc.getUser().setRole("Doctor");
+                    break;
+                }
+            }
+        }
         HttpSession session = request.getSession();
         session.setAttribute("listOfUsersAdmin", rs);
         redirect(SYS_ADMIN);
