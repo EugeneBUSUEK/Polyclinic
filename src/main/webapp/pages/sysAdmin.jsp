@@ -314,7 +314,7 @@
                     <input type="hidden" name="role"/>
                     <input type="hidden" name="spec"/>
                     <input type="hidden" name="cabinet"/>
-                    <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()">
+                    <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
                 </form>
 
                 <input class="closed" type="button" value="Close form" onclick="closeEditForm()">

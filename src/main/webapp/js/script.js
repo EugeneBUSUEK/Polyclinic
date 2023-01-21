@@ -152,9 +152,7 @@ function polycAdminRbOnClick(){
 
 const addFormEl = document.getElementById('addForm')
 
-
-
-function dataToActionAdd(){
+function dataToAction(){
     idActionInputEl.value = idInputEl.value
     usernameActionInputEl.value = usernameInputEl.value
     passwordActionInputEl.value = passwordInputEl.value
