@@ -38,9 +38,9 @@ public class SessionsDAOImpl implements SessionsDAO {
     }
 
     @Override
-    public void createSession(int id) {
+    public void createSession(User user) {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_USER_SESSION)) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setLong(1, user.getId());
             preparedStatement.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();

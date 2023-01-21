@@ -240,7 +240,7 @@ public class UserDAOImpl implements UserDAO {
 
 
 
-    
+
     private User getUserFromResulSet(ResultSet resultSet) throws SQLException {
         User user = new User();
 

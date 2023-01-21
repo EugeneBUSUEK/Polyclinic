@@ -8,6 +8,6 @@ public interface SessionsDAO {
 
     void deleteSessionSignOut(User user);
 
-    void createSession(int id);
+    void createSession(User user);
 
 }
