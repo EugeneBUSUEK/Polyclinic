@@ -12,6 +12,7 @@ import ru.rsreu.polyclinic.util.BooleanUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -79,7 +80,8 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_PATIENT)) {
             preparedStatement.setString(1, patient.getName());
             preparedStatement.setString(2, patient.getGender());
-            preparedStatement.setString(3, patient.getBirthDay());
+            Timestamp timestamp = Timestamp.valueOf(patient.getBirthDay());
+            preparedStatement.setTimestamp(3, timestamp);
             preparedStatement.setString(4, patient.getPhoneNumber());
             preparedStatement.setString(5, patient.getAddress());
             preparedStatement.setLong(6, patient.getId());
