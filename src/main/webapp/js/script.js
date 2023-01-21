@@ -106,6 +106,8 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 })
 
 const actionFormEl = document.getElementById('actionForm')
+const addUserActionFormEl = document.getElementById('addUserAction')
+
 
 const usernameActionInputEl = actionFormEl.querySelector('input[name="username"]');
 const nameActionInputEl = actionFormEl.querySelector('input[name="name"]');
@@ -114,6 +116,14 @@ const specActionInputEl = actionFormEl.querySelector('input[name="specialization
 const cabinetActionInputEl = actionFormEl.querySelector('input[name="cabinet"]');
 const idActionInputEl = actionFormEl.querySelector('input[name="id"]');
 const roleActionInputEl = actionFormEl.querySelector('input[name="role"]');
+
+const usernameAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+const passwordAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+const nameAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+const roleAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+const specAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+const cabinetAddActionInputEl = addUserActionFormEl.querySelector('input[name="username"]');
+
 
 function dataToAction(){
     idActionInputEl.value = idInputEl.value
@@ -124,3 +134,17 @@ function dataToAction(){
     cabinetActionInputEl.value = cabinetInputEl.value
     roleActionInputEl.value = roleInputEl.value
 };
+
+const addFormEl = document.getElementById('addForm')
+
+
+
+function dataToActionAdd(){
+    idActionInputEl.value = idInputEl.value
+    usernameActionInputEl.value = usernameInputEl.value
+    passwordActionInputEl.value = passwordInputEl.value
+    nameActionInputEl.value = nameInputEl.value
+    specActionInputEl.value = specInputEl.value
+    cabinetActionInputEl.value = cabinetInputEl.value
+    roleActionInputEl.value = roleInputEl.value
+}

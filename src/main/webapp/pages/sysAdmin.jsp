@@ -175,7 +175,15 @@
                 </div>
             </div>
 
-            <form><input class="submit" type="submit" value="Submit"></form>
+            <form id="addUserAction" action="addUser" method="post">
+                <input name="username"/>
+                <input type="hidden" name="password"/>
+                <input type="hidden" name="name"/>
+                <input name="role"/>
+                <input type="hidden" name="spec"/>
+                <input type="hidden" name="cabinet"/>
+                <input class="submit" type="submit" value="Submit" onclick="">
+            </form>
             <input class="closed" type="button" value="Close form" onclick="closeAddForm()">
             </div>
         </div>
