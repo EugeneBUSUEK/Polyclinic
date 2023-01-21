@@ -43,6 +43,7 @@
                     <td><input class="default-button" type="button" value="Edit">
                         <form action="deleteUser" method="post" style="display: contents">
                             <input type="hidden" name="id" value="<c:out value="${user.getUser().getId()}"/>"/>
+                            <input type="hidden" name="username" value="<c:out value="${user.getUser().getLogin()}"/>"/>
                             <input class="blocked-button" type="submit" value="Delete">
                         </form>
                     </td>
@@ -85,106 +86,124 @@
 
 <!-- -&#45;&#45;-->
 
-<div id="addForm" class="container-form">
-    <div class="form-box">
-        <h2 style="margin: 0">Add new user</h2>
+    <div id="addForm" class="container-form">
+        <div class="form-box">
+            <h2 style="margin: 0">Add new user</h2>
 
-        <div class="edit-form" id="add-form">
-            <div class="form-group">
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Role
-                </label>
-                <div style="margin-top: 10px">
-                    <label style="margin: 10px" class="radio-inline" onclick="hiddenDoctorFormAdd()">
-                        <input type="radio" name="optradio" checked>Moderator
-                    </label>
-                    <label style="margin: 10px" class="radio-inline" onclick="hiddenDoctorFormAdd()">
-                        <input type="radio" name="optradio">System Administrator
-                    </label>
-                    <label style="margin: 10px" class="radio-inline" onclick="hiddenDoctorFormAdd()">
-                        <input type="radio" name="optradio">Polyclinic Administrator
-                    </label>
-                    <label style="margin: 10px" class="radio-inline" onclick="displayDoctorFormAdd()">
-                        <input type="radio" name="optradio">Doctor
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="username">
-                    Username
-                </label>
-                <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="password">
-                    Password
-                </label>
-                <input
-                        type="text"
-                        name="password"
-                        placeholder="Password"
-                        required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="name">
-                    Name
-                </label>
-                <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        required
-                >
-            </div>
-
-            <div id="doctorFormAddForm" style="display: none">
+            <div class="edit-form" id="add-form">
                 <div class="form-group">
-                    <label>
-                        Specialization
-                    </label>
-                    <input
-                            type="text"
-                            name="specialization"
-                            placeholder="Specialization"
-                            required
-                    >
                 </div>
+                <form>
+                    <div class="form-group">
+                        <label>
+                            Role
+                        </label>
+                        <div style="margin-top: 10px">
+                            <label style="margin: 10px" class="radio-inline" onclick="moderRbAddOnClick()">
+                                <input id="addModerRB" type="radio" name="optradio">Moderator
+                            </label>
+                            <label style="margin: 10px" class="radio-inline" onclick="sysAdminRbAddOnClick()">
+                                <input id="addSysAdminRB" type="radio" name="optradio">System Administrator
+                            </label>
+                            <label style="margin: 10px" class="radio-inline" onclick="polycAdminRbAddOnClick()">
+                                <input id="addPolycAdminRB" type="radio" name="optradio">Polyclinic Administrator
+                            </label>
+                            <label style="margin: 10px" class="radio-inline" onclick="doctorRbAddOnClick()">
+                                <input id="addDoctorRb" type="radio" name="optradio">Doctor
+                            </label>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    <label for="cabinet">
-                        Cabinet
-                    </label>
-                    <input
-                            type="text"
-                            name="cabinet"
-                            placeholder="Cabinet"
-                            required
-                    >
-                </div>
-            </div>
+                    <div class="form-group">
+                        <label for="username">
+                            Username
+                        </label>
+                        <input
+                                type="text"
+                                name="username"
+                                placeholder="Username"
+                                required
+                                id="username"
+                        >
+                    </div>
 
-            <form id="addUserAction" action="addUser" method="post">
-                <input name="username"/>
-                <input type="hidden" name="password"/>
-                <input type="hidden" name="name"/>
-                <input name="role"/>
-                <input type="hidden" name="spec"/>
-                <input type="hidden" name="cabinet"/>
-                <input class="submit" type="submit" value="Submit" onclick="">
-            </form>
-            <input class="closed" type="button" value="Close form" onclick="closeAddForm()">
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                        </label>
+                        <input
+                                type="text"
+                                name="password"
+                                placeholder="Password"
+                                required
+                                id="password"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">
+                            Name
+                        </label>
+                        <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                required
+                                id="name"
+                        >
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label>
+                            ROLE
+                        </label>
+                        <input
+                                type="text"
+                                name="role"
+                                required
+                                id="role"
+                        >
+                    </div>
+
+                    <div id="doctorFormAddForm" style="display: none">
+                        <div class="form-group">
+                            <label>
+                                Specialization
+                            </label>
+                            <input
+                                    type="text"
+                                    name="specialization"
+                                    placeholder="Specialization"
+                                    required
+                                    id="spec"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cabinet">
+                                Cabinet
+                            </label>
+                            <input
+                                    type="text"
+                                    name="cabinet"
+                                    placeholder="Cabinet"
+                                    required
+                                    id="cabinet"
+                            >
+                        </div>
+                    </div>
+                    <input id="required" class="submit" type="submit" value="Submit" style="display: none">
+                </form>
+                <form id="actionAddForm" action="addUser" method="post">
+                    <input name="username"/>
+                    <input name="password"/>
+                    <input name="name"/>
+                    <input name="role"/>
+                    <input name="spec"/>
+                    <input name="cabinet"/>
+                    <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()" >
+                </form>
+                <input class="closed" type="button" value="Close form" onclick="closeAddForm()">
             </div>
         </div>
     </div>

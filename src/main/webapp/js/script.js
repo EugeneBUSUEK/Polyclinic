@@ -150,8 +150,6 @@ function polycAdminRbOnClick(){
     cabinetInputEl.value = ''
 };
 
-const addFormEl = document.getElementById('addForm')
-
 function dataToAction(){
     idActionInputEl.value = idInputEl.value
     usernameActionInputEl.value = usernameInputEl.value
@@ -159,4 +157,60 @@ function dataToAction(){
     nameActionInputEl.value = nameInputEl.value
     specActionInputEl.value = specInputEl.value
     cabinetActionInputEl.value = cabinetInputEl.value
+}
+
+const addFormEl = document.getElementById('addForm');
+
+const usernameAddInputEl = addFormEl.querySelector('input[id="username"]');
+const nameAddInputEl = addFormEl.querySelector('input[id="name"]');
+const passwordAddInputEl = addFormEl.querySelector('input[id="password"]');
+const specAddInputEl = addFormEl.querySelector('input[id="spec"]');
+const cabinetAddInputEl = addFormEl.querySelector('input[id="cabinet"]');
+const roleAddInputEl = addFormEl.querySelector('input[id="role"]');
+
+const doctorAddRbEl = addFormEl.querySelector('#doctorRB');
+const moderatorAddRbEl = addFormEl.querySelector('#moderRB');
+const sysAdminAddRbEl = addFormEl.querySelector('#sysAdminRB');
+const polycAdminAddRbEl = addFormEl.querySelector('#polycAdminRB');
+
+const actionFormAddEl = document.getElementById('actionAddForm')
+
+const usernameActionAddInputEl = actionFormAddEl.querySelector('input[name="username"]');
+const nameActionAddInputEl = actionFormAddEl.querySelector('input[name="name"]');
+const passwordActionAddInputEl = actionFormAddEl.querySelector('input[name="password"]');
+const specActionAddInputEl = actionFormAddEl.querySelector('input[name="spec"]');
+const cabinetActionAddInputEl = actionFormAddEl.querySelector('input[name="cabinet"]');
+const roleActionAddInputEl = actionFormAddEl.querySelector('input[name="role"]');
+
+function doctorRbAddOnClick(){
+    roleAddInputEl.value = 'Doctor'
+    roleActionAddInputEl.value = 'doctor'
+    document.getElementById('doctorFormAddForm').style.display = 'flex'
+};
+
+function moderRbAddOnClick(){
+    roleAddInputEl.value = 'Moderator'
+    roleActionAddInputEl.value = 'moderator'
+    document.getElementById('doctorFormAddForm').style.display = 'none'
+};
+
+function sysAdminRbAddOnClick(){
+    roleAddInputEl.value = 'System Administrator'
+    roleActionAddInputEl.value = 'system_administrator'
+    document.getElementById('doctorFormAddForm').style.display = 'none'
+};
+
+function polycAdminRbAddOnClick(){
+    roleAddInputEl.value = 'Polyclinic Administrator'
+    roleActionAddInputEl.value = 'polyclinic_administrator'
+    document.getElementById('doctorFormAddForm').style.display = 'none'
+};
+
+function dataToActionAdd(){
+    document.getElementById('required').click()
+    usernameActionAddInputEl.value = usernameAddInputEl.value
+    passwordActionAddInputEl.value = passwordAddInputEl.value
+    nameActionAddInputEl.value = nameAddInputEl.value
+    specActionAddInputEl.value = specAddInputEl.value
+    cabinetActionAddInputEl.value = cabinetAddInputEl.value
 }

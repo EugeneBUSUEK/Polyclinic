@@ -32,7 +32,7 @@ public class AddUserCommand extends FrontCommand{
         User user = new User();
 //        user.setId(Long.parseLong(request.getParameter("id")));
         user.setLogin(request.getParameter("username"));
-        user.setPassword(request.getParameter("passsword"));
+        user.setPassword(request.getParameter("password"));
         user.setName(request.getParameter("name"));
         user.setRole(request.getParameter("role"));
 //        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
