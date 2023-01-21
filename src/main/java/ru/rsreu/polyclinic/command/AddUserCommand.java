@@ -40,11 +40,11 @@ public class AddUserCommand extends FrontCommand{
         user.setRole(request.getParameter("role"));
 //        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
         User userAfter = this.userDAO.addUser(user).orElse(null);
-        this.sessionsDAO.createSession(userAfter);
         if (userAfter == null) {
             request.setAttribute("invalidAddUser", true);
             forward(SYS_ADMIN);
         } else {
+            this.sessionsDAO.createSession(userAfter);
             if (request.getParameter("role").equals("doctor")) {
                 Doctor doctor = new Doctor();
                 doctor.setUser(userAfter);

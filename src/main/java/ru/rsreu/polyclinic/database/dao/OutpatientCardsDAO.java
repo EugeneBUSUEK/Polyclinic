@@ -21,10 +21,10 @@ public interface OutpatientCardsDAO {
 
     Optional<User> getUserByLogin(String login);
 
-    void updatePatient(User user);
+    void updatePatient(Patient patient);
 
-    void deletePatient(User user);
+    void deletePatient(Patient patient);
 
-    Optional<User> addPatient(User user);
+    Optional<Patient> addPatient(Patient patient);
 
 }

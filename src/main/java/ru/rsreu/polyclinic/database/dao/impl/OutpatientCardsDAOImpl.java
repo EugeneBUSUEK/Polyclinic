@@ -21,6 +21,9 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
     private static volatile OutpatientCardsDAOImpl instance;
 
     private static final String SELECT_ALL_PATIENTS = ProjectResourcer.getInstance().getString("query.select.all.patients");
+    private static final String UPDATE_PATIENT = ProjectResourcer.getInstance().getString("query.update.patient");
+    private static final String INSERT_PATIENT = ProjectResourcer.getInstance().getString("query.insert.patient");
+    private static final String DELETE_PATIENT_ID = ProjectResourcer.getInstance().getString("query.delete.patient");
 
 
     @Override
@@ -72,17 +75,62 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
     }
 
     @Override
-    public void updatePatient(User user) {
+    public void updatePatient(Patient patient) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_PATIENT)) {
+            preparedStatement.setString(1, patient.getName());
+            preparedStatement.setString(2, patient.getGender());
+            preparedStatement.setString(3, patient.getBirthDay());
+            preparedStatement.setString(4, patient.getPhoneNumber());
+            preparedStatement.setString(5, patient.getAddress());
+            preparedStatement.setLong(6, patient.getId());
+            preparedStatement.executeUpdate();
 
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
-    public void deletePatient(User user) {
+    public void deletePatient(Patient patient) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(DELETE_PATIENT_ID)) {
 
+            preparedStatement.setLong(1, patient.getId());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
-    public Optional<User> addPatient(User user) {
+    public Optional<Patient> addPatient(Patient patient) {
+        String[] returnId = { "id" };
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_PATIENT, returnId)) {
+            preparedStatement.setString(1, patient.getName());
+            preparedStatement.setString(2, patient.getGender());
+            preparedStatement.setString(3, patient.getBirthDay());
+            preparedStatement.setString(4, patient.getPhoneNumber());
+            preparedStatement.setString(5, patient.getAddress());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating patient failed");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
+
+                    patient.setId(id);
+
+                    return Optional.of(patient);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return Optional.empty();
     }
 
