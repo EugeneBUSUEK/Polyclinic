@@ -170,7 +170,7 @@
                 <input id="required" type="submit" class="submit" value="Submit" style="display: none">
             </form>
 
-            <form id="actionAddForm" action="addUser" method="post">
+            <form id="actionAddForm" action="addPatient" method="post">
                 <input name="name" style="display: none" required/>
                 <input name="birth" style="display: none" required/>
                 <input name="phone" style="display: none" required/>
@@ -277,11 +277,12 @@
                 <input id="required" type="submit" class="submit" value="Submit" style="display: none">
             </form>
 
-            <form id="actionForm" action="addUser" method="post">
-                <input name="name"  required/>
+            <form id="actionForm" action="editPatient" method="post">
+                <input name="id" style="display: none" required/>
+                <input name="name" style="display: none" required/>
                 <input name="birth" style="display: none" required/>
                 <input name="phone" style="display: none" required/>
-                <input name="address"  required/>
+                <input name="address" style="display: none" required/>
                 <input name="gender" style="display: none" required/>
                 <input class="submit" type="submit" value="Submit" onclick="dataToAction()" >
             </form>

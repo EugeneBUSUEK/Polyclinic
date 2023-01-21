@@ -45,7 +45,6 @@ const roleActionInputEl = actionFormEl.querySelector('input[name="role"]');
         usernameInputEl.value = username
         passwordInputEl.value = password
         nameInputEl.value = name
-        idInputEl.value = id
 
         idActionInputEl.value = idInputEl.value
         usernameActionInputEl.value = usernameInputEl.value

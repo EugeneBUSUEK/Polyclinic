@@ -52,6 +52,7 @@ const birthActionInputEl = actionFormEl.querySelector('input[name="birth"]');
 const phoneActionInputEl = actionFormEl.querySelector('input[name="phone"]');
 const addressActionInputEl = actionFormEl.querySelector('input[name="address"]');
 const genderActionInputEl = actionFormEl.querySelector('input[name="gender"]');
+const idActionInputEl = actionFormEl.querySelector('input[name="id"]');
 
 
 [...document.querySelectorAll('input[value="Edit"]')].forEach(editBtnEl => {
@@ -70,6 +71,7 @@ const genderActionInputEl = actionFormEl.querySelector('input[name="gender"]');
         const phone = rowEl.querySelector('.phone').innerText.trim()
         const address = rowEl.querySelector('.address').innerText.trim()
         const gender = rowEl.querySelector('.gender').innerText.trim()
+        const id = rowEl.querySelector('.id').innerText.trim()
 
         nameInputEl.value = name
         birthInputEl.value = birth
@@ -81,6 +83,7 @@ const genderActionInputEl = actionFormEl.querySelector('input[name="gender"]');
         birthActionInputEl.value = birthInputEl.value
         phoneActionInputEl.value = phoneInputEl.value
         addressActionInputEl.value = addressInputEl.value
+        idActionInputEl.value = id
 
         switch (gender) {
             case 'm': {

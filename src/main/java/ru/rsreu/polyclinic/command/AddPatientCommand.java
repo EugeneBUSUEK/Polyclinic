@@ -30,11 +30,11 @@ public class AddPatientCommand extends FrontCommand{
     @Override
     public void send() throws ServletException, IOException {
         Patient patient = new Patient();
-        patient.setId(Long.parseLong(request.getParameter("id")));
+//        patient.setId(Long.parseLong(request.getParameter("id")));
         patient.setName(request.getParameter("name"));
         patient.setGender(request.getParameter("gender"));
-        patient.setBirthDay(request.getParameter("birthday"));
-        patient.setPhoneNumber(request.getParameter("phonenumber"));
+        patient.setBirthDay(request.getParameter("birth"));
+        patient.setPhoneNumber(request.getParameter("phone"));
         patient.setAddress(request.getParameter("address"));
         Patient patientAfter = this.outpatientCardsDAO.addPatient(patient).orElse(null);
         if (patientAfter == null) {
