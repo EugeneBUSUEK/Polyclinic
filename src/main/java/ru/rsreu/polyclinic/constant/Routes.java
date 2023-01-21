@@ -5,4 +5,5 @@ public class Routes {
     public static final String LOGIN = "login";
     public static final String MODER = "moderator";
     public static final String SYS_ADMIN = "sysAdmin";
+    public static final String POLIC_ADMIN_EDIT_PATIENTS = "";
 }
