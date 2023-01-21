@@ -195,12 +195,12 @@
                     <input id="required" class="submit" type="submit" value="Submit" style="display: none">
                 </form>
                 <form id="actionAddForm" action="addUser" method="post">
-                    <input name="username"/>
-                    <input name="password"/>
-                    <input name="name"/>
-                    <input name="role"/>
-                    <input name="spec"/>
-                    <input name="cabinet"/>
+                    <input type="hidden" name="username"/>
+                    <input type="hidden" name="password"/>
+                    <input type="hidden" name="name"/>
+                    <input type="hidden" name="role"/>
+                    <input type="hidden" name="spec"/>
+                    <input type="hidden" name="cabinet"/>
                     <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()" >
                 </form>
                 <input class="closed" type="button" value="Close form" onclick="closeAddForm()">
