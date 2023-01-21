@@ -236,36 +236,11 @@ public class UserDAOImpl implements UserDAO {
         return Optional.empty();
     }
 
-    @Override
-    public void updateSession(User user) {
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER_SESSION)) {
-            preparedStatement.setString(1, user.getLogin());
-            preparedStatement.executeQuery();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
-    @Override
-    public void deleteSessionSignOut(User user) {
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_USER_SESSION_SIGN_OUT)) {
-            preparedStatement.setLong(1, user.getId());
-            preparedStatement.executeQuery();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
-    @Override
-    public void createSession(int id) {
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_USER_SESSION)) {
-            preparedStatement.setLong(1, id);
-            preparedStatement.executeQuery();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    };
 
+
+    
     private User getUserFromResulSet(ResultSet resultSet) throws SQLException {
         User user = new User();
 

@@ -2,6 +2,7 @@ package ru.rsreu.polyclinic.command;
 
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
+import ru.rsreu.polyclinic.database.dao.SessionsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
 
 import javax.servlet.ServletContext;
@@ -18,6 +19,7 @@ public class LoginCommand extends FrontCommand {
 
 
     private UserDAO userDAO;
+    private SessionsDAO sessionsDAO;
 
 
 
@@ -28,6 +30,7 @@ public class LoginCommand extends FrontCommand {
         super.init(servletContext, servletRequest, servletResponse);
 
         userDAO = DAOFactory.getUserDAO();
+        sessionsDAO = DAOFactory.getSessionsDAO();
     }
 
 //    @Override
@@ -57,7 +60,7 @@ public class LoginCommand extends FrontCommand {
             request.setAttribute("invalidAuth", true);
             forward(LOGIN);
         } else {
-            this.userDAO.updateSession(user);
+            this.sessionsDAO.updateSession(user);
             HttpSession session = request.getSession();
 
             //user.setStatusAuthorize(true);

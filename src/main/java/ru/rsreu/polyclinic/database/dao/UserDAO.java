@@ -29,10 +29,6 @@ public interface UserDAO {
 
     Optional<User> addUser(User user);
 
-    void updateSession(User user);
 
-    void deleteSessionSignOut(User user);
-
-    void createSession(int id);
 
 }
