@@ -35,7 +35,7 @@
 
                     <td><input class="default-button" type="button" value="Edit">
                         <form action="deletePatient" method="post" style="display: contents">
-                            <input type="hidden" name="id"/>
+                            <input type="hidden" name="id" value="<c:out value="${patient.getId()}"/>"/>
                             <input class="blocked-button" type="submit" value="Delete">
                         </form>
                     </td>
