@@ -37,7 +37,7 @@ public class EditUserCommand extends FrontCommand{
         user.setName(request.getParameter("name"));
         user.setRole(request.getParameter("role"));
 //        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
-        if (request.getParameter("role").equals("Doctor")) {
+        if (request.getParameter("role").equals("doctor")) {
             Doctor doctor = new Doctor();
             doctor.setUser(user);
             doctor.setSpecialization(request.getParameter("spec"));

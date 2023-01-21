@@ -205,16 +205,16 @@
                     </label>
 
                     <div style="margin-top: 10px">
-                        <label style="margin: 10px" onclick="hiddenDoctorFormEdit()">
+                        <label style="margin: 10px" onclick="moderRbOnClick()">
                             <input id="moderRB" type="radio" name="optradio">Moderator
                         </label>
-                        <label style="margin: 10px" onclick="hiddenDoctorFormEdit()">
+                        <label style="margin: 10px" onclick="sysAdminRbOnClick()">
                             <input id="sysAdminRB" type="radio" name="optradio">System Administrator
                         </label>
-                        <label style="margin: 10px" onclick="hiddenDoctorFormEdit()">
+                        <label style="margin: 10px" onclick="polycAdminRbOnClick()">
                             <input id="polycAdminRB" type="radio" name="optradio">Polyclinic Administrator
                         </label>
-                        <label style="margin: 10px" onclick="displayDoctorFormEdit()">
+                        <label style="margin: 10px" onclick="doctorRbOnClick()">
                             <input id="doctorRB" type="radio" name="optradio">Doctor
                         </label>
                     </div>
@@ -268,7 +268,7 @@
                         >
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label>
                             ROLE
                         </label>
@@ -308,14 +308,13 @@
 
                 <form id="actionForm" action="editUser" method="post">
                     <input type="hidden" name="id"/>
-                    <input name="username"/>
+                    <input type="hidden" name="username"/>
                     <input type="hidden" name="password"/>
                     <input type="hidden" name="name"/>
+                    <input type="hidden" name="role"/>
                     <input type="hidden" name="spec"/>
                     <input type="hidden" name="cabinet"/>
-                    <input name="role"/>
-                    <input class="submit" type="button" value="check" onclick="dataToAction()">
-                    <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
+                    <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()">
                 </form>
 
                 <input class="closed" type="button" value="Close form" onclick="closeEditForm()">
