@@ -45,7 +45,6 @@ const moderatorRbEl = editFormEl.querySelector('#moderRB');
 const sysAdminRbEl = editFormEl.querySelector('#sysAdminRB');
 const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 
-
 [...document.querySelectorAll('input[value="Edit"]')].forEach(editBtnEl => {
     editBtnEl.onclick = () => {
 
@@ -69,6 +68,8 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
         passwordInputEl.value = password
         nameInputEl.value = name
         idInputEl.value = id
+        roleInputEl.value = role
+
 
 
         switch (role) {
@@ -77,7 +78,6 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 
                 specInputEl.value = ''
                 cabinetInputEl.value = ''
-                roleInputEl.value = 'Moderator'
                 break
             }
             case 'System Administrator': {
@@ -85,7 +85,6 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 
                 specInputEl.value = ''
                 cabinetInputEl.value = ''
-                roleInputEl.value = 'System Administrator'
                 break
             }
             case 'Polyclinic Administrator': {
@@ -93,7 +92,6 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 
                 specInputEl.value = ''
                 cabinetInputEl.value = ''
-                roleInputEl.value = 'Polyclinic Administrator'
                 break
             }
             case 'Doctor': {
@@ -101,7 +99,6 @@ const polycAdminRbEl = editFormEl.querySelector('#polycAdminRB');
 
                 specInputEl.value = spec
                 cabinetInputEl.value = cabinet
-                roleInputEl.value = 'Doctor'
                 break
             }
         }

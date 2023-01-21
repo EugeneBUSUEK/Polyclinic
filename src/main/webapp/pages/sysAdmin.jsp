@@ -260,7 +260,7 @@
                         >
                     </div>
 
-                    <div class="form-group" hidden>
+                    <div class="form-group">
                         <label>
                             ROLE
                         </label>
@@ -300,13 +300,13 @@
 
                 <form id="actionForm" action="editUser" method="post">
                     <input type="hidden" name="id"/>
-                    <input type="hidden" name="username"/>
+                    <input name="username"/>
                     <input type="hidden" name="password"/>
                     <input type="hidden" name="name"/>
                     <input type="hidden" name="spec"/>
                     <input type="hidden" name="cabinet"/>
-                    <input type="hidden" name="role"/>
-
+                    <input name="role"/>
+                    <input class="submit" type="button" value="check" onclick="dataToAction()">
                     <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
                 </form>
 
