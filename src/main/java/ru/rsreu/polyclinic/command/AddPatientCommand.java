@@ -33,7 +33,7 @@ public class AddPatientCommand extends FrontCommand{
 //        patient.setId(Long.parseLong(request.getParameter("id")));
         patient.setName(request.getParameter("name"));
         patient.setGender(request.getParameter("gender"));
-        patient.setBirthDay(request.getParameter("birth"));
+        patient.setBirthDay(request.getParameter("birth") + " 00:00:00");
         patient.setPhoneNumber(request.getParameter("phone"));
         patient.setAddress(request.getParameter("address"));
         Patient patientAfter = this.outpatientCardsDAO.addPatient(patient).orElse(null);
