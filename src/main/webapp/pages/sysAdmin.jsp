@@ -340,6 +340,8 @@
                 </div>
             </div>
         </div>
-    <script src="../js/script.js"></script>
+
+<script src="../js/script.js"></script>
+<script src="../js/sysAdmin.js"></script>
 </body>
 </html>
