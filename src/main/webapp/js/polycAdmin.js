@@ -120,8 +120,8 @@ function closeChartsForm(){
 
 const chartsFormEl = document.getElementById('chartsform');
 
-[...document.querySelectorAll('input[value="Edit charts"]')].forEach(editBtEl => {
-    editBtEl.onclick = () => {
-        document.getElementById('checkchartsform').style.display ='flex'
-    }
-});
+// [...document.querySelectorAll('input[value="Edit charts"]')].forEach(editBtEl => {
+//     editBtEl.onclick = () => {
+//         document.getElementById('checkchartsform').style.display ='flex'
+//     }
+// });
