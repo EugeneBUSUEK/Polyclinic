@@ -25,5 +25,8 @@ public final class DAOFactory {
     public static DoctorChartsDAO getDoctorChartsDAO() {
         return DoctorChartsDAOImpl.getInstance();
     }
+    public static VacationRequestsDAO getVacationRequestsDAO() {
+        return VacationRequestsDAOImpl.getInstance();
+    }
 
 }
