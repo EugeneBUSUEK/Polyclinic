@@ -31,7 +31,7 @@
                             </tr>
                             </thead>
                             <tbody>
-<%--                            <c:forEach items="${doctorChart}" var="chart">--%>
+
                             <tr>
                                     <td><div><b><span class="day">Monday</span><br></b>
                                         <br></div></td>
@@ -44,41 +44,119 @@
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
                                         <input hidden id="day" name="day" value="1">
-<%--                                        <input  id="from_time" name="from_time">--%>
-<%--                                        <input  id="to_time" name="to_time">--%>
-<%--                                        <input class="default-button" type="button" value="check" style="width: auto">--%>
                                         <input class="default-button" type="submit" value="Submit" style="width: auto">
                                         </form>
                                     </td>
                             </tr>
 
-<%--                            <tr>--%>
-<%--                                <td><div><b><span class="day">Monday</span><br>--%>
-<%--                                </b><br></div></td>--%>
+                            <tr>
+                                <td><div><b><span class="day">Tuesday</span><br></b>
+                                    <br></div></td>
 
-<%--                                <td><input id="timefrom" name="fromto" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(1)}"/>" style="width: auto"></td>--%>
-<%--                                <td><input id="timeto" name="timeto" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(1)}"/>" style="width: auto"></td>--%>
+                                <form id="actionForm" action="editChart" method="post">
 
-<%--                                <td>--%>
-<%--                                    <form id="actionForm" action="editChart" method="post">--%>
-<%--                                        <input  id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">--%>
-<%--                                        <input  id="day" name="day" value="1">--%>
-<%--                                        <input  id="from_time" name="from_time">--%>
-<%--                                        <input  id="to_time" name="to_time">--%>
-<%--                                        <input class="default-button" type="button" value="check" style="width: auto">--%>
-<%--                                        <input class="default-button" type="submit" value="Submit" style="width: auto">--%>
-<%--                                    </form>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                            </c:forEach>--%>
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(2)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(2)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="2">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><div><b><span class="day">Wednesday</span><br></b>
+                                    <br></div></td>
+
+                                <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(3)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(3)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="3">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><div><b><span class="day">Thursday</span><br></b>
+                                    <br></div></td>
+
+                                <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(4)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(4)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="4">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><div><b><span class="day">Friday</span><br></b>
+                                    <br></div></td>
+
+                                <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(5)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(5)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="5">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><div><b><span class="day">Saturday</span><br></b>
+                                    <br></div></td>
+
+                                <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(6)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(6)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="6">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><div><b><span class="day">Sunday</span><br></b>
+                                    <br></div></td>
+
+                                <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(0)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(0)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="0">
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                </form>
+                                </td>
+                            </tr>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-<%--        <input class="closed" type="button" value="Close form" onclick="closeChartsForm()">--%>
     </div>
 </div>
 

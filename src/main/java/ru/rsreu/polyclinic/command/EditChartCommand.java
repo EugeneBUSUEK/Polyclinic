@@ -55,8 +55,8 @@ public class EditChartCommand extends FrontCommand{
         DoctorChartDay doctorChartDay = new DoctorChartDay();
         doctorChartDay.setUser(user);
         doctorChartDay.setDayOfWeek(Integer.parseInt(request.getParameter("day")));
-        doctorChartDay.setFromTime(request.getParameter("from_time"));
-        doctorChartDay.setToTime(request.getParameter("to_time"));
+        doctorChartDay.setFromTime(request.getParameter("from_time")+":00");
+        doctorChartDay.setToTime(request.getParameter("to_time")+":00");
 
         this.doctorChartsDAO.editDoctorCharts(doctorChartDay);
         forward(EDIT_CURRENT_CHART);
