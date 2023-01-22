@@ -40,7 +40,7 @@ public class PolycAdminEditChartsCommand extends FrontCommand{
             doctorCharts.add(this.doctorChartsDAO.returnDoctorCharts(doctor));
         }
         HttpSession session = request.getSession();
-        session.setAttribute("listOfDoctorCharts", rs);
+        session.setAttribute("listOfDoctorCharts", doctorCharts);
         forward(POLYC_ADMIN_EDIT_CHARTS);
     }
 
