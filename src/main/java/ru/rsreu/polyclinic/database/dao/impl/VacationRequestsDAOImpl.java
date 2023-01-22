@@ -26,6 +26,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 VacationRequest vacationRequest = new VacationRequest();
+                vacationRequest.setId(rs.getLong(1));
                 vacationRequest.setRequest(rs.getString(3));
                 vacationRequest.setDate_from(rs.getString(4));
                 vacationRequest.setDate_to(rs.getString(5));
