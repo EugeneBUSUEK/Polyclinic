@@ -16,6 +16,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
 
     private static final String SELECT_DOCTOR_REQUESTS = ProjectResourcer.getInstance().getString("query.select.doctor.requests");
     private static final String UPDATE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.update.doctor.request");
+    private static final String DELETE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.delete.doctor.request");
 
 
     @Override
@@ -59,6 +60,16 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
             preparedStatement.setString(3, vacationRequest.getDate_to());
             preparedStatement.setInt(4, BooleanUtil.convertToInt(vacationRequest.isApproved()));
             preparedStatement.setLong(5, vacationRequest.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteDoctorRequest(VacationRequest vacationRequest) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(DELETE_DOCTOR_REQUEST)) {
+            preparedStatement.setLong(1, vacationRequest.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

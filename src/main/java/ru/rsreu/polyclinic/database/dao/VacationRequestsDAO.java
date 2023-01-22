@@ -9,4 +9,6 @@ public interface VacationRequestsDAO {
     RequestSet returnRequestsOfDoctor(Doctor doctor);
 
     void updateDoctorRequest(VacationRequest vacationRequest);
+
+    void deleteDoctorRequest(VacationRequest vacationRequest);
 }
