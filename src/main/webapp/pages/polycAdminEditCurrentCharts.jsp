@@ -11,38 +11,9 @@
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 
-<%--<div class="for_caption" style="margin: 40px"><h1 class="caption">List of doctors</h1></div>--%>
-
-<%--<div class="scrollit">--%>
-<%--    <div class="list-div">--%>
-<%--        <table>--%>
-<%--            <thead class="thead-list">--%>
-<%--            <tr>--%>
-<%--                <td>Doctors</td>--%>
-<%--                <td style="width: 10px;">Action</td>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
-<%--            <c:forEach items="${listOfDoctorCharts}" var="doctor">--%>
-<%--                <tr>--%>
-<%--                    <td><div class="user">--%>
-<%--                        <b>Doctor name</b><br>--%>
-<%--                        <span class="name"><c:out value="${doctor.getDoctor().getUser().getName()}"/></span><br>--%>
-<%--                        <b>Specialization:</b>--%>
-<%--                        <span class="specialization"><c:out value="${doctor.getDoctor().getSpecialization()}"/></span><br>--%>
-<%--                        <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${doctor.getDoctor().getUser().getId()}"/></span><br></div>--%>
-<%--                    </div></td>--%>
-<%--                    <td><input class="default-button" type="button" value="Edit charts" style="width: auto"></td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<div id="checkchartsform" class="container-form" style="margin-top: 50px;">
+<div id="checkchartsform" class="container-form" style="margin-top: 50px; display: flex">
     <div class="form-box">
-        <h2 style="margin: 0">Doctors charts for week</h2>
+        <h2 style="margin: 0">Doctors charts for week <c:out value="${doctorChart.getDoctor().getUser().getName()}"/></h2>
 
         <div id="chartsform" class="edit-form">
             <div class="form-group">
@@ -60,17 +31,46 @@
                             </tr>
                             </thead>
                             <tbody>
-
+<%--                            <c:forEach items="${doctorChart}" var="chart">--%>
                             <tr>
-                                <form>
-                                    <td><div><b>Monday</b><br></div></td>
-                                    <td hidden><input id="dayid" name="dayid" value=""></td>
-                                    <td hidden><input id="doctorid" name="doctorid" value=""></td>
-                                    <td><input id="fromto" name="fromto" class="time" type="time" value="13:00" style="width: auto"></td>
-                                    <td><input id="timeto" name="timeto" class="time" type="time" value="17:00" style="width: auto"></td>
-                                    <td><input class="default-button" type="submit" value="Submit" style="width: auto"></td>
-                                </form>
+                                    <td><div><b><span class="day">Monday</span><br></b>
+                                        <br></div></td>
+
+                                    <form id="actionForm" action="editChart" method="post">
+
+                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(1)}"/>" style="width: auto"></td>
+                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(1)}"/>" style="width: auto"></td>
+
+                                    <td>
+                                        <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
+                                        <input hidden id="day" name="day" value="1">
+<%--                                        <input  id="from_time" name="from_time">--%>
+<%--                                        <input  id="to_time" name="to_time">--%>
+<%--                                        <input class="default-button" type="button" value="check" style="width: auto">--%>
+                                        <input class="default-button" type="submit" value="Submit" style="width: auto">
+                                        </form>
+                                    </td>
                             </tr>
+
+<%--                            <tr>--%>
+<%--                                <td><div><b><span class="day">Monday</span><br>--%>
+<%--                                </b><br></div></td>--%>
+
+<%--                                <td><input id="timefrom" name="fromto" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(1)}"/>" style="width: auto"></td>--%>
+<%--                                <td><input id="timeto" name="timeto" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(1)}"/>" style="width: auto"></td>--%>
+
+<%--                                <td>--%>
+<%--                                    <form id="actionForm" action="editChart" method="post">--%>
+<%--                                        <input  id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">--%>
+<%--                                        <input  id="day" name="day" value="1">--%>
+<%--                                        <input  id="from_time" name="from_time">--%>
+<%--                                        <input  id="to_time" name="to_time">--%>
+<%--                                        <input class="default-button" type="button" value="check" style="width: auto">--%>
+<%--                                        <input class="default-button" type="submit" value="Submit" style="width: auto">--%>
+<%--                                    </form>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                            </c:forEach>--%>
                             </tbody>
                         </table>
                     </div>
@@ -78,18 +78,11 @@
             </div>
         </div>
 
-        <div>
-            <!--      <form>-->
-
-            <!--          <input class="submit" type="submit" value="Submit">-->
-            <!--      </form>-->
-        </div>
-
-        <input class="closed" type="button" value="Close form" onclick="closeChartsForm()">
+<%--        <input class="closed" type="button" value="Close form" onclick="closeChartsForm()">--%>
     </div>
 </div>
 
 <script src="../js/script.js"></script>
-<script src="../js/polycAdmin.js"></script>
+<script src="../js/polycAdminEditCurrentCharts.js"></script>
 </body>
 </html>
