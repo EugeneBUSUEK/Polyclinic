@@ -7,4 +7,5 @@ public class Routes {
     public static final String SYS_ADMIN = "sysAdmin";
     public static final String POLYC_ADMIN_EDIT_PATIENTS = "polycAdminEditPatient";
     public static final String POLYC_ADMIN_VIEW_EDIT_CHARTS = "polycAdminViewEditCharts";
+    public static final String EDIT_CURRENT_CHART = "polycAdminViewEditCharts";
 }

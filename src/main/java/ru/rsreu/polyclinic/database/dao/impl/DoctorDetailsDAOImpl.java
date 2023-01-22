@@ -48,22 +48,21 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
     }
 
     @Override
-    public Doctor returnAllDoctors(User user) {
+    public Doctor returnDoctor(User user) {
         List<Doctor> doctors = new ArrayList<>();
         ResultSet rs = null;
+        Doctor doctor = new Doctor();
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_DETAILS)) {
             preparedStatement.setLong(1, user.getId());
             rs = preparedStatement.executeQuery();
-            Doctor doctor = new Doctor();
             doctor.setUser(user);
             doctor.setSpecialization(rs.getString(2));
             doctor.setCabinet(rs.getString(3));
             doctor.setInVacation(BooleanUtil.parseBoolean(rs.getInt(4)));
-            return doctor;
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return null;
         }
+        return doctor;
     }
 
     public static DoctorDetailsDAOImpl getInstance() {
