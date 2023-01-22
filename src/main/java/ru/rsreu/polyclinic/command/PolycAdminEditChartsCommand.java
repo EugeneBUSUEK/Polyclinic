@@ -2,8 +2,10 @@ package ru.rsreu.polyclinic.command;
 
 import ru.rsreu.polyclinic.data.Doctor;
 import ru.rsreu.polyclinic.data.DoctorChart;
+import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorChartsDAO;
+import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
 
 import javax.servlet.ServletContext;
@@ -19,25 +21,39 @@ import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_VIEW_EDIT_CHARTS;
 
 public class PolycAdminEditChartsCommand extends FrontCommand{
     private UserDAO userDAO;
-    private DoctorChartsDAO doctorChartsDAO;
+    private DoctorDetailsDAO doctorDetailsDAO;
+//    private DoctorChartsDAO doctorChartsDAO;
 
     @Override
     public void init(ServletContext servletContext, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         super.init(servletContext, servletRequest, servletResponse);
 
         userDAO = DAOFactory.getUserDAO();
-        doctorChartsDAO = DAOFactory.getDoctorChartsDAO();
+        doctorDetailsDAO = DAOFactory.getDoctorDetailsDAO();
+//        doctorChartsDAO = DAOFactory.getDoctorChartsDAO();
     }
+
+//    @Override
+//    public void send() throws ServletException, IOException {
+//        List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
+//        List<DoctorChart> doctorCharts = new ArrayList<>();
+//        for (Doctor doctor : rs) {
+//            doctorCharts.add(this.doctorChartsDAO.returnDoctorCharts(doctor));
+//        }
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfDoctorCharts", doctorCharts);
+//        forward(POLYC_ADMIN_VIEW_EDIT_CHARTS);
+//    }
 
     @Override
     public void send() throws ServletException, IOException {
-        List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-        List<DoctorChart> doctorCharts = new ArrayList<>();
-        for (Doctor doctor : rs) {
-            doctorCharts.add(this.doctorChartsDAO.returnDoctorCharts(doctor));
+        List<User> rs = this.userDAO.returnAllUsers();
+        List<Doctor> doctorList = new ArrayList<>();
+        for (User user : rs) {
+            doctorList.add(this.doctorDetailsDAO.returnAllDoctors(user));
         }
         HttpSession session = request.getSession();
-        session.setAttribute("listOfDoctorCharts", doctorCharts);
+        session.setAttribute("listOfDoctorCharts", doctorList);
         forward(POLYC_ADMIN_VIEW_EDIT_CHARTS);
     }
 

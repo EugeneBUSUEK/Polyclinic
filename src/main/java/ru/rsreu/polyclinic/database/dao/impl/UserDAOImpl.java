@@ -20,7 +20,8 @@ public class UserDAOImpl implements UserDAO {
     private static volatile UserDAOImpl instance;
 
     private static final String SELECT_ALL_WORKERS = ProjectResourcer.getInstance().getString("query.select.all.workers");
-    private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.user.list");
+    private static final String SELECT_ALL_USERS_FOR_MODER = ProjectResourcer.getInstance().getString("query.select.user.list");
+    private static final String SELECT_ALL_USERS = ProjectResourcer.getInstance().getString("query.select.all.users");
     private static final String SELECT_ALL_USERS_FOR_ADMIN_EDIT = ProjectResourcer.getInstance().getString("query.select.user.list.admin");
     private static final String UPDATE_USER_SESSION = ProjectResourcer.getInstance().getString("query.update.user.sessions");
     private static final String UPDATE_USER_SESSION_SIGN_OUT = ProjectResourcer.getInstance().getString("query.update.user.sessions.signout");
@@ -35,10 +36,10 @@ public class UserDAOImpl implements UserDAO {
 
 
     @Override
-    public List<ModerTableRow> returnAllUsers() {
+    public List<ModerTableRow> returnAllUsersModer() {
         List<ModerTableRow> rowsList= new ArrayList<>();
         ResultSet rs = null;
-        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS)) {
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS_FOR_MODER)) {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 User user = new User();
@@ -67,6 +68,39 @@ public class UserDAOImpl implements UserDAO {
             return rowsList;
         }
 
+    }
+
+    @Override
+    public List<User> returnAllUsers() {
+        List<User> rowsList= new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS)) {
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getLong(1));
+                user.setLogin(rs.getString(2));
+                user.setPassword(rs.getString(3));
+                user.setName(rs.getString(4));
+                user.setBlocked(BooleanUtil.parseBoolean(rs.getInt(5)));
+                user.setRole(rs.getString(6));
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
+                rowsList.add(user);
+            }
+            return rowsList;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return rowsList;
+        }
     }
 
     @Override

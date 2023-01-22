@@ -2,12 +2,16 @@ package ru.rsreu.polyclinic.database.dao.impl;
 
 import com.prutzkow.resourcer.ProjectResourcer;
 import ru.rsreu.polyclinic.data.Doctor;
+import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.ConnectionPool;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.util.BooleanUtil;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
 
@@ -15,6 +19,7 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
 
     private static final String UPDATE_DOCTOR_DETAILS = ProjectResourcer.getInstance().getString("query.update.doctor.details");
     private static final String INSERT_DOCTOR_DETAILS = ProjectResourcer.getInstance().getString("query.insert.doctor.details");
+    private static final String SELECT_DOCTOR_DETAILS = ProjectResourcer.getInstance().getString("query.select.doctor.details");
 
     @Override
     public void editDoctorDetails(Doctor doctor) {
@@ -42,13 +47,24 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
         }
     }
 
-
-
-
-
-
-
-
+    @Override
+    public Doctor returnAllDoctors(User user) {
+        List<Doctor> doctors = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_DETAILS)) {
+            preparedStatement.setLong(1, user.getId());
+            rs = preparedStatement.executeQuery();
+            Doctor doctor = new Doctor();
+            doctor.setUser(user);
+            doctor.setSpecialization(rs.getString(2));
+            doctor.setCabinet(rs.getString(3));
+            doctor.setInVacation(BooleanUtil.parseBoolean(rs.getInt(4)));
+            return doctor;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
     public static DoctorDetailsDAOImpl getInstance() {
         synchronized (DoctorDetailsDAOImpl.class) {
