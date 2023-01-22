@@ -1,11 +1,12 @@
 package ru.rsreu.polyclinic.database.dao;
 
-import ru.rsreu.polyclinic.data.Chart;
-
-import java.util.List;
+import ru.rsreu.polyclinic.data.*;
 
 public interface DoctorChartsDAO {
 
-    List<Chart> returnAllCharts();
-    
+    DoctorChart returnDoctorCharts(Doctor doctor);
+
+    void editDoctorCharts(DoctorChartDay doctorChartDay);
+    void addDoctorCharts(Doctor doctor, Chart chart);
+
 }
