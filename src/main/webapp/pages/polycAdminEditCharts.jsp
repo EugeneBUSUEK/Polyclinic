@@ -27,10 +27,10 @@
       <tr>
         <td><div class="user">
           <b>Doctor name</b><br>
-          <span class="name"><c:out value="${doctor.getDcotor().getUser().getName()}"/></span><br>
+          <span class="name"><c:out value="${doctor.getDoctor().getUser().getName()}"/></span><br>
           <b>Specialization:</b>
-          <span class="specialization"><c:out value="${doctor.getDcotor().getSpecialization()}"/></span><br>
-          <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${doctor.getDcotor().getUser().getId()}"/></span><br></div>
+          <span class="specialization"><c:out value="${doctor.getDoctor().getSpecialization()}"/></span><br>
+          <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${doctor.getDoctor().getUser().getId()}"/></span><br></div>
         </div></td>
         <td><input class="default-button" type="button" value="Edit charts" style="width: auto"></td>
       </tr>

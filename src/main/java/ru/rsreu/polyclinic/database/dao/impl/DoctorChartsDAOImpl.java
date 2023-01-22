@@ -23,6 +23,7 @@ public class DoctorChartsDAOImpl implements DoctorChartsDAO {
     public DoctorChart returnDoctorCharts(Doctor doctor) {
         ResultSet rs = null;
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCOTR_CHARTS)) {
+            preparedStatement.setLong(1, doctor.getUser().getId());
             rs = preparedStatement.executeQuery();
 
             DoctorChart doctorChart = new DoctorChart();
