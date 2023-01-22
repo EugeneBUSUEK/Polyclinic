@@ -1,12 +1,15 @@
 package ru.rsreu.polyclinic.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequestSet {
     private Doctor doctor;
     private List<VacationRequest> vacationRequestList;
 
-    public RequestSet() {}
+    public RequestSet() {
+        vacationRequestList = new ArrayList<>();
+    }
 
     public RequestSet(Doctor doctor, List<VacationRequest> vacationRequestList) {
         this.doctor = doctor;
