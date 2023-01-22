@@ -49,7 +49,7 @@ public class PolycAdminEditChartsCommand extends FrontCommand{
         List<Doctor> doctorList = new ArrayList<>();
         for (User user : rs) {
             Doctor doctor = this.doctorDetailsDAO.returnDoctor(user);
-            if (doctor.getCabinet() != null) {
+            if (doctor.getUser().getRole().equals("doctor")) {
                 doctorList.add(doctor);
             }
         }
