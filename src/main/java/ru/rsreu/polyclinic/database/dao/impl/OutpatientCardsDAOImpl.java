@@ -80,8 +80,7 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(UPDATE_PATIENT)) {
             preparedStatement.setString(1, patient.getName());
             preparedStatement.setString(2, patient.getGender());
-            Timestamp timestamp = Timestamp.valueOf(patient.getBirthDay());
-            preparedStatement.setTimestamp(3, timestamp);
+            preparedStatement.setString(3, patient.getBirthDay());
             preparedStatement.setString(4, patient.getPhoneNumber());
             preparedStatement.setString(5, patient.getAddress());
             preparedStatement.setLong(6, patient.getId());
