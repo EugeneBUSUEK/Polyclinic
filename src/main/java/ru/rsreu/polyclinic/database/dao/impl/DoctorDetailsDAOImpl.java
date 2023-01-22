@@ -55,6 +55,7 @@ public class DoctorDetailsDAOImpl implements DoctorDetailsDAO {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_DETAILS)) {
             preparedStatement.setLong(1, user.getId());
             rs = preparedStatement.executeQuery();
+            rs.next();
             doctor.setUser(user);
             doctor.setSpecialization(rs.getString(2));
             doctor.setCabinet(rs.getString(3));

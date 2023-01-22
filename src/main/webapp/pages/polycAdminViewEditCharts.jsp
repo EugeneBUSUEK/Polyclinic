@@ -27,16 +27,16 @@
       <tr>
           <td><div class="user">
           <b>Doctor name</b><br>
-          <span class="name"><c:out value="${doctor.getDoctor().getUser().getName()}"/></span><br>
+          <span class="name"><c:out value="${doctor.getUser().getName()}"/></span><br>
           <b>Specialization:</b>
-          <span class="specialization"><c:out value="${doctor.getDoctor().getSpecialization()}"/></span><br>
-          <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${doctor.getDoctor().getUser().getId()}"/></span><br></div>
+          <span class="specialization"><c:out value="${doctor.getSpecialization()}"/></span><br>
+          <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${doctor.getUser().getId()}"/></span><br></div>
         </div></td>
 
         <td>
           <form action="editChart" method="post">
-            <input hidden name="id" value="<c:out value="${doctor.getDoctor().getUser().getId()}"/>">
-            <input hidden name="id" value="<c:out value="${doctor.getDoctor().getUser().getName()}"/>">
+            <input hidden name="id" value="<c:out value="${doctor.getUser().getId()}"/>">
+            <input hidden name="id" value="<c:out value="${doctor.getUser().getName()}"/>">
             <input class="default-button" type="submit" value="Edit charts" style="width: auto">
           </form>
         </td>
