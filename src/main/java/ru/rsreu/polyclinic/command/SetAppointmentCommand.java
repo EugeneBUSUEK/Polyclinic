@@ -47,7 +47,7 @@ public class SetAppointmentCommand extends FrontCommand{
         patient.setName(request.getParameter("patient_name"));
         patient.setPhoneNumber(request.getParameter("phone"));
         List<Appointment> appointmentList = this.appointmentsDAO.returnAppointmentsForDoctor(doctor);
-        
+
         HttpSession session = request.getSession();
         session.setAttribute("patient", patient);
         session.setAttribute("doctor", doctor);
