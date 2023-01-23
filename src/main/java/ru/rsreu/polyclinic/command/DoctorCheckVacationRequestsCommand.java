@@ -1,9 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
-import ru.rsreu.polyclinic.data.Doctor;
-import ru.rsreu.polyclinic.data.RequestSet;
-import ru.rsreu.polyclinic.data.User;
-import ru.rsreu.polyclinic.data.VacationRequest;
+import ru.rsreu.polyclinic.data.*;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
@@ -15,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.CHECK_VACATION_DETAILS;
+import static ru.rsreu.polyclinic.constant.Routes.DOCTOR_CHECK_VACATIONS;
 
-public class CheckVacationDetailsCommand extends FrontCommand{
+public class DoctorCheckVacationRequestsCommand extends FrontCommand{
     private UserDAO userDAO;
     private DoctorDetailsDAO doctorDetailsDAO;
     private VacationRequestsDAO vacationRequestsDAO;
@@ -34,26 +33,17 @@ public class CheckVacationDetailsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        RequestSet rs = new RequestSet();
-        User user = new User();
-        user.setId(Long.parseLong(request.getParameter("id")));
-        user.setName(request.getParameter("name"));
-        Doctor doctor = this.doctorDetailsDAO.returnDoctor(user);
-        RequestSet requestSet = this.vacationRequestsDAO.returnRequestsOfDoctorPolomani(doctor);
-        for (VacationRequest req : requestSet.getVacationRequestList()) {
-            if (req.getId() == Long.parseLong(request.getParameter("vacation_id"))) {
-                rs.setDoctor(doctor);
-                rs.getVacationRequestList().add(req);
-                break;
-            }
-        }
         HttpSession session = request.getSession();
-        session.setAttribute("requestDetails", rs);
-        forward(CHECK_VACATION_DETAILS);
+        User user = (User) session.getAttribute("user");
+        Doctor doctor = new Doctor();
+        doctor.setUser(user);
+        List<RequestsTableRow> requestsList = this.vacationRequestsDAO.returnRequestsOfDoctor(doctor);
+        session.setAttribute("doctorRequestList", requestsList);
+        redirect(DOCTOR_CHECK_VACATIONS);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(CHECK_VACATION_DETAILS);
+        forward(DOCTOR_CHECK_VACATIONS);
     }
 }

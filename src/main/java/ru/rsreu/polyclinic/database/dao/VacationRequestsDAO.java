@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface VacationRequestsDAO {
 
-    RequestSet returnRequestsOfDoctor(Doctor doctor);
+    RequestSet returnRequestsOfDoctorPolomani(Doctor doctor);
+    List<RequestsTableRow> returnRequestsOfDoctor(Doctor doctor);
 
     List<RequestsTableRow> returnAllRequests(List<Doctor> doctors);
 

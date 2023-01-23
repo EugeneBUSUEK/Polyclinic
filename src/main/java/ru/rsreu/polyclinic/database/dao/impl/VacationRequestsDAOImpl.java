@@ -23,7 +23,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
 
 
     @Override
-    public RequestSet returnRequestsOfDoctor(Doctor doctor) {
+    public RequestSet returnRequestsOfDoctorPolomani(Doctor doctor) {
         RequestSet requestSet = new RequestSet();
         requestSet.setDoctor(doctor);
         ResultSet rs = null;
@@ -53,6 +53,40 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return requestSet;
+        }
+    }
+
+    @Override
+    public List<RequestsTableRow> returnRequestsOfDoctor(Doctor doctor) {
+        List<RequestsTableRow> requestsTableRows = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_REQUESTS)) {
+            preparedStatement.setLong(1, doctor.getUser().getId());
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RequestsTableRow row = new RequestsTableRow();
+                row.setDoctor(doctor);
+                row.setId(rs.getLong(1));
+                row.setRequest(rs.getString(3));
+                row.setDate_from(rs.getString(4));
+                row.setDate_to(rs.getString(5));
+                row.setApproved(BooleanUtil.parseBoolean(rs.getInt(6)));
+                requestsTableRows.add(row);
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
+            }
+            return requestsTableRows;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 
