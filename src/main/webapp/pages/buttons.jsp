@@ -13,7 +13,7 @@
         <c:when test="${user.getRole().equals(RoleType.DOCTOR.getRole())}">
             <button class="button" role="button">Outpatient cards</button>
             <button class="button" role="button">Appointments</button>
-            <button class="button" role="button">Request a vacation/time off</button>
+            <form action="doctorCheckVacationRequests" method="post"><button class="button" role="button">Check & Create vacation request</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.MODER.getRole())}">
             <form action="moderator" method="post"><button class="button" role="button">Edit users blocked status</button></form>

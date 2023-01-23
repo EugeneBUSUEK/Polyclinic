@@ -39,7 +39,7 @@ public class DoctorCheckVacationRequestsCommand extends FrontCommand{
         doctor.setUser(user);
         List<RequestsTableRow> requestsList = this.vacationRequestsDAO.returnRequestsOfDoctor(doctor);
         session.setAttribute("doctorRequestList", requestsList);
-        redirect(DOCTOR_CHECK_VACATIONS);
+        forward(DOCTOR_CHECK_VACATIONS);
     }
 
     @Override

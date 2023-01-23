@@ -12,5 +12,5 @@ public class Routes {
     public static final String CHECK_VACATION_DETAILS = "polycAdminCheckVacationDetails";
     public static final String POLYC_ADMIN_RECORD_PATIENT = "polycAdminRecordPatient";
     public static final String POLYC_ADMIN_SET_APPOINTMENT = "polycAdminSetAppointment";
-    public static final String DOCTOR_CHECK_VACATIONS = "";
+    public static final String DOCTOR_CHECK_VACATIONS = "doctorCheckCreateVacations";
 }
