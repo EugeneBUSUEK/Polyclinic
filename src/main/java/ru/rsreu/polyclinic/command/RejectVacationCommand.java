@@ -35,7 +35,7 @@ public class RejectVacationCommand extends FrontCommand{
         vacationRequest.setId(Long.parseLong(request.getParameter("id")));
         this.vacationRequestsDAO.deleteDoctorRequest(vacationRequest);
 
-        redirect(POLYC_ADMIN_CHECK_VACATIONS);
+        forward(POLYC_ADMIN_CHECK_VACATIONS);
     }
 
     @Override

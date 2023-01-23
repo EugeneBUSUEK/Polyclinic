@@ -44,7 +44,7 @@ public class ApproveVacationCommand extends FrontCommand{
         vacationRequest.setApproved(BooleanUtil.parseBoolean(0));
         this.vacationRequestsDAO.updateDoctorRequest(vacationRequest);
 
-        redirect(POLYC_ADMIN_CHECK_VACATIONS);
+        forward(POLYC_ADMIN_CHECK_VACATIONS);
     }
 
     @Override

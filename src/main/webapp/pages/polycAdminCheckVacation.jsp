@@ -27,7 +27,7 @@
             <tr>
                 <form action="checkVacationDetails" method="post">
                     <td><div class="user">
-<%--                        <b>Request №</b> <input name="vacation_id" type="text" value="<c:out value="${requests.getVacationRequestList().get(0).getId()}"/>" style="font-size: 15px"><br>--%>
+                        <b>Request №</b> <input name="vacation_id" type="text" value="<c:out value="${requests.getId()}"/>" style="font-size: 15px"><br>
                         <b>Request from</b> <input name="name" type="text" value="<c:out value="${requests.getDoctor().getUser().getName()}"/>" style="font-size: 15px">
                         <input hidden name="id" type="text" value="<c:out value="${requests.getDoctor().getUser().getId()}"/>">
                     </div>

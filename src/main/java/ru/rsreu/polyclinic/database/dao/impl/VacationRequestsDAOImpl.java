@@ -28,6 +28,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
         requestSet.setDoctor(doctor);
         ResultSet rs = null;
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_REQUESTS)) {
+            preparedStatement.setLong(1, doctor.getUser().getId());
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 VacationRequest vacationRequest = new VacationRequest();
