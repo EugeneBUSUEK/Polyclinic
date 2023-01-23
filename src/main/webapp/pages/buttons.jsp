@@ -21,10 +21,10 @@
         <c:when test="${user.getRole().equals(RoleType.POLYC_ADMIN.getRole())}">
             <form action="editOutpatientCards" method="post"><button class="button" role="button">Edit & Add patient card</button></form>
             <form action="polycAdminEditCharts" method="post"><button class="button" role="button">Edit charts for doctors</button></form>
-            <button class="button" role="button">3</button>
+            <form action="polycAdminEditCharts" method="post"><button class="button" role="button">Edit charts for doctors</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.SYS_ADMIN.getRole())}">
-            <form action="sysAdmin" method="post"><button class="button" role="button">Edit & Add users</button></form>
+            <form action="vacationRequestApprove" method="post"><button class="button" role="button">Vacation request approve</button></form>
         </c:when>
     </c:choose>
 </div>
