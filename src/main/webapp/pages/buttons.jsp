@@ -11,8 +11,7 @@
 <div class="container-button">
     <c:choose>
         <c:when test="${user.getRole().equals(RoleType.DOCTOR.getRole())}">
-            <button class="button" role="button">Outpatient cards</button>
-            <button class="button" role="button">Appointments</button>
+            <form action="doctorCheckAppointments" method="post"><button class="button" role="button">Check appointments</button></form>
             <form action="doctorCheckVacationRequests" method="post"><button class="button" role="button">Check & Create vacation request</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.MODER.getRole())}">

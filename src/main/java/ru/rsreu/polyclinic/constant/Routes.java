@@ -13,7 +13,7 @@ public class Routes {
     public static final String POLYC_ADMIN_RECORD_PATIENT = "polycAdminRecordPatient";
     public static final String POLYC_ADMIN_SET_APPOINTMENT = "polycAdminSetAppointment";
     public static final String DOCTOR_CHECK_VACATIONS = "doctorCheckCreateVacations";
-    public static final String DOCTOR_CHECK_APPOINTMENTS = "";
-    public static final String PATIENT_CARD = "";
-    public static final String DOCTOR_RECORD_PATIENT_TO_DOCTOR = "";
+    public static final String DOCTOR_CHECK_APPOINTMENTS = "doctorCheckAppointments";
+    public static final String PATIENT_CARD = "doctorPatientCard";
+    public static final String DOCTOR_RECORD_PATIENT_TO_DOCTOR = "doctorRecordPatientToDoctor";
 }
