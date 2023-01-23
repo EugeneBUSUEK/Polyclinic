@@ -2,6 +2,7 @@ package ru.rsreu.polyclinic.command;
 
 import ru.rsreu.polyclinic.data.Doctor;
 import ru.rsreu.polyclinic.data.RequestSet;
+import ru.rsreu.polyclinic.data.RequestsTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
@@ -40,10 +41,7 @@ public class VacationRequestApproveCommand extends FrontCommand{
         for (User user : users) {
             doctors.add(this.doctorDetailsDAO.returnDoctor(user));
         }
-        List<RequestSet> requestSetList = new ArrayList<>();
-        for (Doctor doctor : doctors) {
-            requestSetList.add(this.vacationRequestsDAO.returnRequestsOfDoctor(doctor));
-        }
+        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequests(doctors);
         HttpSession session = request.getSession();
         session.setAttribute("listOfRequestSet", requestSetList);
         forward(POLYC_ADMIN_CHECK_VACATIONS);
