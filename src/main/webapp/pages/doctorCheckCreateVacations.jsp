@@ -11,7 +11,7 @@
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 
-<div class="for_caption" style="margin: 40px"><h1 class="caption">Previous requests</h1></div>
+<div class="for_caption" style="margin: 40px"><h1 class="caption">Previous requests </h1></div>
 
 <div class="scrollit">
   <div class="list-div">
@@ -26,10 +26,10 @@
       <c:forEach items="${doctorRequestList}" var="request">
         <tr>
           <td><div class="user">
-            <b>Request №</b> <span class="name"><c:out value="${requests.getId()}"/></span> <br>
-            <b>Reason:</b> <span class="name"><c:out value="${requests.getRequest()}"/></span> <br>
-            <b>Date from</b> <input type="datetime-local" value="<c:out value="${requests.getFrom()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
-            <b>Date to</b> <input type="datetime-local" value="<c:out value="${requests.getTo()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
+            <b>Request №</b> <span class="name"><c:out value="${request.getId()}"/></span> <br>
+            <b>Reason:</b> <span class="name"><c:out value="${request.getRequest()}"/></span> <br>
+            <b>Date from</b> <input type="date" value="<c:out value="${request.getDate_from()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
+            <b>Date to</b> <input type="date" value="<c:out value="${request.getDate_to()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
           </div></td>
 
           <td>

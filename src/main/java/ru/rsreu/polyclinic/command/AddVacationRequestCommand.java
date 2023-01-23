@@ -34,8 +34,8 @@ public class AddVacationRequestCommand extends FrontCommand{
         RequestsTableRow doctorRequest = new RequestsTableRow();
         doctorRequest.setDoctor(doctor);
         doctorRequest.setRequest(request.getParameter("reason"));
-        doctorRequest.setDate_from(request.getParameter("date_from"));
-        doctorRequest.setDate_to(request.getParameter("date_to"));
+        doctorRequest.setDate_from(request.getParameter("time_from"));
+        doctorRequest.setDate_to(request.getParameter("time_to"));
         RequestsTableRow doctorRequestAfter = this.vacationRequestsDAO.addDoctorRequest(doctorRequest).orElse(null);
         if (doctorRequestAfter == null) {
             request.setAttribute("invalidAddVacation", true);
