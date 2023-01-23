@@ -7,6 +7,7 @@ import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.AppointmentsDAO;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.OutpatientCardsDAO;
+import sun.jvm.hotspot.ui.EditableAtEndDocument;
 
 import javax.print.Doc;
 import javax.servlet.ServletContext;
@@ -30,6 +31,9 @@ public class AddAppointmentCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+        String date = request.getParameter("date");
+        String timeFrom = request.getParameter("time_from");
+        String timeTo = request.getParameter("time_to");
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("doctor_id")));
         Doctor doctor = new Doctor();
@@ -39,7 +43,8 @@ public class AddAppointmentCommand extends FrontCommand{
         Appointment appointment = new Appointment();
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
-
+        appointment.setFromTime(date + timeFrom);
+        appointment.setFromTime(date + timeTo);
         Appointment appointmentAfter = this.appointmentsDAO.addAppointment(appointment).orElse(null);
         if (appointmentAfter == null) {
             request.setAttribute("invalidAddAppointment", true);
