@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body style="height: 100%">
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 <div class="for_caption"><h1 class="caption">List of user</h1></div>
@@ -340,7 +340,7 @@
                 </div>
             </div>
         </div>
-
+<br>
 <script src="../js/script.js"></script>
 <script src="../js/sysAdmin.js"></script>
 </body>

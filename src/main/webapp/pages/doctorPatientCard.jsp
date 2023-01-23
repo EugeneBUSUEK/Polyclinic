@@ -164,9 +164,9 @@
             </div>
 
             <div><form id="actionForm" action="addRecord" method="post">
-                <input name="id" style="font-size: 15px" value="<c:out value="${patientObj.getId()}"/>" required>
-                <input name="diagnosis" style="font-size: 15px" required>
-                <input name="treatmentCourse" style="font-size: 15px" required>
+                <input hidden name="id" style="font-size: 15px" value="<c:out value="${patientObj.getId()}"/>" required>
+                <input hidden name="diagnosis" style="font-size: 15px" required>
+                <input hidden name="treatmentCourse" style="font-size: 15px" required>
                 <input style="width: 40%" class="submit" type="submit" value="Submit" onclick="dataToAction()">
             </div></form>
         </div>

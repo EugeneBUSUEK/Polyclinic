@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static ru.rsreu.polyclinic.constant.Routes.DOCTOR_RECORD_PATIENT_TO_DOCTOR;
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_EDIT_PATIENTS;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class AddRecordCommand extends FrontCommand{
     private OutpatientCardsDAO outpatientCardsDAO;
@@ -50,16 +49,16 @@ public class AddRecordCommand extends FrontCommand{
         CardRecord cardRecordAfter = this.cardRecordingsDAO.addRecord(cardRecord).orElse(null);
         if (cardRecordAfter == null) {
             request.setAttribute("invalidAddRecord", true);
-            forward(DOCTOR_RECORD_PATIENT_TO_DOCTOR);
+            forward(DOCTOR_CHOOSE);
         } else {
-            redirect(DOCTOR_RECORD_PATIENT_TO_DOCTOR);
+            redirect(DOCTOR_CHOOSE);
         }
 
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(POLYC_ADMIN_EDIT_PATIENTS);
+        forward(DOCTOR_CHOOSE);
 
     }
 }

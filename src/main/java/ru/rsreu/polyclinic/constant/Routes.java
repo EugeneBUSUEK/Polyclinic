@@ -16,4 +16,5 @@ public class Routes {
     public static final String DOCTOR_CHECK_APPOINTMENTS = "doctorCheckAppointments";
     public static final String PATIENT_CARD = "doctorPatientCard";
     public static final String DOCTOR_RECORD_PATIENT_TO_DOCTOR = "doctorRecordPatientToDoctor";
+    public static final String DOCTOR_CHOOSE = "doctorChoose";
 }

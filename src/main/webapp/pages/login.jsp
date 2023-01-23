@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
-<body>
+<body style="height: 100vH">
 <nav>
     <label class="logo">Polyclinic</label>
     <ul>
