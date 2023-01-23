@@ -1,7 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
 import ru.rsreu.polyclinic.data.Doctor;
-import ru.rsreu.polyclinic.data.RequestSet;
 import ru.rsreu.polyclinic.data.RequestsTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
@@ -20,7 +19,7 @@ import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.*;
 
-public class VacationRequestApproveCommand extends FrontCommand{
+public class PolycAdminVacationRequestApproveCommand extends FrontCommand{
     private UserDAO userDAO;
     private DoctorDetailsDAO doctorDetailsDAO;
     private VacationRequestsDAO vacationRequestsDAO;

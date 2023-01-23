@@ -10,4 +10,5 @@ public class Routes {
     public static final String EDIT_CURRENT_CHART = "polycAdminEditCurrentCharts";
     public static final String POLYC_ADMIN_CHECK_VACATIONS = "polycAdminCheckVacation";
     public static final String CHECK_VACATION_DETAILS = "polycAdminCheckVacationDetails";
+    public static final String POLYC_ADMIN_RECORD_PATIENT = "";
 }
