@@ -7,7 +7,7 @@ import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.AppointmentsDAO;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.OutpatientCardsDAO;
-import sun.jvm.hotspot.ui.EditableAtEndDocument;
+//import sun.jvm.hotspot.ui.EditableAtEndDocument;
 
 import javax.print.Doc;
 import javax.servlet.ServletContext;

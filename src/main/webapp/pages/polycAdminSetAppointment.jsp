@@ -13,21 +13,20 @@
 
 <!--<div class="for_caption" style="margin: 40px"><h1 style="width: auto; font-size: 20px" class="caption">Appointments for Billy Haskellton</h1></div>-->
 
-<div id="reqForm" class="container-form" style="margin-top: 50px; display: flex;">
+<div id="createForm" class="container-form" style="margin-top: 50px; display: flex;">
     <div class="form-box">
         <h2 style="margin: 0">Create appointments for <c:out value="${patient.getName()}"/></h2>
 
         <div id="checkform" class="edit-form">
             <div class="form-group">
             </div>
-            <form action="" method="">
                 <div class="form-group">
                     <label>
                         Choose day
                     </label>
                     <input
                             type="date"
-                            name="date"
+                            id="date"
                             required
                             class="time"
                             style="margin-top: 10px; width: 20%"
@@ -40,7 +39,7 @@
                     </label>
                     <input
                             type="time"
-                            name="time_from"
+                            id="time_from"
                             required
                             class="time"
                             style="margin-top: 10px; width: 20%"
@@ -53,7 +52,7 @@
                     </label>
                     <input
                             type="time"
-                            name="time_to"
+                            id="time_to"
                             required
                             class="time"
                             style="margin-top: 10px; width: 20%"
@@ -65,8 +64,8 @@
                         patient_id
                     </label>
                     <input
-                            type="time"
-                            name="patient_id"
+                            type="text"
+                            id="patient_id"
                             required
                             class="time"
                             style="margin-top: 10px; width: 20%"
@@ -79,8 +78,8 @@
                         doctor_id
                     </label>
                     <input
-                            type="time"
-                            name="doctor_id"
+                            type="text"
+                            id="doctor_id"
                             required
                             class="time"
                             style="margin-top: 10px; width: 20%"
@@ -88,9 +87,14 @@
                     >
                 </div>
 
-                <div>
-                    <input style="width: 40%" class="submit" type="submit" value="Submit">
-                </div></form>
+            <form id="actionForm" action="addAppointment" method="post">
+                <input hidden name="date" style="font-size: 15px">
+                <input hidden name="time_from" style="font-size: 15px">
+                <input hidden name="time_to" style="font-size: 15px">
+                <input hidden name="patient_id" style="font-size: 15px">
+                <input hidden name="doctor_id" style="font-size: 15px">
+                <input style="width: 40%" class="submit" type="submit" value="Submit" onclick="dataToAction()">
+            </form>
 
             <div class="form-group">
                 <label style="margin-bottom: 10px; margin-top: 40px">
@@ -128,5 +132,6 @@
     </div>
 </div>
 <br>
+<script src="../js/setAppo.js"></script>
 </body>
 </html>
