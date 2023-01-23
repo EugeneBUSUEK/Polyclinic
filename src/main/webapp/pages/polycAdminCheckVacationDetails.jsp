@@ -102,13 +102,15 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <c:forEach items="${doctorAppointments}" var="appointment">
                             <tr>
-                                <td><div class="user"><b>Patient name</b><br>Billy Haskellton</div></td>
-                                <td><input class="time" type="time" value="13:10" style="width: auto; text-align: center;" disabled>
+                                <td><div class="user"><b>Patient name</b><br><c:out value="${appointment.getPatient().getName()}"/></div></td>
+                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="width: auto; background: white; font-size: 15px;" disabled>
                                 </td>
-                                <td><input class="time" type="time" value="13:20" style="width: auto" disabled>
+                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="width: auto; background: white; font-size: 15px;" disabled>
                                 </td>
                             </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
