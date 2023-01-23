@@ -1,3 +1,4 @@
+<%@ page import="ru.rsreu.polyclinic.enums.Gender" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
                         id="reason"
                         required
                         disabled
-                        value="<c:out value="${patientRecords.get(0).getPatient().getName()}"/>"
+                        value="<c:out value="${patientObj.getName()}"/>"
                 >
             </div>
 
@@ -36,7 +37,7 @@
                     Gender
                 </label>
                 <div style="margin-top: 10px">
-                    <c:if test="${patientRecords.get(0).getPatient().getGender().equals()}">
+                    <c:if test="${patientObj.getGender().equals(Gender.MALE.getGender())}">
                     <label style="margin: 10px" class="radio-inline" onclick="maleRbOnClick()">
                         <input id="addMaleRB" type="radio" name="optradio" checked>Male
                     </label>
@@ -44,7 +45,7 @@
                         <input id="addFemaleRB" type="radio" name="optradio" disabled>Female
                     </label>
                     </c:if>
-                    <c:if test="${request.isApproved() == true}">
+                    <c:if test="${patientObj.getGender().equals(Gender.FEMALE.getGender())}">
                         <label style="margin: 10px" class="radio-inline" onclick="maleRbOnClick()">
                             <input id="addMaleRB" type="radio" name="optradio" disabled>Male
                         </label>
@@ -52,12 +53,6 @@
                             <input id="addFemaleRB" type="radio" name="optradio" checked>Female
                         </label>
                     </c:if>
-                    <label style="margin: 10px" class="radio-inline" onclick="maleRbOnClick()">
-                        <input id="addMaleRB" type="radio" name="optradio" disabled>Male
-                    </label>
-                    <label style="margin: 10px" class="radio-inline" onclick="femaleRbOnClick()">
-                        <input id="addFemaleRB" type="radio" name="optradio" checked>Female
-                    </label>
                 </div>
             </div>
 
@@ -70,7 +65,7 @@
                         id="time_from"
                         required
                         style="margin-top: 10px; width: 25%; font-size: 20px; background: white; font-weight: bold;"
-                        value="<c:out value="${patientRecords.get(0).getPatient().getBirthDay()}"/>"
+                        value="<c:out value="${patientObj.getBirthDay()}"/>"
                         disabled
                 >
             </div>
@@ -84,7 +79,7 @@
                         id="reason"
                         required
                         disabled
-                        value="<c:out value="${patientRecords.get(0).getPatient().getPhoneNumber()}"/>"
+                        value="<c:out value="${patientObj.getPhoneNumber()}"/>"
                 >
             </div>
 
@@ -97,7 +92,7 @@
                         id="reason"
                         required
                         disabled
-                        value="<c:out value="${patientRecords.get(0).getPatient().getAddress()}"/>"
+                        value="<c:out value="${patientObj.getAddress()}"/>"
                 >
             </div>
 
@@ -165,15 +160,13 @@
                         type="text"
                         id="treatmentCourse"
                         required
-                        disabled
                 >
             </div>
 
             <div><form id="actionForm" action="addRecord" method="post">
-                <input name="id" style="font-size: 15px" value="<c:out value="${patientRecords.get(0).getPatient().getId()}"/>" required>
+                <input name="id" style="font-size: 15px" value="<c:out value="${patientObj.getId()}"/>" required>
                 <input name="diagnosis" style="font-size: 15px" required>
                 <input name="treatmentCourse" style="font-size: 15px" required>
-                <input style="width: 40%" class="submit" type="button" value="Submit" onclick="dataToAction()">
                 <input style="width: 40%" class="submit" type="submit" value="Submit" onclick="dataToAction()">
             </div></form>
         </div>

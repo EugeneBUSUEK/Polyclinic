@@ -25,19 +25,19 @@
       <tbody>
       <c:forEach items="${appointmentsDoctor}" var="appointment">
         <tr>
-          <form action="doctorCheckCard" method="post">
             <td><div class="user">
               <b>Patient name: </b><span class="name"><c:out value="${appointment.getPatient().getName()}"/></span> <br>
               <b>Date from</b> <input name="from" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
               <b>Date to</b> <input name="to" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
-              <div hidden><b>patient id</b> <input name="patient_id" value="<c:out value="${appointment.getPatient().getId()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
-              </div>
+<%--              <div><b>patient id</b> <input name="patient_id" type="text" value="<c:out value="${appointment.getPatient().getId()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br></div>--%>
             </div></td>
 
             <td>
-              <input class="default-button" type="submit" value="Check card"></form>
+              <form action="doctorCheckCard" method="post">
+                <input hidden name="patient_id" style="font-size: 15px" value="<c:out value="${appointment.getPatient().getId()}"/>">
+                <input class="default-button" type="submit" value="Check card">
+              </form>
             </td>
-
         </tr>
       </c:forEach>
       </tbody>

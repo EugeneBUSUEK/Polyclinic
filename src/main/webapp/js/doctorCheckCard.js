@@ -17,7 +17,6 @@ const diagnosisInputEl = createFormEl.querySelector('input[id="diagnosis"]');
 const treatmentCourseInputEl = createFormEl.querySelector('input[id="treatmentCourse"]');
 
 function dataToAction(){
-    document.getElementById('checkBt').click()
     diagnosisActionAddInputEl.value = diagnosisInputEl.value
     treatmentCourseActionAddInputEl.value = treatmentCourseInputEl.value
 
