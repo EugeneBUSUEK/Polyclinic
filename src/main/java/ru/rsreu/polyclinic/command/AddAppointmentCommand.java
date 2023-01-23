@@ -43,8 +43,8 @@ public class AddAppointmentCommand extends FrontCommand{
         Appointment appointment = new Appointment();
         appointment.setPatient(patient);
         appointment.setDoctor(doctor);
-        appointment.setFromTime(date + timeFrom);
-        appointment.setFromTime(date + timeTo);
+        appointment.setFromTime(date + " " + timeFrom);
+        appointment.setToTime(date + " " + timeTo);
         Appointment appointmentAfter = this.appointmentsDAO.addAppointment(appointment).orElse(null);
         if (appointmentAfter == null) {
             request.setAttribute("invalidAddAppointment", true);
