@@ -40,7 +40,7 @@ public class PolycAdminVacationRequestApproveCommand extends FrontCommand{
         for (User user : users) {
             doctors.add(this.doctorDetailsDAO.returnDoctor(user));
         }
-        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequests(doctors);
+        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
         HttpSession session = request.getSession();
         session.setAttribute("listOfRequestSet", requestSetList);
         forward(POLYC_ADMIN_CHECK_VACATIONS);

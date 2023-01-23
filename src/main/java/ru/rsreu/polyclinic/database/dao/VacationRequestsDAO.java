@@ -14,6 +14,7 @@ public interface VacationRequestsDAO {
     List<RequestsTableRow> returnRequestsOfDoctor(Doctor doctor);
 
     List<RequestsTableRow> returnAllRequests(List<Doctor> doctors);
+    List<RequestsTableRow> returnAllRequestsForAdmin(List<Doctor> doctors);
 
     void updateDoctorRequest(VacationRequest vacationRequest);
     Optional<RequestsTableRow> addDoctorRequest(RequestsTableRow requestsTableRow);

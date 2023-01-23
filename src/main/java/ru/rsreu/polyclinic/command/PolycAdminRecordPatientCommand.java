@@ -5,6 +5,7 @@ import ru.rsreu.polyclinic.data.Patient;
 import ru.rsreu.polyclinic.data.RequestsTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.*;
+import ru.rsreu.polyclinic.enums.RoleType;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -32,7 +33,13 @@ public class PolycAdminRecordPatientCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        List<Doctor> doctors = this.userDAO.returnAllUsersForAdminEdit();
+        List<Doctor> listOfUsers = this.userDAO.returnAllUsersForAdminEdit();
+        List<Doctor> doctors = new ArrayList<>();
+        for (Doctor user : listOfUsers) {
+            if (user.getUser().getRole().equals(RoleType.DOCTOR.getRole())) {
+                doctors.add(user);
+            }
+        }
         List<Patient> patients = this.outpatientCardsDAO.returnAllPatients();
         HttpSession session = request.getSession();
         session.setAttribute("patientList", patients);

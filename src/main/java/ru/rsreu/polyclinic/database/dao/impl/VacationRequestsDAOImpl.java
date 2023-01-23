@@ -19,6 +19,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
 
     private static final String SELECT_DOCTOR_REQUESTS = ProjectResourcer.getInstance().getString("query.select.doctor.requests");
     private static final String SELECT_ALL_REQUESTS = ProjectResourcer.getInstance().getString("query.select.all.requests");
+    private static final String SELECT_ALL_REQUESTS_FOR_ADMIN = ProjectResourcer.getInstance().getString("query.select.all.requests.admin");
     private static final String UPDATE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.update.doctor.request");
     private static final String DELETE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.delete.doctor.request");
     private static final String INSERT_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.insert.doctor.request");
@@ -98,6 +99,44 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
         List<RequestsTableRow> requestsTableRows = new ArrayList<>();
         ResultSet rs = null;
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_REQUESTS)) {
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RequestsTableRow vacationRequest = new RequestsTableRow();
+                vacationRequest.setId(rs.getLong(1));
+                vacationRequest.setRequest(rs.getString(3));
+                vacationRequest.setDate_from(rs.getString(4));
+                vacationRequest.setDate_to(rs.getString(5));
+                vacationRequest.setApproved(BooleanUtil.parseBoolean(rs.getInt(6)));
+                for (Doctor doctor : doctors) {
+                    if (doctor.getUser().getId() == rs.getLong(2)) {
+                        vacationRequest.setDoctor(doctor);
+                        break;
+                    }
+                }
+                requestsTableRows.add(vacationRequest);
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
+            }
+            return requestsTableRows;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return requestsTableRows;
+        }
+    }
+
+    @Override
+    public List<RequestsTableRow> returnAllRequestsForAdmin(List<Doctor> doctors) {
+        List<RequestsTableRow> requestsTableRows = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_REQUESTS_FOR_ADMIN)) {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 RequestsTableRow vacationRequest = new RequestsTableRow();
