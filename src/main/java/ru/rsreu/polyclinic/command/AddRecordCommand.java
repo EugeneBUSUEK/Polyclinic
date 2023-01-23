@@ -51,6 +51,7 @@ public class AddRecordCommand extends FrontCommand{
             request.setAttribute("invalidAddRecord", true);
             forward(PATIENT_CARD);
         } else {
+            session.setAttribute("patientObjOnlyWithId", patient);
             forward(DOCTOR_CHOOSE);
         }
 
