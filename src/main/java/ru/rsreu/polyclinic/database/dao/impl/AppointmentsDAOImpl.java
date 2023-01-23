@@ -33,14 +33,18 @@ public class AppointmentsDAOImpl implements AppointmentsDAO {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 Appointment appointment = new Appointment();
+                appointment.setId(rs.getLong(1));
                 Patient patient = new Patient();
                 patient.setId(rs.getLong(2));
-                patient.setName(rs.getString(6));
-                appointment.setId(rs.getLong(1));
-                appointment.setPatient(patient);
-                appointment.setDoctor(doctor);
                 appointment.setFromTime(rs.getString(4));
                 appointment.setToTime(rs.getString(5));
+                patient.setName(rs.getString(7));
+                patient.setGender(rs.getString(8));
+                patient.setBirthDay(rs.getString(9));
+                patient.setPhoneNumber(rs.getString(10));
+                patient.setAddress(rs.getString(11));
+                appointment.setPatient(patient);
+                appointment.setDoctor(doctor);
 
                 appointmentList.add(appointment);
 //                List<String> row = new ArrayList<>();
