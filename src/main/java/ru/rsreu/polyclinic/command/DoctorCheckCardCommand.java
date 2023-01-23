@@ -1,8 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
-import ru.rsreu.polyclinic.data.Appointment;
-import ru.rsreu.polyclinic.data.Doctor;
-import ru.rsreu.polyclinic.data.User;
+import ru.rsreu.polyclinic.data.*;
 import ru.rsreu.polyclinic.database.dao.*;
 
 import javax.servlet.ServletContext;
@@ -14,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.DOCTOR_CHECK_APPOINTMENTS;
+import static ru.rsreu.polyclinic.constant.Routes.PATIENT_CARD;
 
 public class DoctorCheckCardCommand extends FrontCommand{
     private UserDAO userDAO;
@@ -21,6 +20,7 @@ public class DoctorCheckCardCommand extends FrontCommand{
     private VacationRequestsDAO vacationRequestsDAO;
     private AppointmentsDAO appointmentsDAO;
     private CardRecordingsDAO cardRecordingsDAO;
+    private OutpatientCardsDAO outpatientCardsDAO;
 
     @Override
     public void init(ServletContext servletContext, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
@@ -31,20 +31,21 @@ public class DoctorCheckCardCommand extends FrontCommand{
         vacationRequestsDAO = DAOFactory.getVacationRequestsDAO();
         appointmentsDAO = DAOFactory.getAppointmentsDAO();
         cardRecordingsDAO = DAOFactory.getCardRecordingsDAO();
+        outpatientCardsDAO = DAOFactory.getOutpatientCardsDAO();
     }
 
     @Override
     public void send() throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        Doctor doctor = this.doctorDetailsDAO.returnDoctor(user);
-        List<Appointment> appointments = this.appointmentsDAO.returnAppointmentsForDoctor(doctor);
-        session.setAttribute("appointmentsDoctor", appointments);
-        forward(DOCTOR_CHECK_APPOINTMENTS);
+        Long id = Long.parseLong(request.getParameter("patient_id"));
+        Patient patient = this.outpatientCardsDAO.getPatientBId(id).orElse(null);
+        List<CardRecord> records = this.cardRecordingsDAO.returnPatientRecords(patient);
+        session.setAttribute("patientRecords", records);
+        forward(PATIENT_CARD);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(DOCTOR_CHECK_APPOINTMENTS);
+        forward(PATIENT_CARD);
     }
 }

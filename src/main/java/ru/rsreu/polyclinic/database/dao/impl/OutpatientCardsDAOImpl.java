@@ -22,6 +22,7 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
     private static volatile OutpatientCardsDAOImpl instance;
 
     private static final String SELECT_ALL_PATIENTS = ProjectResourcer.getInstance().getString("query.select.all.patients");
+    private static final String SELECT_PATIENT_BY_ID = ProjectResourcer.getInstance().getString("query.select.patient.by.id");
     private static final String UPDATE_PATIENT = ProjectResourcer.getInstance().getString("query.update.patient");
     private static final String INSERT_PATIENT = ProjectResourcer.getInstance().getString("query.insert.patient");
     private static final String DELETE_PATIENT_ID = ProjectResourcer.getInstance().getString("query.delete.patient");
@@ -66,7 +67,25 @@ public class OutpatientCardsDAOImpl implements OutpatientCardsDAO {
     }
 
     @Override
-    public Optional<User> getUserById(Long id) {
+    public Optional<Patient> getPatientBId(Long id){
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_PATIENT_BY_ID)) {
+            preparedStatement.setLong(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                Patient patient = new Patient();
+                patient.setId(rs.getLong(1));
+                patient.setName(rs.getString(2));
+                patient.setGender(rs.getString(3));
+                patient.setBirthDay(rs.getString(4));
+                patient.setPhoneNumber(rs.getString(5));
+                patient.setAddress(rs.getString(6));
+                return Optional.of(patient);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
         return Optional.empty();
     }
 

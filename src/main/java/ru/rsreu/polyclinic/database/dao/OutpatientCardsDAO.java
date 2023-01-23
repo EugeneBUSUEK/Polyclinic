@@ -17,7 +17,7 @@ public interface OutpatientCardsDAO {
 
     List<User> findAll();
 
-    Optional<User> getUserById(Long id);
+    Optional<Patient> getPatientBId(Long id);
 
     Optional<User> getUserByLogin(String login);
 
