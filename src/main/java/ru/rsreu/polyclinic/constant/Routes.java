@@ -15,4 +15,5 @@ public class Routes {
     public static final String DOCTOR_CHECK_VACATIONS = "doctorCheckCreateVacations";
     public static final String DOCTOR_CHECK_APPOINTMENTS = "";
     public static final String PATIENT_CARD = "";
+    public static final String DOCTOR_RECORD_PATIENT_TO_DOCTOR = "";
 }

@@ -41,6 +41,7 @@ public class DoctorCheckCardCommand extends FrontCommand{
         Patient patient = this.outpatientCardsDAO.getPatientBId(id).orElse(null);
         List<CardRecord> records = this.cardRecordingsDAO.returnPatientRecords(patient);
         session.setAttribute("patientRecords", records);
+        session.setAttribute("patientObj", patient);
         forward(PATIENT_CARD);
     }
 
