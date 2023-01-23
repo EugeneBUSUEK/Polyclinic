@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AppointmentsDAOImpl implements AppointmentsDAO {
 
@@ -21,6 +22,7 @@ public class AppointmentsDAOImpl implements AppointmentsDAO {
 
     private static final String SELECT_DOCTOR_APPOINTMENTS = ProjectResourcer.getInstance().getString("query.select.doctor.appointments");
     private static final String DELETE_APPOINTMENT = ProjectResourcer.getInstance().getString("query.delete.appointment");
+    private static final String INSERT_APPOINTMENT = ProjectResourcer.getInstance().getString("query.insert.appointment");
 
     @Override
     public List<Appointment> returnAppointmentsForDoctor(Doctor doctor) {
@@ -57,6 +59,36 @@ public class AppointmentsDAOImpl implements AppointmentsDAO {
             ex.printStackTrace();
         }
         return appointmentList;
+    }
+
+    @Override
+    public Optional<Appointment> addAppointment(Appointment appointment) {
+        String[] returnId = { "id" };
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_APPOINTMENT, returnId)) {
+            preparedStatement.setLong(1, appointment.getPatient().getId());
+            preparedStatement.setLong(2, appointment.getDoctor().getUser().getId());
+            preparedStatement.setString(3, appointment.getFromTime());
+            preparedStatement.setString(4, appointment.getToTime());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating appointment failed");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
+
+                    appointment.setId(id);
+
+                    return Optional.of(appointment);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     @Override
