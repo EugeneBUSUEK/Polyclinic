@@ -364,11 +364,11 @@ label.logo{
 
 }
 
-.closed[type="button"]:hover{
+.closed:hover{
     background: linear-gradient(0deg, #800c0c, #791a1a);
 }
 
-.closed[type="button"] {
+.closed {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -534,6 +534,38 @@ label.logo{
 }
 
 .default-button {
+    /*font-weight: bold;*/
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #b0ccff 0, #9cbaff 100%);
+    border-radius: 6px;
+    box-shadow: 0px 7px 17px 0px rgba(34, 60, 80, 0.2);
+    /*box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(38, 38, 38, 0.3) 0 7px 13px -3px, rgba(37, 37, 37, 0.5) 0 -3px 0 inset;*/
+    box-sizing: border-box;
+    color: #1e1e1e;
+    cursor: pointer;
+    display: inline-flex;
+    height: 48px;
+    width: 40%;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+}
+
+.time {
     /*font-weight: bold;*/
     align-items: center;
     appearance: none;

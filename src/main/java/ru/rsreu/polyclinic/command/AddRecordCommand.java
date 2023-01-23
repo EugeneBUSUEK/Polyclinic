@@ -49,9 +49,9 @@ public class AddRecordCommand extends FrontCommand{
         CardRecord cardRecordAfter = this.cardRecordingsDAO.addRecord(cardRecord).orElse(null);
         if (cardRecordAfter == null) {
             request.setAttribute("invalidAddRecord", true);
-            forward(DOCTOR_CHOOSE);
+            forward(PATIENT_CARD);
         } else {
-            redirect(DOCTOR_CHOOSE);
+            forward(DOCTOR_CHOOSE);
         }
 
     }
