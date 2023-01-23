@@ -10,11 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CardRecordingsDAOImpl implements CardRecordingsDAO {
     private static volatile CardRecordingsDAOImpl instance;
 
     private static final String SELECT_PATIENT_RECORDINGS = ProjectResourcer.getInstance().getString("query.select.patient.recordings");
+    private static final String INSERT_PATIENT_RECORD = ProjectResourcer.getInstance().getString("query.insert.patient.record");
 
 
     @Override
@@ -49,6 +51,37 @@ public class CardRecordingsDAOImpl implements CardRecordingsDAO {
             ex.printStackTrace();
         }
         return cardRecordList;
+    }
+
+    @Override
+    public Optional<CardRecord> addRecord(CardRecord cardRecord) {
+        String[] returnId = { "id" };
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_PATIENT_RECORD, returnId)) {
+            preparedStatement.setLong(1, cardRecord.getPatient().getId());
+            preparedStatement.setString(2, cardRecord.getDiagnosis());
+            preparedStatement.setString(3, cardRecord.getTreatmentCourse());
+            preparedStatement.setString(4, cardRecord.getDoctor().getUser().getName());
+            preparedStatement.setString(5, cardRecord.getDoctor().getSpecialization());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating record failed");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
+
+                    cardRecord.setId(id);
+
+                    return Optional.of(cardRecord);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     public static CardRecordingsDAOImpl getInstance() {
