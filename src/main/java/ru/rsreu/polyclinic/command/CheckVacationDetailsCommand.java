@@ -52,7 +52,7 @@ public class CheckVacationDetailsCommand extends FrontCommand{
         }
         HttpSession session = request.getSession();
         session.setAttribute("requestDetails", rs);
-        redirect(CHECK_VACATION_DETAILS);
+        forward(CHECK_VACATION_DETAILS);
     }
 
     @Override

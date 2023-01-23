@@ -46,7 +46,7 @@ public class VacationRequestApproveCommand extends FrontCommand{
         }
         HttpSession session = request.getSession();
         session.setAttribute("listOfRequestSet", requestSetList);
-        redirect(POLYC_ADMIN_CHECK_VACATIONS);
+        forward(POLYC_ADMIN_CHECK_VACATIONS);
     }
 
     @Override
