@@ -6,6 +6,7 @@ import ru.rsreu.polyclinic.data.RequestsTableRow;
 import ru.rsreu.polyclinic.data.VacationRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VacationRequestsDAO {
 
@@ -15,6 +16,7 @@ public interface VacationRequestsDAO {
     List<RequestsTableRow> returnAllRequests(List<Doctor> doctors);
 
     void updateDoctorRequest(VacationRequest vacationRequest);
+    Optional<RequestsTableRow> addDoctorRequest(RequestsTableRow requestsTableRow);
 
     void deleteDoctorRequest(VacationRequest vacationRequest);
 }

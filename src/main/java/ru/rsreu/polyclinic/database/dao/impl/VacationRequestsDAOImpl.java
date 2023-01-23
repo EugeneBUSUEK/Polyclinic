@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class VacationRequestsDAOImpl implements VacationRequestsDAO {
 
@@ -20,6 +21,7 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
     private static final String SELECT_ALL_REQUESTS = ProjectResourcer.getInstance().getString("query.select.all.requests");
     private static final String UPDATE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.update.doctor.request");
     private static final String DELETE_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.delete.doctor.request");
+    private static final String INSERT_DOCTOR_REQUEST = ProjectResourcer.getInstance().getString("query.insert.doctor.request");
 
 
     @Override
@@ -141,6 +143,36 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @Override
+    public Optional<RequestsTableRow> addDoctorRequest(RequestsTableRow requestsTableRow) {
+        String[] returnId = { "id" };
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(INSERT_DOCTOR_REQUEST, returnId)) {
+            preparedStatement.setLong(1, requestsTableRow.getDoctor().getUser().getId());
+            preparedStatement.setString(2, requestsTableRow.getRequest());
+            preparedStatement.setString(3, requestsTableRow.getDate_from());
+            preparedStatement.setString(4, requestsTableRow.getDate_to());
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating vacation failed");
+            }
+
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    long id = generatedKeys.getLong(1);
+
+                    requestsTableRow.setId(id);
+
+                    return Optional.of(requestsTableRow);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return Optional.empty();
     }
 
     @Override
