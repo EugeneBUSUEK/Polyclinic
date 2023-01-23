@@ -31,4 +31,7 @@ public final class DAOFactory {
     public static AppointmentsDAO getAppointmentsDAO() {
         return AppointmentsDAOImpl.getInstance();
     }
+    public static CardRecordingsDAO getCardRecordingsDAO() {
+        return CardRecordingsDAOImpl.getInstance();
+    }
 }
