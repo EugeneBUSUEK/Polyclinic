@@ -18,7 +18,7 @@
         <h2 style="margin: 0; text-align: center">Do you want to make an appointment for a repeat appointment or to see another doctor?</h2>
 
         <div class="edit-form" id="edit-form">
-            <form id="actionForm" action="addUser" method="post">
+            <form id="actionForm" action="startReappointment" method="post">
                 <input class="submit" type="submit" value="Create Appointment">
                 <input class="closed" style="width: 60%" type="submit" value="Back to profile">
             </form>
