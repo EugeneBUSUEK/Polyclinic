@@ -34,7 +34,7 @@
                         <div style="display: none"><b>Password:</b> <span class="password"><c:out value="${user.getUser().getPassword()}"/></span><br></div>
                         <div style="display: none"><b>Specialization:</b> <span class="specialization"><c:out value="${user.getSpecialization()}"/></span><br></div>
                         <div style="display: none"><b>Cabinet:</b> <span class="cabinet"><c:out value="${user.getCabinet()}"/></span><br></div>
-                        <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${user.getUser().getId()}"/></span><br></div>
+                        <div style="display: flex"><b>Id:</b> <span class="id"><c:out value="${user.getUser().getId()}"/></span><br></div>
                     </div></td>
 
                     <td>VstaVIT STATUS</td>
@@ -328,13 +328,13 @@
                     <input id="requiredEdit" class="submit" type="submit" value="Submit" style="display: none">
                 </form>
                 <form id="actionForm" action="editUser" method="post">
-                    <input type="hidden" name="id" required/>
-                    <input type="hidden" name="username" required/>
-                    <input type="hidden" name="password" required/>
-                    <input type="hidden" name="name" required/>
-                    <input type="hidden" name="role" required/>
-                    <input type="hidden" name="spec" required />
-                    <input type="hidden" name="cabinet" required/>
+                    <input hidden name="id" required/>
+                    <input hidden name="username" required/>
+                    <input hidden name="password" required/>
+                    <input hidden name="name" required/>
+                    <input hidden name="role" required/>
+                    <input hidden name="spec"/>
+                    <input hidden name="cabinet"/>
                     <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
                 </form>
 
