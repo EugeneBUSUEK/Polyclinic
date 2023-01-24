@@ -34,7 +34,7 @@
                         <div style="display: none"><b>Password:</b> <span class="password"><c:out value="${user.getUser().getPassword()}"/></span><br></div>
                         <div style="display: none"><b>Specialization:</b> <span class="specialization"><c:out value="${user.getSpecialization()}"/></span><br></div>
                         <div style="display: none"><b>Cabinet:</b> <span class="cabinet"><c:out value="${user.getCabinet()}"/></span><br></div>
-                        <div style="display: flex"><b>Id:</b> <span class="id"><c:out value="${user.getUser().getId()}"/></span><br></div>
+                        <div style="display: none"><b>Id:</b> <span class="id"><c:out value="${user.getUser().getId()}"/></span><br></div>
                     </div></td>
 
                     <td>VstaVIT STATUS</td>
@@ -192,7 +192,7 @@
                             >
                         </div>
                     </div>
-                    <input id="required" class="submit" type="submit" value="Submit" style="display: none">
+                    <input id="requiredAdd" class="submit" type="submit" value="Submit" style="display: none">
                 </form>
 
                 <form id="actionAddForm" action="addUser" method="post">
@@ -200,8 +200,8 @@
                     <input type="hidden" name="password" required/>
                     <input type="hidden" name="name" required/>
                     <input type="hidden" name="role" required/>
-                    <input type="hidden" name="spec" required/>
-                    <input type="hidden" name="cabinet" required/>
+                    <input type="hidden" name="spec"/>
+                    <input type="hidden" name="cabinet"/>
                     <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()" >
                 </form>
                 <input class="closed" type="button" value="Close form" onclick="closeAddForm()">

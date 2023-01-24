@@ -176,7 +176,7 @@ function polycAdminRbAddOnClick(){
 };
 
 function dataToActionAdd(){
-    document.getElementById('required').click()
+    document.getElementById('requiredAdd').click()
     usernameActionAddInputEl.value = usernameAddInputEl.value
     passwordActionAddInputEl.value = passwordAddInputEl.value
     nameActionAddInputEl.value = nameAddInputEl.value

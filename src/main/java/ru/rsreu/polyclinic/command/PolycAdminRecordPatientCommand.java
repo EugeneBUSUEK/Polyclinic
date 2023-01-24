@@ -16,8 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_CHECK_VACATIONS;
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_RECORD_PATIENT;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class PolycAdminRecordPatientCommand extends FrontCommand{
     private UserDAO userDAO;
@@ -44,7 +43,15 @@ public class PolycAdminRecordPatientCommand extends FrontCommand{
         HttpSession session = request.getSession();
         session.setAttribute("patientList", patients);
         session.setAttribute("doctorList", doctors);
-        forward(POLYC_ADMIN_RECORD_PATIENT);
+
+        User currentUser = (User) session.getAttribute("user");
+        if (currentUser.getRole().equals(RoleType.DOCTOR.getRole())){
+            forward(PROFILE);
+        } else {
+            forward(POLYC_ADMIN_RECORD_PATIENT);
+        }
+
+//        forward(POLYC_ADMIN_RECORD_PATIENT);
     }
 
     @Override
