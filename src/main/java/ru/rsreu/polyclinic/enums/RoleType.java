@@ -1,10 +1,10 @@
 package ru.rsreu.polyclinic.enums;
 
 public enum RoleType {
-    POLYC_ADMIN("polyclinic_administrator"),
-    SYS_ADMIN("system_administrator"),
+    POLYCLINIC_ADMINISTRATOR("polyclinic_administrator"),
+    SYSTEM_ADMINISTRATOR("system_administrator"),
     DOCTOR("doctor"),
-    MODER("moderator");
+    MODERATOR("moderator");
 
     private final String role;
 

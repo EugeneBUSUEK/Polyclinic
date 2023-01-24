@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>PolyAdmin</title>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <style><jsp:include page="../css/style.css"/></style>
+
 </head>
 <body style="height: 100vH">
 

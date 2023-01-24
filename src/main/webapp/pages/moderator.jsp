@@ -7,7 +7,7 @@
     <title>Edit users blocked status</title>
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <style><jsp:include page="../css/style.css"/></style>
 </head>
 <body style="height: 100%">
 

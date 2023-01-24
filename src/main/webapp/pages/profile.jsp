@@ -3,7 +3,7 @@
 <head>
     <title>${user.getName()}</title>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <style><jsp:include page="../css/style.css"/></style>
 </head>
 <body>
 

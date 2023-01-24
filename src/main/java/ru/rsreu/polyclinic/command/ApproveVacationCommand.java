@@ -1,9 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
-import ru.rsreu.polyclinic.data.Doctor;
-import ru.rsreu.polyclinic.data.RequestSet;
-import ru.rsreu.polyclinic.data.User;
-import ru.rsreu.polyclinic.data.VacationRequest;
+import ru.rsreu.polyclinic.data.*;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
@@ -16,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.CHECK_VACATION_DETAILS;
 import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_CHECK_VACATIONS;
@@ -43,6 +42,14 @@ public class ApproveVacationCommand extends FrontCommand{
         vacationRequest.setDate_to(request.getParameter("date_to"));
         vacationRequest.setApproved(BooleanUtil.parseBoolean(1));
         this.vacationRequestsDAO.updateDoctorRequest(vacationRequest);
+        List<User> users = this.userDAO.returnAllUsers();
+        List<Doctor> doctors = new ArrayList<>();
+        for (User user : users) {
+            doctors.add(this.doctorDetailsDAO.returnDoctor(user));
+        }
+        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
+        HttpSession session = request.getSession();
+        session.setAttribute("listOfRequestSet", requestSetList);
 
         forward(POLYC_ADMIN_CHECK_VACATIONS);
     }

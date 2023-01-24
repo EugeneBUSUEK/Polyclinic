@@ -1,5 +1,6 @@
 package ru.rsreu.polyclinic.command;
 
+import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
@@ -41,6 +42,8 @@ public class BlockUserCommand extends FrontCommand{
             user.setLogin(login);
             user.setBlocked(isBlocked);
             this.userDAO.blockUser(user);
+            List<ModerTableRow> rs = this.userDAO.returnAllUsersModer();
+            session.setAttribute("listOfUsers", rs);
             redirect(MODER);
         }
     }

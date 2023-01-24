@@ -3,7 +3,6 @@ package ru.rsreu.polyclinic.configuration;
 import ru.rsreu.polyclinic.enums.RoleType;
 import ru.rsreu.polyclinic.enums.Route;
 
-import javax.management.relation.Role;
 import java.util.*;
 
 public class AuthConfig {
@@ -51,7 +50,7 @@ public class AuthConfig {
 
     public static Map<RoleType, List<Route>> setRoleRoutes() {
         Map<RoleType, List<Route>> map = new HashMap<>();
-        map.put(RoleType.POLYC_ADMIN, Arrays.asList(
+        map.put(RoleType.POLYCLINIC_ADMINISTRATOR, Arrays.asList(
                 Route.LOGIN,
                 Route.PROFILE,
                 Route.POLYC_ADMIN_EDIT_PATIENTS,
@@ -69,12 +68,12 @@ public class AuthConfig {
                 Route.PATIENT_CARD,
                 Route.DOCTOR_RECORD_PATIENT_TO_DOCTOR,
                 Route.DOCTOR_CHOOSE));
-        map.put(RoleType.MODER, Arrays.asList(
+        map.put(RoleType.MODERATOR, Arrays.asList(
                 Route.LOGIN,
                 Route.PROFILE,
                 Route.MODER
         ));
-        map.put(RoleType.SYS_ADMIN, Arrays.asList(
+        map.put(RoleType.SYSTEM_ADMINISTRATOR, Arrays.asList(
                 Route.LOGIN,
                 Route.PROFILE,
                 Route.SYS_ADMIN
@@ -85,9 +84,9 @@ public class AuthConfig {
     public static Map<RoleType, Route> setRoleStartPage() {
         Map<RoleType, Route> map = new HashMap<>();
         map.put(RoleType.DOCTOR, Route.LOGIN);
-        map.put(RoleType.MODER, Route.LOGIN);
-        map.put(RoleType.POLYC_ADMIN, Route.LOGIN);
-        map.put(RoleType.SYS_ADMIN, Route.LOGIN);
+        map.put(RoleType.MODERATOR, Route.LOGIN);
+        map.put(RoleType.POLYCLINIC_ADMINISTRATOR, Route.LOGIN);
+        map.put(RoleType.SYSTEM_ADMINISTRATOR, Route.LOGIN);
         return map;
     }
 

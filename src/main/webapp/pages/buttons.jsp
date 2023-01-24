@@ -14,16 +14,16 @@
             <form action="doctorCheckAppointments" method="post"><button class="button" role="button">Check appointments</button></form>
             <form action="doctorCheckVacationRequests" method="post"><button class="button" role="button">Check & Create vacation request</button></form>
         </c:when>
-        <c:when test="${user.getRole().equals(RoleType.MODER.getRole())}">
+        <c:when test="${user.getRole().equals(RoleType.MODERATOR.getRole())}">
             <form action="moderator" method="post"><button class="button" role="button">Edit users blocked status</button></form>
         </c:when>
-        <c:when test="${user.getRole().equals(RoleType.POLYC_ADMIN.getRole())}">
+        <c:when test="${user.getRole().equals(RoleType.POLYCLINIC_ADMINISTRATOR.getRole())}">
             <form action="editOutpatientCards" method="post"><button class="button" role="button">Edit & Add patient card</button></form>
             <form action="polycAdminEditCharts" method="post"><button class="button" role="button">Edit charts for doctors</button></form>
             <form action="polycAdminVacationRequestApprove" method="post"><button class="button" role="button">Vacation request approve</button></form>
             <form action="polycAdminRecordPatient" method="post"><button class="button" role="button">Create Record a patient to doctors</button></form>
         </c:when>
-        <c:when test="${user.getRole().equals(RoleType.SYS_ADMIN.getRole())}">
+        <c:when test="${user.getRole().equals(RoleType.SYSTEM_ADMINISTRATOR.getRole())}">
             <form action="sysAdmin" method="post"><button class="button" role="button">Edit & Add users</button></form>
         </c:when>
     </c:choose>

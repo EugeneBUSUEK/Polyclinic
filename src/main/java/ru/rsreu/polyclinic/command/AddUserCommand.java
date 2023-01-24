@@ -11,7 +11,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.LOGIN;
 import static ru.rsreu.polyclinic.constant.Routes.SYS_ADMIN;
@@ -53,10 +55,12 @@ public class AddUserCommand extends FrontCommand{
 //            doctor.setInVacation(Boolean.parseBoolean(request.getParameter("inVacation")));
 //                this.userDAO.addUser(user);
                 this.doctorDetailsDAO.addDoctorDetails(doctor);
-                redirect(SYS_ADMIN);
-            } else {
-                redirect(SYS_ADMIN);
+
             }
+            List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
+            HttpSession session = request.getSession();
+            session.setAttribute("listOfUsersAdmin", rs);
+            redirect(SYS_ADMIN);
         }
 
     }
