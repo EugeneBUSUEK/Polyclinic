@@ -52,7 +52,7 @@ public class AddAppointmentCommand extends FrontCommand{
         if (appointmentAfter == null) {
             request.setAttribute("invalidAddAppointment", true);
             forward(PROFILE);
-        } else if (currentUser.getRole().equals(RoleType.DOCTOR.getRole())){
+        } else if (currentUser.getRole().equals(RoleType.DOCTOR.getRole())) {
             redirect(PROFILE);
         } else {
             redirect(POLYC_ADMIN_RECORD_PATIENT);

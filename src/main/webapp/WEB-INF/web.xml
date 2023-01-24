@@ -9,6 +9,20 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
+<!--    <filter>-->
+<!--        <filter-name>PermissionFilter</filter-name>-->
+<!--        <filter-class>ru.rsreu.polyclinic.filter.PermissionFilter</filter-class>-->
+<!--        <init-param>-->
+<!--            <param-name>requestEncoding</param-name>-->
+<!--            <param-value>UTF-8</param-value>-->
+<!--        </init-param>-->
+<!--    </filter>-->
+
+<!--    <filter-mapping>-->
+<!--        <filter-name>PermissionFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
     <filter>
         <filter-name>CharsetFilter</filter-name>
         <filter-class>ru.rsreu.polyclinic.filter.CharsetFilter</filter-class>

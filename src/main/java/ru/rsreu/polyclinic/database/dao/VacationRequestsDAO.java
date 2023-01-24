@@ -12,6 +12,7 @@ public interface VacationRequestsDAO {
 
     RequestSet returnRequestsOfDoctorPolomani(Doctor doctor);
     List<RequestsTableRow> returnRequestsOfDoctor(Doctor doctor);
+    List<RequestsTableRow> returnRequestsOfDoctorById(Long id);
 
     List<RequestsTableRow> returnAllRequests(List<Doctor> doctors);
     List<RequestsTableRow> returnAllRequestsForAdmin(List<Doctor> doctors);

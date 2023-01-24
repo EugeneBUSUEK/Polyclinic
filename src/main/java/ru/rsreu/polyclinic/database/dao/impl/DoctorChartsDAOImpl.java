@@ -8,6 +8,8 @@ import ru.rsreu.polyclinic.database.dao.DoctorChartsDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorChartsDAOImpl implements DoctorChartsDAO {
 
@@ -16,6 +18,7 @@ public class DoctorChartsDAOImpl implements DoctorChartsDAO {
     private static final String UPDATE_DOCTOR_CHARTS = ProjectResourcer.getInstance().getString("query.update.doctor.charts");
     private static final String INSERT_DOCTOR_CHARTS = ProjectResourcer.getInstance().getString("query.insert.doctor.charts");
     private static final String SELECT_DOCOTR_CHARTS = ProjectResourcer.getInstance().getString("query.select.doctor.charts");
+    private static final String SELECT_DOCOTR_CHART_FOR_DAY = ProjectResourcer.getInstance().getString("query.select.doctor.chart.day");
 
 
 
@@ -37,6 +40,26 @@ public class DoctorChartsDAOImpl implements DoctorChartsDAO {
 
 
             return doctorChart;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<String> returnDoctorChartForDay(Long id, Integer dayOfWeek) {
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCOTR_CHART_FOR_DAY)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(2, dayOfWeek);
+            rs = preparedStatement.executeQuery();
+
+            List<String> chart = new ArrayList<>();
+            while (rs.next()) {
+                chart.add(rs.getString(1));
+                chart.add(rs.getString(2));
+            }
+            return chart;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

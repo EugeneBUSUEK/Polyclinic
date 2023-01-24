@@ -94,6 +94,40 @@ public class VacationRequestsDAOImpl implements VacationRequestsDAO {
     }
 
     @Override
+    public List<RequestsTableRow> returnRequestsOfDoctorById(Long id) {
+        List<RequestsTableRow> requestsTableRows = new ArrayList<>();
+        ResultSet rs = null;
+        try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_DOCTOR_REQUESTS)) {
+            preparedStatement.setLong(1, id);
+            rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                RequestsTableRow row = new RequestsTableRow();
+//                row.setDoctor(doctor);
+                row.setId(rs.getLong(1));
+                row.setRequest(rs.getString(3));
+                row.setDate_from(rs.getString(4));
+                row.setDate_to(rs.getString(5));
+                row.setApproved(BooleanUtil.parseBoolean(rs.getInt(6)));
+                requestsTableRows.add(row);
+//                List<String> row = new ArrayList<>();
+//                row.add(rs.getString(1));
+//                row.add(rs.getString(2));
+//                row.add(rs.getString(3));
+//                row.add(Integer.toString(rs.getInt(4)));
+//                row.add(rs.getString(5));
+//                for (int i = 1; i <= 5; i++) {
+//                    row.add(rs.getString(i));
+//
+//                }
+            }
+            return requestsTableRows;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public List<RequestsTableRow> returnAllRequests(List<Doctor> doctors) {
 //        RequestSet requestSet = new RequestSet();
         List<RequestsTableRow> requestsTableRows = new ArrayList<>();
