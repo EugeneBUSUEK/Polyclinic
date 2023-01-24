@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="height: 100%">
+<body style="height: 100vh">
 
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
@@ -39,7 +39,7 @@
     </table>
   </div>
 </div>
-
+<br>
 <div class="scrollit" id="doctorList" style="display: none">
   <div class="list-div">
     <table>
@@ -136,12 +136,12 @@
       </form>
 
       <form id="actionForm" action="setAppointment" method="post">
-        <input name="patient_name"  required/>
-        <input name="phone"  required/>
-        <input name="patient_id"  required/>
-        <input name="doctor_name"  required/>
-        <input name="spec"  required/>
-        <input name="doctor_id"  required/>
+        <input hidden name="patient_name"  required/>
+        <input hidden name="phone"  required/>
+        <input hidden name="patient_id"  required/>
+        <input hidden name="doctor_name"  required/>
+        <input hidden name="spec"  required/>
+        <input hidden name="doctor_id"  required/>
 
         <input class="submit" type="submit" value="Create Appointment">
       </form>

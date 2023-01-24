@@ -27,8 +27,8 @@
         <tr>
             <td><div class="user">
               <b>Patient name: </b><span class="name"><c:out value="${appointment.getPatient().getName()}"/></span> <br>
-              <b>Date from</b> <input name="from" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
-              <b>Date to</b> <input name="to" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
+              <b>Date from</b> <input name="from" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="margin-top: 10px; width: 25%; font-size: 15px; background: white;" disabled>  <br>
+              <b>Date to</b> <input name="to" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="margin-top: 10px; width: 25%; font-size: 15px; background: white;" disabled>  <br>
 <%--              <div><b>patient id</b> <input name="patient_id" type="text" value="<c:out value="${appointment.getPatient().getId()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br></div>--%>
             </div></td>
 

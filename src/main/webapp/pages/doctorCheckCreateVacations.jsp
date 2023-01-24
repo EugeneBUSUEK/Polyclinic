@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="height: 100%">
+<body style="height: 100vh">
 
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
@@ -26,10 +26,10 @@
       <c:forEach items="${doctorRequestList}" var="request">
         <tr>
           <td><div class="user">
-            <b>Request №</b> <span class="name"><c:out value="${request.getId()}"/></span> <br>
+            <b>Request n.</b> <span class="name"><c:out value="${request.getId()}"/></span> <br>
             <b>Reason:</b> <span class="name"><c:out value="${request.getRequest()}"/></span> <br>
-            <b>Date from</b> <input type="date" value="<c:out value="${request.getDate_from()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
-            <b>Date to</b> <input type="date" value="<c:out value="${request.getDate_to()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
+            <b>Date from</b> <input type="date" value="<c:out value="${request.getDate_from()}"/>" style="margin-top: 10px; width: 20%; font-size: 15px; background: white;" disabled>  <br>
+            <b>Date to</b> <input type="date" value="<c:out value="${request.getDate_to()}"/>" style="margin-top: 10px; width: 20%; font-size: 15px; background: white;" disabled>  <br>
           </div></td>
 
           <td>
@@ -79,8 +79,7 @@
                   type="date"
                   id="time_from"
                   required
-                  class="time"
-                  style="margin-top: 10px; width: 25%"
+                  style="margin-top: 10px; width: 25%; font-size: 15px; background: white;"
           >
         </div>
 
@@ -92,8 +91,7 @@
                   type="date"
                   id="time_to"
                   required
-                  class="time"
-                  style="margin-top: 10px; width: 25%"
+                  style="margin-top: 10px; width: 25%; font-size: 15px; background: white;"
           >
         </div>
         <input id="checkBt" style="width: 40%; display: none" class="submit" type="submit">

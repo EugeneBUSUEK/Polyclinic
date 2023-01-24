@@ -25,7 +25,7 @@ function femaleRbAddOnClick(){
 };
 
 function dataToActionAdd(){
-    document.getElementById('required').click()
+    document.getElementById('requiredAdd').click()
     nameActionAddInputEl.value = nameAddInputEl.value
     birthActionAddInputEl.value = birthAddInputEl.value
     phoneActionAddInputEl.value = phoneAddInputEl.value
@@ -108,6 +108,7 @@ function femaleRbOnClick(){
 
 
 function dataToAction(){
+    document.getElementById('required').click()
     nameActionInputEl.value = nameInputEl.value
     birthActionInputEl.value = birthInputEl.value
     phoneActionInputEl.value = phoneInputEl.value

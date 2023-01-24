@@ -20,6 +20,7 @@
         <div id="checkform" class="edit-form">
             <div class="form-group">
             </div>
+            <form>
                 <div class="form-group">
                     <label>
                         Choose day
@@ -28,8 +29,7 @@
                             type="date"
                             id="date"
                             required
-                            class="time"
-                            style="margin-top: 10px; width: 20%"
+                            style="margin-top: 10px; width: 20%; font-size: 15px; background: white;"
                     >
                 </div>
 
@@ -41,8 +41,7 @@
                             type="time"
                             id="time_from"
                             required
-                            class="time"
-                            style="margin-top: 10px; width: 20%"
+                            style="margin-top: 10px; width: 20%; font-size: 15px; background: white;"
                     >
                 </div>
 
@@ -54,8 +53,7 @@
                             type="time"
                             id="time_to"
                             required
-                            class="time"
-                            style="margin-top: 10px; width: 20%"
+                            style="margin-top: 10px; width: 20%; font-size: 15px; background: white;"
                     >
                 </div>
 
@@ -86,16 +84,18 @@
                             value="<c:out value="${doctor.getUser().getId()}"/>"
                     >
                 </div>
-
-            <form id="actionForm" action="addAppointment" method="post">
-                <input hidden name="date" style="font-size: 15px">
-                <input hidden name="time_from" style="font-size: 15px">
-                <input hidden name="time_to" style="font-size: 15px">
-                <input hidden name="patient_id" style="font-size: 15px">
-                <input hidden name="doctor_id" style="font-size: 15px">
-                <input style="width: 40%" class="submit" type="submit" value="Submit" onclick="dataToAction()">
+                <input id="required" style="width: 40%; display: none" class="submit" type="submit" value="Submit" >
             </form>
 
+            <form id="actionForm" action="addAppointment" method="post">
+                <input hidden name="date" style="font-size: 15px" required>
+                <input hidden name="time_from" style="font-size: 15px" required>
+                <input hidden name="time_to" style="font-size: 15px" required>
+                <input hidden name="patient_id" style="font-size: 15px" required>
+                <input hidden name="doctor_id" style="font-size: 15px" required>
+                <input style="width: 40%" class="submit" type="submit" value="Submit" onclick="dataToAction()">
+            </form>
+            <br>
             <div class="form-group">
                 <label style="margin-bottom: 10px; margin-top: 40px">
                     Appointments for <c:out value="${doctor.getUser().getName()}"/>
@@ -114,9 +114,9 @@
                             <c:forEach items="${appointmentList}" var="appointment">
                             <tr>
                                 <td><div class="user"><b>Patient name</b><br><c:out value="${appointment.getPatient().getName()}"/></div></td>
-                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="width: auto; text-align: center;" disabled>
+                                <td><input type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;" disabled>
                                 </td>
-                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="width: auto" disabled>
+                                <td><input type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;" disabled>
                                 </td>
                             </tr>
                             </c:forEach>

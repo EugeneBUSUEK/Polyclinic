@@ -64,7 +64,7 @@
                         type="date"
                         id="time_from"
                         required
-                        style="margin-top: 10px; width: 25%; font-size: 20px; background: white; font-weight: bold;"
+                        style="margin-top: 10px; width: 25%; font-size: 20px; background: white;"
                         value="<c:out value="${patientObj.getBirthDay()}"/>"
                         disabled
                 >
@@ -118,7 +118,7 @@
                     <td><div class="user">
                         <b>Doctor name: </b> <span class="name"><c:out value="${record.getDoctor().getUser().getName()}"/></span> <br>
                         <b>Specialization: </b> <span class="name"><c:out value="${record.getDoctor().getSpecialization()}"/></span> <br>
-                        <b>Appointments time:</b><input type="datetime-local" value="<c:out value="${record.getTime()}"/>" style="font-size: 15px; width: auto; text-align: center;" disabled>  <br>
+                        <b>Appointments time: </b><input type="datetime-local" value="<c:out value="${record.getTime()}"/>" style="margin-top: 10px; width: 20%; font-size: 15px; background: white;" disabled>  <br>
                         <b>Diagnosis: </b> <span class="name"><c:out value="${record.getDiagnosis()}"/></span> <br>
                         <b>Course: </b> <span class="name"><c:out value="${record.getTreatmentCourse()}"/></span> <br>
                     </div></td>
@@ -130,17 +130,19 @@
     </div>
 </div>
 
+<br>
+
 <div class ="container-button" style="height: 80px">
-    <button id="formButton" class="button" role="button" style="width: 30%" onclick="displayForm()">Create vacation request</button>
+    <button id="formButton" class="button" role="button" style="width: 30%" onclick="displayForm()">Create record</button>
 </div>
 
 <div id="createForm" class="container-form" style="margin-top: 50px; display: none;">
     <div class="form-box">
         <h2 style="margin: 0">Create new record</h2>
-
         <div id="checkform" class="edit-form">
             <div class="form-group">
             </div>
+            <form>
             <div class="form-group">
                 <label>
                     Diagnosis
@@ -162,7 +164,8 @@
                         required
                 >
             </div>
-
+                <input id="required" style="width: 40%; display: none" class="submit" type="submit" value="Submit">
+            </form>
             <div><form id="actionForm" action="addRecord" method="post">
                 <input hidden name="id" style="font-size: 15px" value="<c:out value="${patientObj.getId()}"/>" required>
                 <input hidden name="diagnosis" style="font-size: 15px" required>

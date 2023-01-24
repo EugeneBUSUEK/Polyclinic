@@ -118,6 +118,7 @@ function polycAdminRbOnClick(){
 };
 
 function dataToAction(){
+    document.getElementById('requiredEdit').click()
     idActionInputEl.value = idInputEl.value
     usernameActionInputEl.value = usernameInputEl.value
     passwordActionInputEl.value = passwordInputEl.value

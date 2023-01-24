@@ -42,8 +42,8 @@ public class StartReappointmentCommand extends FrontCommand{
         }
 
         HttpSession session = request.getSession();
-        Patient ppatientFroId = (Patient) session.getAttribute("patientObjOnlyWithId");
-        Patient patient = this.outpatientCardsDAO.getPatientBId(ppatientFroId.getId()).orElse(null);
+        Patient patientForId = (Patient) session.getAttribute("patientObjOnlyWithId");
+        Patient patient = this.outpatientCardsDAO.getPatientBId(patientForId.getId()).orElse(null);
         session.setAttribute("patient", patient);
         session.setAttribute("doctorList", doctors);
         forward(DOCTOR_RECORD_PATIENT_TO_DOCTOR);

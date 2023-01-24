@@ -33,13 +33,12 @@
                             <tbody>
 
                             <tr>
-                                    <td><div><b><span class="day">Monday</span><br></b>
-                                        <br></div></td>
+                                    <td><div><b><span class="day">Monday</span></b></div></td>
 
                                     <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(1)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(1)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(1)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;" ></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(1)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -50,13 +49,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Tuesday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Tuesday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(2)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(2)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(2)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(2)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -67,13 +65,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Wednesday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Wednesday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(3)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(3)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(3)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(3)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -84,13 +81,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Thursday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Thursday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(4)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(4)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(4)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(4)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -101,13 +97,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Friday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Friday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(5)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(5)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(5)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(5)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -118,13 +113,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Saturday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Saturday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(6)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(6)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(6)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(6)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">
@@ -135,13 +129,12 @@
                             </tr>
 
                             <tr>
-                                <td><div><b><span class="day">Sunday</span><br></b>
-                                    <br></div></td>
+                                <td><div><b><span class="day">Sunday</span></b></div></td>
 
                                 <form id="actionForm" action="editChart" method="post">
 
-                                    <td><input id="timefrom" name="from_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(0)}"/>" style="width: auto"></td>
-                                    <td><input id="timeto" name="to_time" class="time" type="time" value="<c:out value="${doctorChart.getChart().getTo(0)}"/>" style="width: auto"></td>
+                                    <td><input id="timefrom" name="from_time" type="time" value="<c:out value="${doctorChart.getChart().getFrom(0)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
+                                    <td><input id="timeto" name="to_time" type="time" value="<c:out value="${doctorChart.getChart().getTo(0)}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;"></td>
 
                                     <td>
                                         <input hidden id="id" name="id" value="<c:out value="${doctorChart.getDoctor().getUser().getId()}"/>">

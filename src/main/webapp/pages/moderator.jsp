@@ -19,7 +19,7 @@
 <%--  String blocked = "blocked";--%>
 <%--%>--%>
 
-<div class="for_caption"><h1 class="caption">List of user</h1></div>
+<div class="for_caption"><h1 class="caption" style="margin: 40px">List of user</h1></div>
 <%--<div class="for_caption"><h1 class="caption"><c:out value="${listOfUsers.get(5).get(3)}"/></h1></div>--%>
 
 <div class="scrollit">

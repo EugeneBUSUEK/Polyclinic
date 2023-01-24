@@ -6,14 +6,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body style="height: 100%">
+<body style="height: 100vh">
 
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 
 <div class="for_caption" style="margin: 40px"><h1 class="caption">List of Doctors</h1></div>
 
-<div class="scrollit" id="doctorList" style="display: none">
+<div class="scrollit" id="doctorList" style="display: flex">
     <div class="list-div">
         <table>
             <thead class="thead-list">
@@ -63,6 +63,7 @@
                             required
                             id="paietntName"
                             disabled
+                            value="<c:out value="${patient.getName()}"/>"
                     >
                 </div>
 
@@ -76,6 +77,7 @@
                             required
                             id="patientPhone"
                             disabled
+                            value="<c:out value="${patient.getPhoneNumber()}"/>"
                     >
                 </div>
 
@@ -109,15 +111,16 @@
             </form>
 
             <form id="actionForm" action="setAppointment" method="post">
-                <input name="patient_name"  required/>
-                <input name="phone"  required/>
-                <input name="patient_id"  required/>
-                <input name="doctor_name"  required/>
-                <input name="spec"  required/>
-                <input name="doctor_id"  required/>
+                <input hidden name="patient_name" value="<c:out value="${patient.getName()}"/>"  required/>
+                <input hidden name="phone" value="<c:out value="${patient.getPhoneNumber()}"/>" required/>
+                <input hidden name="patient_id" value="<c:out value="${patient.getId()}"/>" required/>
+                <input hidden name="doctor_name"  required/>
+                <input hidden name="spec"  required/>
+                <input hidden name="doctor_id"  required/>
 
                 <input class="submit" type="submit" value="Create Appointment">
             </form>
+
         </div>
     </div>
 </div>

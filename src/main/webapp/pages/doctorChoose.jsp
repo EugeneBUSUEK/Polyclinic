@@ -15,7 +15,7 @@
 
 <div id="checkForm" class="container-form" style="display: flex; margin-top: 20px">
     <div class="form-box">
-        <h2 style="margin: 0; text-align: center">Do you want to make an appointment for a repeat appointment or to see another doctor?</h2>
+        <div style="text-align: center;"><span style="margin: 0;">Do you want to make an appointment for a repeat appointment or to see another doctor?</span></div>
 
         <div class="edit-form" id="edit-form">
             <form id="actionForm" action="startReappointment" method="post">

@@ -10,7 +10,7 @@
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
 
-<div class="for_caption"><h1 class="caption">List of patient</h1></div>
+<div class="for_caption"><h1 class="caption" style="margin: 40px">List of patient</h1></div>
 
 <div class="scrollit">
     <div class="list-div">
@@ -119,11 +119,12 @@
                         Birth Date
                     </label>
                     <input
-                            type="text"
+                            type="date"
                             name="birth"
                             placeholder="Birth Date"
                             required
                             id="birth"
+                            style="margin-top: 10px; width: 25%; font-size: 15px; background: white;"
                     >
                 </div>
 
@@ -167,7 +168,7 @@
                 </div>
 
 
-                <input id="required" type="submit" class="submit" value="Submit" style="display: none">
+                <input id="requiredAdd" type="submit" class="submit" value="Submit" style="display: none">
             </form>
 
             <form id="actionAddForm" action="addPatient" method="post">
@@ -226,11 +227,12 @@
                         Birth Date
                     </label>
                     <input
-                            type="text"
+                            type="date"
                             name="birth"
                             placeholder="Birth Date"
                             required
                             id="birth"
+                            style="margin-top: 10px; width: 25%; font-size: 15px; background: white;"
                     >
                 </div>
 

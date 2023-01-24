@@ -13,7 +13,7 @@
 
 <div id="reqForm" class="container-form" style="margin-top: 50px; display: flex;">
     <div class="form-box">
-        <h2 style="margin: 0">Information about requests № <c:out value="${requestDetails.getVacationRequestList().get(0).getId()}"/></h2>
+        <h2 style="margin: 0">Information about requests n.<c:out value="${requestDetails.getVacationRequestList().get(0).getId()}"/></h2>
 
         <div id="checkform" class="edit-form">
             <div class="form-group">
@@ -65,10 +65,11 @@
                         From
                     </label>
                     <input
-                            type="text"
+                            type="date"
                             name="from"
                             required
                             disabled
+                            style="margin-top: 10px; width: auto; font-size: 15px; background: white;"
                             value="<c:out value="${requestDetails.getVacationRequestList().get(0).getDate_from()}"/>"
                     >
                 </div>
@@ -78,10 +79,11 @@
                         To
                     </label>
                     <input
-                            type="text"
+                            type="date"
                             name="to"
                             required
                             disabled
+                            style="margin-top: 10px; width: auto; font-size: 15px; background: white;"
                             value="<c:out value="${requestDetails.getVacationRequestList().get(0).getDate_to()}"/>"
                     >
                 </div>
@@ -105,9 +107,9 @@
                             <c:forEach items="${doctorAppointments}" var="appointment">
                             <tr>
                                 <td><div class="user"><b>Patient name</b><br><c:out value="${appointment.getPatient().getName()}"/></div></td>
-                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getFromTime()}"/>" style="width: auto; background: white; font-size: 15px;" disabled>
+                                <td><input  type="datetime-local"  value="<c:out value="${appointment.getFromTime()}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;" disabled>
                                 </td>
-                                <td><input class="time" type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="width: auto; background: white; font-size: 15px;" disabled>
+                                <td><input type="datetime-local" value="<c:out value="${appointment.getToTime()}"/>" style="margin-top: 10px; width: auto; font-size: 15px; background: white;" disabled>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -132,7 +134,7 @@
             </form>
         </div>
 
-        <input class="closed" type="button" value="Back to requests list" onclick="closeReqForm()">
+        <form action="polycAdminVacationRequestApprove" method="post"><input class="closed" type="submit" value="Back to requests list" style="width: 50%"></form>
     </div>
 </div>
 <br>

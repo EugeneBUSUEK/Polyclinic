@@ -12,7 +12,7 @@
 <body style="height: 100%">
 <%@include file="header.jsp" %>
 <%@include file="buttons.jsp" %>
-<div class="for_caption"><h1 class="caption">List of user</h1></div>
+<div class="for_caption"><h1 class="caption" style="margin: 40px">List of user</h1></div>
 
 <div class="scrollit">
     <div class="list-div">
@@ -100,7 +100,7 @@
                         </label>
                         <div style="margin-top: 10px">
                             <label style="margin: 10px" class="radio-inline" onclick="moderRbAddOnClick()">
-                                <input id="addModerRB" type="radio" name="optradio">Moderator
+                                <input id="addModerRB" type="radio" name="optradio" required>Moderator
                             </label>
                             <label style="margin: 10px" class="radio-inline" onclick="sysAdminRbAddOnClick()">
                                 <input id="addSysAdminRB" type="radio" name="optradio">System Administrator
@@ -194,13 +194,14 @@
                     </div>
                     <input id="required" class="submit" type="submit" value="Submit" style="display: none">
                 </form>
+
                 <form id="actionAddForm" action="addUser" method="post">
-                    <input type="hidden" name="username"/>
-                    <input type="hidden" name="password"/>
-                    <input type="hidden" name="name"/>
-                    <input type="hidden" name="role"/>
-                    <input type="hidden" name="spec"/>
-                    <input type="hidden" name="cabinet"/>
+                    <input type="hidden" name="username" required/>
+                    <input type="hidden" name="password" required/>
+                    <input type="hidden" name="name" required/>
+                    <input type="hidden" name="role" required/>
+                    <input type="hidden" name="spec" required/>
+                    <input type="hidden" name="cabinet" required/>
                     <input class="submit" type="submit" value="Submit" onclick="dataToActionAdd()" >
                 </form>
                 <input class="closed" type="button" value="Close form" onclick="closeAddForm()">
@@ -217,7 +218,7 @@
             <div class="edit-form" id="edit-form">
                 <div class="form-group">
                 </div>
-
+                <form>
                 <div class="form-group">
                     <label>
                         Role
@@ -324,15 +325,16 @@
                         >
                     </div>
                 </div>
-
+                    <input id="requiredEdit" class="submit" type="submit" value="Submit" style="display: none">
+                </form>
                 <form id="actionForm" action="editUser" method="post">
-                    <input type="hidden" name="id"/>
-                    <input type="hidden" name="username"/>
-                    <input type="hidden" name="password"/>
-                    <input type="hidden" name="name"/>
-                    <input type="hidden" name="role"/>
-                    <input type="hidden" name="spec"/>
-                    <input type="hidden" name="cabinet"/>
+                    <input type="hidden" name="id" required/>
+                    <input type="hidden" name="username" required/>
+                    <input type="hidden" name="password" required/>
+                    <input type="hidden" name="name" required/>
+                    <input type="hidden" name="role" required/>
+                    <input type="hidden" name="spec" required />
+                    <input type="hidden" name="cabinet" required/>
                     <input class="submit" type="submit" value="Submit" onclick="dataToAction()">
                 </form>
 

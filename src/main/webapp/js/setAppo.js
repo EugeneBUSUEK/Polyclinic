@@ -15,6 +15,7 @@ const patientIdInputEl = createFormEl.querySelector('input[id="patient_id"]');
 const doctorIdInputEl = createFormEl.querySelector('input[id="doctor_id"]');
 
 function dataToAction(){
+    document.getElementById('required').click()
     dateActionAddInputEl.value = dateInputEl.value
     fromActionAddInputEl.value = fromInputEl.value
     toActionAddInputEl.value = toInputEl.value

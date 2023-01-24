@@ -26,7 +26,7 @@
       <c:forEach items="${listOfDoctorCharts}" var="doctor">
       <tr>
           <td><div class="user">
-          <b>Doctor name</b><br>
+          <b>Doctor name </b>
           <span class="name"><c:out value="${doctor.getUser().getName()}"/></span><br>
           <b>Specialization:</b>
           <span class="specialization"><c:out value="${doctor.getSpecialization()}"/></span><br>
