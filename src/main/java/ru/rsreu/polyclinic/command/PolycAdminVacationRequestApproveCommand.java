@@ -35,6 +35,19 @@ public class PolycAdminVacationRequestApproveCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<User> users = this.userDAO.returnAllUsers();
+//        List<Doctor> doctors = new ArrayList<>();
+//        for (User user : users) {
+//            doctors.add(this.doctorDetailsDAO.returnDoctor(user));
+//        }
+//        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfRequestSet", requestSetList);
+//        forward(POLYC_ADMIN_CHECK_VACATIONS);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<User> users = this.userDAO.returnAllUsers();
         List<Doctor> doctors = new ArrayList<>();
         for (User user : users) {
@@ -43,11 +56,6 @@ public class PolycAdminVacationRequestApproveCommand extends FrontCommand{
         List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
         HttpSession session = request.getSession();
         session.setAttribute("listOfRequestSet", requestSetList);
-        forward(POLYC_ADMIN_CHECK_VACATIONS);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(POLYC_ADMIN_CHECK_VACATIONS);
     }
 }
