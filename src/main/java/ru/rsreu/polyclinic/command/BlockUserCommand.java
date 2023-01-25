@@ -42,14 +42,14 @@ public class BlockUserCommand extends FrontCommand{
             user.setLogin(login);
             user.setBlocked(isBlocked);
             this.userDAO.blockUser(user);
-            List<ModerTableRow> rs = this.userDAO.returnAllUsersModer();
-            session.setAttribute("listOfUsers", rs);
+//            List<ModerTableRow> rs = this.userDAO.returnAllUsersModer();
+//            session.setAttribute("listOfUsers", rs);
             redirect(MODER);
         }
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(MODER);
+//        forward(MODER);
     }
 }

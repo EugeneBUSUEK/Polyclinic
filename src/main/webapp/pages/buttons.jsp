@@ -15,7 +15,7 @@
             <form action="doctorCheckVacationRequests" method="post"><button class="button" role="button">Check & Create vacation request</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.MODERATOR.getRole())}">
-            <form action="moderator" method="post"><button class="button" role="button">Edit users blocked status</button></form>
+            <form action="moderator"><button class="button" role="button">Edit users blocked status</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.POLYCLINIC_ADMINISTRATOR.getRole())}">
             <form action="editOutpatientCards" method="post"><button class="button" role="button">Edit & Add patient card</button></form>

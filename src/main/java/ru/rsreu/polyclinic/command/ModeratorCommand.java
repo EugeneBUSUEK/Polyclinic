@@ -28,6 +28,34 @@ public class ModeratorCommand extends FrontCommand {
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<ModerTableRow> rs = this.userDAO.returnAllUsersModer();
+//        for (ModerTableRow user : rs) {
+//            switch (user.getUser().getRole()) {
+//                case "moderator" : {
+//                    user.getUser().setRole("Moderator");
+//                    break;
+//                }
+//                case "system_administrator" : {
+//                    user.getUser().setRole("System Administrator");
+//                    break;
+//                }
+//                case "polyclinic_administrator" : {
+//                    user.getUser().setRole("Polyclinic Administrator");
+//                    break;
+//                }
+//                case "doctor" : {
+//                    user.getUser().setRole("Doctor");
+//                    break;
+//                }
+//            }
+//        }
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfUsers", rs);
+//        redirect(MODER);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<ModerTableRow> rs = this.userDAO.returnAllUsersModer();
         for (ModerTableRow user : rs) {
             switch (user.getUser().getRole()) {
@@ -51,12 +79,8 @@ public class ModeratorCommand extends FrontCommand {
         }
         HttpSession session = request.getSession();
         session.setAttribute("listOfUsers", rs);
-        redirect(MODER);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(MODER);
+//        forward(MODER);
 
     }
 }
