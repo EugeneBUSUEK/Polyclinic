@@ -16,8 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_EDIT_PATIENTS;
-import static ru.rsreu.polyclinic.constant.Routes.SYS_ADMIN;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class AddPatientCommand extends FrontCommand{
     private OutpatientCardsDAO outpatientCardsDAO;
@@ -44,19 +43,19 @@ public class AddPatientCommand extends FrontCommand{
             forward(POLYC_ADMIN_EDIT_PATIENTS);
         }
 
-        List<Patient> rs = this.outpatientCardsDAO.returnAllPatients();
-        for (Patient pat : rs) {
-            String date = pat.getBirthDay().split(" ")[0];
-            pat.setBirthDay(date);
-        }
-        HttpSession session = request.getSession();
-        session.setAttribute("listOfPatients", rs);
-        forward(POLYC_ADMIN_EDIT_PATIENTS);
+//        List<Patient> rs = this.outpatientCardsDAO.returnAllPatients();
+//        for (Patient pat : rs) {
+//            String date = pat.getBirthDay().split(" ")[0];
+//            pat.setBirthDay(date);
+//        }
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfPatients", rs);
+        redirect(POLYC_ADMIN_EDIT_PATIENTS_REDIRECT);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(POLYC_ADMIN_EDIT_PATIENTS);
+//        forward(POLYC_ADMIN_EDIT_PATIENTS);
 
     }
 }

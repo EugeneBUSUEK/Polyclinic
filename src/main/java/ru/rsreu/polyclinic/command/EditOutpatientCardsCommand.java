@@ -27,6 +27,18 @@ public class EditOutpatientCardsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<Patient> rs = this.outpatientCardsDAO.returnAllPatients();
+//        for (Patient patient : rs) {
+//            String date = patient.getBirthDay().split(" ")[0];
+//            patient.setBirthDay(date);
+//        }
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfPatients", rs);
+//        forward(POLYC_ADMIN_EDIT_PATIENTS);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<Patient> rs = this.outpatientCardsDAO.returnAllPatients();
         for (Patient patient : rs) {
             String date = patient.getBirthDay().split(" ")[0];
@@ -34,11 +46,6 @@ public class EditOutpatientCardsCommand extends FrontCommand{
         }
         HttpSession session = request.getSession();
         session.setAttribute("listOfPatients", rs);
-        forward(POLYC_ADMIN_EDIT_PATIENTS);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(POLYC_ADMIN_EDIT_PATIENTS);
     }
 
