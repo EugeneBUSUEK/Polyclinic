@@ -24,7 +24,7 @@
             <form action="polycAdminRecordPatient" method="post"><button class="button" role="button">Create Record a patient to doctors</button></form>
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.SYSTEM_ADMINISTRATOR.getRole())}">
-            <form action="sysAdmin" method="post"><button class="button" role="button">Edit & Add users</button></form>
+            <form action="sysAdmin"><button class="button" role="button">Edit & Add users</button></form>
         </c:when>
     </c:choose>
 </div>
