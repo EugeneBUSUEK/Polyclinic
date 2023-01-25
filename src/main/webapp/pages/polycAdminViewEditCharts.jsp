@@ -35,7 +35,7 @@
         </div></td>
 
         <td>
-          <form action="viewEditCharts" method="post">
+          <form action="viewEditCharts">
             <input hidden name="id" value="<c:out value="${doctor.getUser().getId()}"/>">
             <input hidden name="name" value="<c:out value="${doctor.getUser().getName()}"/>">
             <input class="default-button" type="submit" value="Edit charts" style="width: auto">

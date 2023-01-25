@@ -18,8 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.rsreu.polyclinic.constant.Routes.EDIT_CURRENT_CHART;
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_VIEW_EDIT_CHARTS;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class EditChartCommand extends FrontCommand{
 
@@ -50,8 +49,16 @@ public class EditChartCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+//        session.setAttribute("doctorIdForChart", Long.parseLong(request.getParameter("id")));
+//        session.setAttribute("doctorNameForChart", request.getParameter("name"));
+
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("id")));
+        user.setName(request.getParameter("name"));
+        session.setAttribute("userParams", user);
+
         DoctorChartDay doctorChartDay = new DoctorChartDay();
         doctorChartDay.setUser(user);
         doctorChartDay.setDayOfWeek(Integer.parseInt(request.getParameter("day")));
@@ -59,11 +66,11 @@ public class EditChartCommand extends FrontCommand{
         doctorChartDay.setToTime(request.getParameter("to_time")+":00");
 
         this.doctorChartsDAO.editDoctorCharts(doctorChartDay);
-        forward(EDIT_CURRENT_CHART);
+        redirect(EDIT_CURRENT_CHART_REDIRECT);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(EDIT_CURRENT_CHART);
+//        forward(EDIT_CURRENT_CHART);
     }
 }

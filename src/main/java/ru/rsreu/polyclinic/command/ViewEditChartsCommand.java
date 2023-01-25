@@ -36,21 +36,36 @@ public class ViewEditChartsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        User user = new User();
-        user.setId(Long.parseLong(request.getParameter("id")));
-        user.setName(request.getParameter("name"));
-        Doctor doctor = new Doctor();
-        doctor.setUser(user);
-        DoctorChart doctorChart = this.doctorChartsDAO.returnDoctorCharts(doctor);
-        HttpSession session = request.getSession();
-        session.setAttribute("doctorChart", doctorChart);
-        forward(EDIT_CURRENT_CHART);
+//        User user = new User();
+//        user.setId(Long.parseLong(request.getParameter("id")));
+//        user.setName(request.getParameter("name"));
+//        Doctor doctor = new Doctor();
+//        doctor.setUser(user);
+//        DoctorChart doctorChart = this.doctorChartsDAO.returnDoctorCharts(doctor);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("doctorChart", doctorChart);
+//        forward(EDIT_CURRENT_CHART);
     }
 
 
 
     @Override
     public void process() throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User user = new User();
+        if (request.getParameter("id") == null || request.getParameter("name") == null) {
+//            user.setId((Long) session.getAttribute("doctorIdForChart"));
+//            user.setName(session.getAttribute("doctorNameForChart").toString());
+            user = (User) session.getAttribute("userParams");
+        } else {
+            user.setId(Long.parseLong(request.getParameter("id")));
+            user.setName(request.getParameter("name"));
+        }
+
+        Doctor doctor = new Doctor();
+        doctor.setUser(user);
+        DoctorChart doctorChart = this.doctorChartsDAO.returnDoctorCharts(doctor);
+        session.setAttribute("doctorChart", doctorChart);
         forward(EDIT_CURRENT_CHART);
     }
 }

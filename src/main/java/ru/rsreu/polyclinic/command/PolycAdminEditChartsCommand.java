@@ -45,6 +45,21 @@ public class PolycAdminEditChartsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<User> rs = this.userDAO.returnAllUsers();
+//        List<Doctor> doctorList = new ArrayList<>();
+//        for (User user : rs) {
+//            Doctor doctor = this.doctorDetailsDAO.returnDoctor(user);
+//            if (doctor.getUser().getRole().equals("doctor")) {
+//                doctorList.add(doctor);
+//            }
+//        }
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfDoctorCharts", doctorList);
+//        forward(POLYC_ADMIN_VIEW_EDIT_CHARTS);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<User> rs = this.userDAO.returnAllUsers();
         List<Doctor> doctorList = new ArrayList<>();
         for (User user : rs) {
@@ -55,11 +70,6 @@ public class PolycAdminEditChartsCommand extends FrontCommand{
         }
         HttpSession session = request.getSession();
         session.setAttribute("listOfDoctorCharts", doctorList);
-        forward(POLYC_ADMIN_VIEW_EDIT_CHARTS);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(POLYC_ADMIN_VIEW_EDIT_CHARTS);
     }
 }

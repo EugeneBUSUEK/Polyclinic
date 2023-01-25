@@ -13,7 +13,7 @@
 
 <div id="checkchartsform" class="container-form" style="margin-top: 50px; display: flex">
     <div class="form-box">
-        <h2 style="margin: 0">Doctors charts for week <c:out value="${doctorChart.getDoctor().getUser().getName()}"/></h2>
+        <h2 style="margin: 0">Doctors charts for week <c:out value="${doctorChart.getDoctor().getUser().getName()}"/> NAME IS ABSENT</h2>
 
         <div id="chartsform" class="edit-form">
             <div class="form-group">

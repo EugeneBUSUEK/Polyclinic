@@ -19,7 +19,7 @@
         </c:when>
         <c:when test="${user.getRole().equals(RoleType.POLYCLINIC_ADMINISTRATOR.getRole())}">
             <form action="editOutpatientCards"><button class="button" role="button">Edit & Add patient card</button></form>
-            <form action="polycAdminEditCharts" method="post"><button class="button" role="button">Edit charts for doctors</button></form>
+            <form action="polycAdminEditCharts"><button class="button" role="button">Edit charts for doctors</button></form>
             <form action="polycAdminVacationRequestApprove" method="post"><button class="button" role="button">Vacation request approve</button></form>
             <form action="polycAdminRecordPatient" method="post"><button class="button" role="button">Create Record a patient to doctors</button></form>
         </c:when>

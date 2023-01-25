@@ -32,4 +32,5 @@ public class Routes {
     //------------TEMP-------------------
     public static final String DOCTOR_CHECK_VACATIONS_REDIRECT = "doctorCheckVacationRequests";
     public static final String POLYC_ADMIN_EDIT_PATIENTS_REDIRECT = "editOutpatientCards";
+    public static final String EDIT_CURRENT_CHART_REDIRECT = "viewEditCharts";
 }
