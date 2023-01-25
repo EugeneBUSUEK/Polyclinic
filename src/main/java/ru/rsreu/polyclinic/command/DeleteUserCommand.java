@@ -38,14 +38,14 @@ public class DeleteUserCommand extends FrontCommand{
             user = new User();
             user.setId(id);
             this.userDAO.deleteUser(user);
-            List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-            session.setAttribute("listOfUsersAdmin", rs);
+//            List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
+//            session.setAttribute("listOfUsersAdmin", rs);
             redirect(SYS_ADMIN);
         }
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(SYS_ADMIN);
+//        forward(SYS_ADMIN);
     }
 }

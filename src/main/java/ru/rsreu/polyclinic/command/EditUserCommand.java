@@ -49,16 +49,16 @@ public class EditUserCommand extends FrontCommand{
         } else {
             this.userDAO.updateUser(user);
         }
-        List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-        HttpSession session = request.getSession();
-        session.setAttribute("listOfUsersAdmin", rs);
+//        List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfUsersAdmin", rs);
 
         redirect(SYS_ADMIN);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(SYS_ADMIN);
+//        forward(SYS_ADMIN);
 
     }
 }
