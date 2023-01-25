@@ -2,7 +2,6 @@ package ru.rsreu.polyclinic.command;
 
 import ru.rsreu.polyclinic.data.*;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
-import ru.rsreu.polyclinic.database.dao.OutpatientCardsDAO;
 import ru.rsreu.polyclinic.database.dao.VacationRequestsDAO;
 
 import javax.servlet.ServletContext;
@@ -12,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static ru.rsreu.polyclinic.constant.Routes.DOCTOR_CHECK_VACATIONS;
-import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_EDIT_PATIENTS;
+import static ru.rsreu.polyclinic.constant.Routes.*;
 
 public class AddVacationRequestCommand extends FrontCommand{
     private VacationRequestsDAO vacationRequestsDAO;
@@ -41,14 +39,13 @@ public class AddVacationRequestCommand extends FrontCommand{
             request.setAttribute("invalidAddVacation", true);
             forward(DOCTOR_CHECK_VACATIONS);
         } else {
-            redirect(DOCTOR_CHECK_VACATIONS);
+            redirect(DOCTOR_CHECK_VACATIONS_REDIRECT);
         }
 
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(DOCTOR_CHECK_VACATIONS);
 
     }
 }

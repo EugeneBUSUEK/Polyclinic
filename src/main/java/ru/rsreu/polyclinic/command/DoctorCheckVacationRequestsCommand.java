@@ -33,17 +33,23 @@ public class DoctorCheckVacationRequestsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        HttpSession session = request.getSession();
+//        User user = (User) session.getAttribute("user");
+//        Doctor doctor = new Doctor();
+//        doctor.setUser(user);
+//        List<RequestsTableRow> requestsList = this.vacationRequestsDAO.returnRequestsOfDoctor(doctor);
+//        session.setAttribute("doctorRequestList", requestsList);
+//        forward(DOCTOR_CHECK_VACATIONS);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         Doctor doctor = new Doctor();
         doctor.setUser(user);
         List<RequestsTableRow> requestsList = this.vacationRequestsDAO.returnRequestsOfDoctor(doctor);
         session.setAttribute("doctorRequestList", requestsList);
-        forward(DOCTOR_CHECK_VACATIONS);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(DOCTOR_CHECK_VACATIONS);
     }
 }

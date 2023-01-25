@@ -36,17 +36,23 @@ public class DoctorCheckCardCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        HttpSession session = request.getSession();
+//        Long id = Long.parseLong(request.getParameter("patient_id"));
+//        Patient patient = this.outpatientCardsDAO.getPatientBId(id).orElse(null);
+//        List<CardRecord> records = this.cardRecordingsDAO.returnPatientRecords(patient);
+//        session.setAttribute("patientRecords", records);
+//        session.setAttribute("patientObj", patient);
+//        forward(PATIENT_CARD);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         HttpSession session = request.getSession();
         Long id = Long.parseLong(request.getParameter("patient_id"));
         Patient patient = this.outpatientCardsDAO.getPatientBId(id).orElse(null);
         List<CardRecord> records = this.cardRecordingsDAO.returnPatientRecords(patient);
         session.setAttribute("patientRecords", records);
         session.setAttribute("patientObj", patient);
-        forward(PATIENT_CARD);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(PATIENT_CARD);
     }
 }

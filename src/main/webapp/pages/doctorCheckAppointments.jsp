@@ -33,7 +33,7 @@
             </div></td>
 
             <td>
-              <form action="doctorCheckCard" method="post">
+              <form action="doctorCheckCard">
                 <input hidden name="patient_id" style="font-size: 15px" value="<c:out value="${appointment.getPatient().getId()}"/>">
                 <input class="default-button" type="submit" value="Check card">
               </form>
