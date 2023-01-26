@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_CHECK_VACATIONS;
+import static ru.rsreu.polyclinic.constant.Routes.POLYC_ADMIN_CHECK_VACATIONS_REDIRECT;
 
 public class RejectVacationCommand extends FrontCommand{
     private UserDAO userDAO;
@@ -41,20 +42,20 @@ public class RejectVacationCommand extends FrontCommand{
         vacationRequest.setId(Long.parseLong(request.getParameter("id")));
         this.vacationRequestsDAO.deleteDoctorRequest(vacationRequest);
 
-        List<User> users = this.userDAO.returnAllUsers();
-        List<Doctor> doctors = new ArrayList<>();
-        for (User user : users) {
-            doctors.add(this.doctorDetailsDAO.returnDoctor(user));
-        }
-        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
-        HttpSession session = request.getSession();
-        session.setAttribute("listOfRequestSet", requestSetList);
+//        List<User> users = this.userDAO.returnAllUsers();
+//        List<Doctor> doctors = new ArrayList<>();
+//        for (User user : users) {
+//            doctors.add(this.doctorDetailsDAO.returnDoctor(user));
+//        }
+//        List<RequestsTableRow> requestSetList = this.vacationRequestsDAO.returnAllRequestsForAdmin(doctors);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("listOfRequestSet", requestSetList);
 
-        forward(POLYC_ADMIN_CHECK_VACATIONS);
+        redirect(POLYC_ADMIN_CHECK_VACATIONS_REDIRECT);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(POLYC_ADMIN_CHECK_VACATIONS);
+//        forward(POLYC_ADMIN_CHECK_VACATIONS);
     }
 }

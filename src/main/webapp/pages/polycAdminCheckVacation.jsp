@@ -25,7 +25,7 @@
             <tbody>
             <c:forEach items="${listOfRequestSet}" var="requests">
             <tr>
-                <form action="checkVacationDetails" method="post">
+                <form action="checkVacationDetails">
                     <td><div class="user">
                         <b>Request n.</b> <input name="vacation_id" type="text" value="<c:out value="${requests.getId()}"/>" style="font-size: 15px"><br>
                         <b>Request from</b> <input name="name" type="text" value="<c:out value="${requests.getDoctor().getUser().getName()}"/>" style="font-size: 15px">

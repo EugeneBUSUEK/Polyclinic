@@ -31,6 +31,29 @@ public class CheckVacationDetailsCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        RequestSet rs = new RequestSet();
+//        User user = new User();
+//        user.setId(Long.parseLong(request.getParameter("id")));
+//        user.setName(request.getParameter("name"));
+//        Doctor doctor = this.doctorDetailsDAO.returnDoctor(user);
+//        RequestSet requestSet = this.vacationRequestsDAO.returnRequestsOfDoctorPolomani(doctor);
+//        for (VacationRequest req : requestSet.getVacationRequestList()) {
+//            if (req.getId() == Long.parseLong(request.getParameter("vacation_id"))) {
+//                rs.setDoctor(doctor);
+//                rs.getVacationRequestList().add(req);
+//                break;
+//            }
+//        }
+//        //второй сет с аппонтментсами ------------------------------------
+//        List<Appointment> appointments = this.appointmentsDAO.returnAppointmentsForDoctor(doctor);
+//        HttpSession session = request.getSession();
+//        session.setAttribute("requestDetails", rs);
+//        session.setAttribute("doctorAppointments", appointments);
+//        forward(CHECK_VACATION_DETAILS);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         RequestSet rs = new RequestSet();
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("id")));
@@ -49,11 +72,6 @@ public class CheckVacationDetailsCommand extends FrontCommand{
         HttpSession session = request.getSession();
         session.setAttribute("requestDetails", rs);
         session.setAttribute("doctorAppointments", appointments);
-        forward(CHECK_VACATION_DETAILS);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(CHECK_VACATION_DETAILS);
     }
 }

@@ -134,7 +134,7 @@
             </form>
         </div>
 
-        <form action="polycAdminVacationRequestApprove" method="post"><input class="closed" type="submit" value="Back to requests list" style="width: 50%"></form>
+        <form action="polycAdminVacationRequestApprove"><input class="closed" type="submit" value="Back to requests list" style="width: 50%"></form>
     </div>
 </div>
 <br>
