@@ -17,7 +17,7 @@ import java.util.List;
 import static ru.rsreu.polyclinic.constant.Routes.LOGIN;
 import static ru.rsreu.polyclinic.constant.Routes.MODER;
 
-public class BlockUserCommand extends FrontCommand{
+public class BlockUserCommand extends FrontCommand {
 
     private UserDAO userDAO;
 
