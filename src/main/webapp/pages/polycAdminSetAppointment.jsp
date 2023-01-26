@@ -127,7 +127,7 @@
             </div>
         </div>
 
-        <form action="polycAdminRecordPatient" method="post"><input class="closed" type="submit" value="Back to record"></form>
+        <form action="polycAdminRecordPatient"><input class="closed" type="submit" value="Back to record"></form>
 
     </div>
 </div>

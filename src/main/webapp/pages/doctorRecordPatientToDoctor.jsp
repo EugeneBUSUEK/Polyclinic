@@ -110,7 +110,7 @@
                 <input id="required" type="submit" class="submit" value="Submit" style="display: none">
             </form>
 
-            <form id="actionForm" action="setAppointment" method="post">
+            <form id="actionForm" action="setAppointment">
                 <input hidden name="patient_name" value="<c:out value="${patient.getName()}"/>"  required/>
                 <input hidden name="phone" value="<c:out value="${patient.getPhoneNumber()}"/>" required/>
                 <input hidden name="patient_id" value="<c:out value="${patient.getId()}"/>" required/>

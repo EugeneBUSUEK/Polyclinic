@@ -34,4 +34,5 @@ public class Routes {
     public static final String POLYC_ADMIN_EDIT_PATIENTS_REDIRECT = "editOutpatientCards";
     public static final String EDIT_CURRENT_CHART_REDIRECT = "viewEditCharts";
     public static final String POLYC_ADMIN_CHECK_VACATIONS_REDIRECT = "polycAdminVacationRequestApprove";
+    public static final String POLYC_ADMIN_RECORD_PATIENT_REDIRECT = "polycAdminRecordPatient";
 }

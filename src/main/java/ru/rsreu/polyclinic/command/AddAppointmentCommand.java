@@ -51,17 +51,17 @@ public class AddAppointmentCommand extends FrontCommand{
         User currentUser = (User) session.getAttribute("user");
         if (appointmentAfter == null) {
             request.setAttribute("invalidAddAppointment", true);
-            forward(PROFILE);
+            forward(POLYC_ADMIN_RECORD_PATIENT);
         } else if (currentUser.getRole().equals(RoleType.DOCTOR.getRole())) {
             redirect(PROFILE);
         } else {
-            redirect(POLYC_ADMIN_RECORD_PATIENT);
+            redirect(POLYC_ADMIN_RECORD_PATIENT_REDIRECT);
         }
 
     }
 
     @Override
     public void process() throws ServletException, IOException {
-        forward(POLYC_ADMIN_RECORD_PATIENT);
+//        forward(POLYC_ADMIN_RECORD_PATIENT);
     }
 }

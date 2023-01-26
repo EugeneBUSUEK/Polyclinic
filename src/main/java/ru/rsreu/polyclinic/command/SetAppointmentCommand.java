@@ -36,6 +36,27 @@ public class SetAppointmentCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        User user = new User();
+//        user.setId(Long.parseLong(request.getParameter("doctor_id")));
+//        user.setName(request.getParameter("doctor_name"));
+//        Doctor doctor = new Doctor();
+//        doctor.setUser(user);
+//        doctor.setSpecialization(request.getParameter("spec"));
+//        Patient patient = new Patient();
+//        patient.setId(Long.parseLong(request.getParameter("patient_id")));
+//        patient.setName(request.getParameter("patient_name"));
+//        patient.setPhoneNumber(request.getParameter("phone"));
+//        List<Appointment> appointmentList = this.appointmentsDAO.returnAppointmentsForDoctor(doctor);
+//
+//        HttpSession session = request.getSession();
+//        session.setAttribute("patient", patient);
+//        session.setAttribute("doctor", doctor);
+//        session.setAttribute("appointmentList", appointmentList);
+//        forward(POLYC_ADMIN_SET_APPOINTMENT);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         User user = new User();
         user.setId(Long.parseLong(request.getParameter("doctor_id")));
         user.setName(request.getParameter("doctor_name"));
@@ -52,11 +73,6 @@ public class SetAppointmentCommand extends FrontCommand{
         session.setAttribute("patient", patient);
         session.setAttribute("doctor", doctor);
         session.setAttribute("appointmentList", appointmentList);
-        forward(POLYC_ADMIN_SET_APPOINTMENT);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(POLYC_ADMIN_SET_APPOINTMENT);
     }
 }

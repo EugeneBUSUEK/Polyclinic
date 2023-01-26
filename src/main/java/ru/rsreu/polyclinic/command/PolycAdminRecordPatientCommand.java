@@ -32,6 +32,29 @@ public class PolycAdminRecordPatientCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<Doctor> listOfUsers = this.userDAO.returnAllUsersForAdminEdit();
+//        List<Doctor> doctors = new ArrayList<>();
+//        for (Doctor user : listOfUsers) {
+//            if (user.getUser().getRole().equals(RoleType.DOCTOR.getRole())) {
+//                doctors.add(user);
+//            }
+//        }
+//        List<Patient> patients = this.outpatientCardsDAO.returnAllPatients();
+//        HttpSession session = request.getSession();
+//        session.setAttribute("patientList", patients);
+//        session.setAttribute("doctorList", doctors);
+//
+//        User currentUser = (User) session.getAttribute("user");
+//        if (currentUser.getRole().equals(RoleType.DOCTOR.getRole())){
+//            forward(PROFILE);
+//        } else {
+//            forward(POLYC_ADMIN_RECORD_PATIENT);
+//        }
+
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<Doctor> listOfUsers = this.userDAO.returnAllUsersForAdminEdit();
         List<Doctor> doctors = new ArrayList<>();
         for (Doctor user : listOfUsers) {
@@ -50,12 +73,5 @@ public class PolycAdminRecordPatientCommand extends FrontCommand{
         } else {
             forward(POLYC_ADMIN_RECORD_PATIENT);
         }
-
-//        forward(POLYC_ADMIN_RECORD_PATIENT);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
-        forward(POLYC_ADMIN_RECORD_PATIENT);
     }
 }

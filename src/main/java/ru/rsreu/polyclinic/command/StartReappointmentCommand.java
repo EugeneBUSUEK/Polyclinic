@@ -33,6 +33,24 @@ public class StartReappointmentCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
+//        List<Doctor> listOfUsers = this.userDAO.returnAllUsersForAdminEdit();
+//        List<Doctor> doctors = new ArrayList<>();
+//        for (Doctor user : listOfUsers) {
+//            if (user.getUser().getRole().equals(RoleType.DOCTOR.getRole())) {
+//                doctors.add(user);
+//            }
+//        }
+//
+//        HttpSession session = request.getSession();
+//        Patient patientForId = (Patient) session.getAttribute("patientObjOnlyWithId");
+//        Patient patient = this.outpatientCardsDAO.getPatientBId(patientForId.getId()).orElse(null);
+//        session.setAttribute("patient", patient);
+//        session.setAttribute("doctorList", doctors);
+//        forward(DOCTOR_RECORD_PATIENT_TO_DOCTOR);
+    }
+
+    @Override
+    public void process() throws ServletException, IOException {
         List<Doctor> listOfUsers = this.userDAO.returnAllUsersForAdminEdit();
         List<Doctor> doctors = new ArrayList<>();
         for (Doctor user : listOfUsers) {
@@ -46,11 +64,6 @@ public class StartReappointmentCommand extends FrontCommand{
         Patient patient = this.outpatientCardsDAO.getPatientBId(patientForId.getId()).orElse(null);
         session.setAttribute("patient", patient);
         session.setAttribute("doctorList", doctors);
-        forward(DOCTOR_RECORD_PATIENT_TO_DOCTOR);
-    }
-
-    @Override
-    public void process() throws ServletException, IOException {
         forward(DOCTOR_RECORD_PATIENT_TO_DOCTOR);
     }
 }
