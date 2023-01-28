@@ -6,6 +6,7 @@ import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.database.dao.SessionsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
+import ru.rsreu.polyclinic.mapper.Mapper;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -34,13 +35,8 @@ public class AddUserCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        User user = new User();
-//        user.setId(Long.parseLong(request.getParameter("id")));
-        user.setLogin(request.getParameter("username"));
-        user.setPassword(request.getParameter("password"));
-        user.setName(request.getParameter("name"));
-        user.setRole(request.getParameter("role"));
-//        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
+        User user = Mapper.mapUser(null, request.getParameter("username"), request.getParameter("password"), request.getParameter("name"), false, request.getParameter("role"));
+//
         User userAfter = this.userDAO.addUser(user).orElse(null);
         if (userAfter == null) {
             request.setAttribute("invalidAddUser", true);
@@ -48,18 +44,12 @@ public class AddUserCommand extends FrontCommand{
         } else {
             this.sessionsDAO.createSession(userAfter);
             if (request.getParameter("role").equals("doctor")) {
-                Doctor doctor = new Doctor();
-                doctor.setUser(userAfter);
-                doctor.setSpecialization(request.getParameter("spec"));
-                doctor.setCabinet(request.getParameter("cabinet"));
-//            doctor.setInVacation(Boolean.parseBoolean(request.getParameter("inVacation")));
-//                this.userDAO.addUser(user);
+                Doctor doctor = Mapper.mapUserToDoctor(userAfter, request.getParameter("spec"), request.getParameter("cabinet"), false);
+//
                 this.doctorDetailsDAO.addDoctorDetails(doctor);
 
             }
-//            List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-//            HttpSession session = request.getSession();
-//            session.setAttribute("listOfUsersAdmin", rs);
+//
             redirect(SYS_ADMIN);
         }
 
@@ -67,7 +57,6 @@ public class AddUserCommand extends FrontCommand{
 
     @Override
     public void process() throws ServletException, IOException {
-//        forward(SYS_ADMIN);
 
     }
 }

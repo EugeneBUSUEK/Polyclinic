@@ -1,11 +1,13 @@
 package ru.rsreu.polyclinic.database.dao.impl;
 
 import com.prutzkow.resourcer.ProjectResourcer;
+import com.sun.javafx.collections.MappingChange;
 import ru.rsreu.polyclinic.data.Doctor;
 import ru.rsreu.polyclinic.data.ModerTableRow;
 import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.ConnectionPool;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
+import ru.rsreu.polyclinic.mapper.Mapper;
 import ru.rsreu.polyclinic.util.BooleanUtil;
 
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class UserDAOImpl implements UserDAO {
@@ -110,28 +113,10 @@ public class UserDAOImpl implements UserDAO {
         try (PreparedStatement preparedStatement = ConnectionPool.getConnection().prepareStatement(SELECT_ALL_USERS_FOR_ADMIN_EDIT)) {
             rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                User user = new User();
-                user.setId(rs.getLong(1));
-                user.setLogin(rs.getString(2));
-                user.setPassword(rs.getString(3));
-                user.setName(rs.getString(4));
-                user.setBlocked(BooleanUtil.parseBoolean(rs.getInt(5)));
-                user.setRole(rs.getString(6));
-                Doctor row = new Doctor();
-                row.setUser(user);
-                row.setSpecialization(rs.getString(8));
-                row.setCabinet(rs.getString(9));
-                row.setInVacation(BooleanUtil.parseBoolean(rs.getInt(10)));
-//                List<String> row = new ArrayList<>();
-//                row.add(rs.getString(1));
-//                row.add(rs.getString(2));
-//                row.add(rs.getString(3));
-//                row.add(Integer.toString(rs.getInt(4)));
-//                row.add(rs.getString(5));
-//                for (int i = 1; i <= 5; i++) {
-//                    row.add(rs.getString(i));
+                User user = Mapper.mapUser(rs.getLong(1), rs.getString(2), rs.getString(3), rs.getString(4), BooleanUtil.parseBoolean(rs.getInt(5)), rs.getString(6));
 //
-//                }
+                Doctor row = Mapper.mapUserToDoctor(user, rs.getString(8), rs.getString(9), BooleanUtil.parseBoolean(rs.getInt(10)));
+//
                 rowsList.add(row);
             }
             return rowsList;

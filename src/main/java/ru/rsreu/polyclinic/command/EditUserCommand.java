@@ -5,6 +5,7 @@ import ru.rsreu.polyclinic.data.User;
 import ru.rsreu.polyclinic.database.dao.DAOFactory;
 import ru.rsreu.polyclinic.database.dao.DoctorDetailsDAO;
 import ru.rsreu.polyclinic.database.dao.UserDAO;
+import ru.rsreu.polyclinic.mapper.Mapper;
 import ru.rsreu.polyclinic.util.BooleanUtil;
 
 import javax.servlet.ServletContext;
@@ -31,34 +32,21 @@ public class EditUserCommand extends FrontCommand{
 
     @Override
     public void send() throws ServletException, IOException {
-        User user = new User();
-        user.setId(Long.parseLong(request.getParameter("id")));
-        user.setLogin(request.getParameter("username"));
-        user.setPassword(request.getParameter("password"));
-        user.setName(request.getParameter("name"));
-        user.setRole(request.getParameter("role"));
-//        user.setBlocked(Boolean.parseBoolean(request.getParameter("isBlocked")));
+        User user = Mapper.mapUser(Long.parseLong(request.getParameter("id")), request.getParameter("username"), request.getParameter("password"), request.getParameter("name"), false, request.getParameter("role"));
+
         if (request.getParameter("role").equals("doctor")) {
-            Doctor doctor = new Doctor();
-            doctor.setUser(user);
-            doctor.setSpecialization(request.getParameter("spec"));
-            doctor.setCabinet(request.getParameter("cabinet"));
-//            doctor.setInVacation(Boolean.parseBoolean(request.getParameter("inVacation")));
+            Doctor doctor = Mapper.mapUserToDoctor(user, request.getParameter("spec"), request.getParameter("cabinet"), false);
             this.userDAO.updateUser(user);
             this.doctorDetailsDAO.editDoctorDetails(doctor);
         } else {
             this.userDAO.updateUser(user);
         }
-//        List<Doctor> rs = this.userDAO.returnAllUsersForAdminEdit();
-//        HttpSession session = request.getSession();
-//        session.setAttribute("listOfUsersAdmin", rs);
 
         redirect(SYS_ADMIN);
     }
 
     @Override
     public void process() throws ServletException, IOException {
-//        forward(SYS_ADMIN);
 
     }
 }
